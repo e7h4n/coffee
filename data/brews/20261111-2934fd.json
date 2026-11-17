@@ -6,7 +6,7 @@
   "manual": false,
   "bean": {
     "id": "leftover",
-    "name": "Leftover Blend",
+    "name": "Mixed-Origin Blend",
     "full": "Whatever beans were left over, mixed together",
     "origin": "Mixed",
     "process": "Blend",

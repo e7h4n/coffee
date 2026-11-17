@@ -1,7 +1,7 @@
 {
   "gotiti": {
-    "name": "Gotiti Honey Moon",
-    "full": "Ethiopia Yirgacheffe Gotiti, Heirloom, DFW \"Honey Moon\" Washed 3.0",
+    "name": "Ethiopia Yirgacheffe Gotiti Washed",
+    "full": "Ethiopia, Yirgacheffe, Gotiti, Heirloom, Washed",
     "origin": "Ethiopia",
     "region": "Yirgacheffe, Gotiti",
     "variety": "Heirloom",
@@ -11,8 +11,8 @@
     "roaster": "myERoast (home)"
   },
   "syrina": {
-    "name": "Yunnan Syrina",
-    "full": "China Yunnan Lincang, The Nest Estate, Syrina, Dark Forest Natural",
+    "name": "China Yunnan Lincang The Nest Estate Natural",
+    "full": "China, Yunnan, Lincang, The Nest Estate, Natural",
     "origin": "China",
     "region": "Yunnan, Lincang",
     "farm": "The Nest Estate",
@@ -24,8 +24,8 @@
     "note": "Green coffee from the Yinianyisu Cup roasting competition in Beijing."
   },
   "limu": {
-    "name": "Ethiopia Limu",
-    "full": "Ethiopia Limu G2, Washed",
+    "name": "Ethiopia Limu Washed",
+    "full": "Ethiopia, Limu, G2, Washed",
     "origin": "Ethiopia",
     "region": "Limu",
     "grade": "G2",
@@ -34,8 +34,8 @@
     "roaster": "DIY fluid-bed (home)"
   },
   "alo": {
-    "name": "ALO Boore Guji",
-    "full": "Ethiopia Guji, ALO Boore, Honey",
+    "name": "Ethiopia Guji ALO Boore Honey",
+    "full": "Ethiopia, Guji, ALO Boore, Honey",
     "origin": "Ethiopia",
     "region": "Guji",
     "process": "Honey",
@@ -43,16 +43,16 @@
     "roaster": "DIY fluid-bed (home)"
   },
   "mix1031": {
-    "name": "Oct 31 Roast Blend",
-    "full": "Blend of the Oct 31 home roasts: Limu batches 1 and 2 with ALO Boore Guji batch 3",
+    "name": "Ethiopia Limu & Guji Blend",
+    "full": "Ethiopia blend: Limu Washed batches 1 and 2, and Guji ALO Boore Honey batch 3, roasted Oct 31",
     "origin": "Ethiopia",
     "process": "Blend",
     "source": "Home roast",
     "roaster": "DIY fluid-bed (home)"
   },
   "darkrider": {
-    "name": "Captain George Dark Rider",
-    "full": "Captain George No.02 Dark Rider, Colombia Huila, Caturra, Washed",
+    "name": "Colombia Huila Caturra Washed",
+    "full": "Colombia, Huila, Caturra, Washed",
     "origin": "Colombia",
     "region": "Huila",
     "variety": "Caturra",
@@ -68,8 +68,8 @@
     ]
   },
   "eltambo": {
-    "name": "SEY El Tambo",
-    "full": "SEY Coffee, Daniel Caro Lopez, El Tambo (end of season), Chiroso, Washed",
+    "name": "Colombia El Tambo Chiroso Washed",
+    "full": "Colombia, El Tambo, Daniel Caro Lopez, Chiroso, Washed",
     "origin": "Colombia",
     "producer": "Daniel Caro Lopez",
     "farm": "El Tambo",
@@ -80,8 +80,8 @@
     "roastNote": "Roasted in the first week of October 2026"
   },
   "esmeralda": {
-    "name": "SEY Esmeralda Gesha",
-    "full": "SEY Coffee, Hacienda La Esmeralda, Lino 6HC, Gesha, Honey",
+    "name": "Panama Boquete La Esmeralda Gesha Honey",
+    "full": "Panama, Boquete, Hacienda La Esmeralda, Canas Verdes, Lino 6HC, Gesha, Honey",
     "origin": "Panama",
     "region": "Boquete",
     "farm": "Hacienda La Esmeralda, Canas Verdes, Lino plot",
@@ -99,8 +99,8 @@
     ]
   },
   "geshavillage": {
-    "name": "Gesha Village Gold Label",
-    "full": "Ethiopia Gesha Village Gold Label, Gesha 1931, Natural",
+    "name": "Ethiopia Gesha Village Gesha 1931 Natural",
+    "full": "Ethiopia, Gesha Village, Gesha 1931, Natural",
     "origin": "Ethiopia",
     "farm": "Gesha Village",
     "variety": "Gesha 1931",
@@ -115,8 +115,8 @@
     ]
   },
   "aokka": {
-    "name": "AOKKA Brazil Chocolate",
-    "full": "AOKKA Brazil \"Chocolate\", Sao Antonio, Natural",
+    "name": "Brazil Sao Antonio Natural",
+    "full": "Brazil, Sao Antonio, Mundo Novo / Catuai / Catucai, Natural",
     "origin": "Brazil",
     "region": "Sao Antonio",
     "altitude": "1100 m",
@@ -132,15 +132,15 @@
     ]
   },
   "leftover": {
-    "name": "Leftover Blend",
+    "name": "Mixed-Origin Blend",
     "full": "Whatever beans were left over, mixed together",
     "origin": "Mixed",
     "process": "Blend",
     "source": "Blend"
   },
   "huakui": {
-    "name": "HANSUN China Beauty 11",
-    "full": "HANSUN China Beauty 11, Ethiopia Guji Hambella, Heirloom, Customized Natural",
+    "name": "Ethiopia Guji Hambella Natural",
+    "full": "Ethiopia, Guji, Hambella, Heirloom, Natural",
     "origin": "Ethiopia",
     "region": "Guji, Hambella",
     "altitude": "2200 to 2350 m",

@@ -282,8 +282,8 @@
   },
   "2026-11-15-huakui-b": {
    "bean": "huakui",
-   "label": "China Beauty B",
-   "curveName": "China Beauty 11 B 150g",
+   "label": "Guji Hambella B",
+   "curveName": "Guji Hambella B 150g",
    "date": "2026-11-15",
    "machine": "Cardputer Roast on a DIY fluid-bed",
    "log": "cardputer/Roast Logs/20261115-140136",
@@ -293,8 +293,8 @@
   },
   "2026-11-15-huakui-a": {
    "bean": "huakui",
-   "label": "China Beauty A",
-   "curveName": "China Beauty 11 A 150g",
+   "label": "Guji Hambella A",
+   "curveName": "Guji Hambella A 150g",
    "date": "2026-11-15",
    "machine": "Cardputer Roast on a DIY fluid-bed",
    "log": "cardputer/Roast Logs/20261115-141554",

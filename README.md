@@ -42,6 +42,8 @@ A brew points at its batch with `roast` in `catalog/brews.json`; the brew then t
 
 ## Bean and brewer catalogs
 
+Coffee display names use traceability information rather than importer, roaster or marketing names: country, known region, farm / station / producer, variety when useful, and process. Omit unknown elements; never infer a station or cultivar from a trade name. Keep roasters in `roaster`, special processing details in `processNote`, and legacy names in the private `match` keywords. Keep bean and roast IDs stable when renaming. Blends are named by their known origins or components, not an invented single origin.
+
 The site has a page for every coffee (`#/beans`) and every brewer (`#/brewers`), built from two hand-kept files that are published as `data/beans.json` and `data/brewers.json`.
 
 `catalog/beans.json` is keyed by bean id. Fields: `name`, `full`, `origin`, `region`, `farm`, `producer`, `altitude`, `variety`, `grade`, `process`, `processNote`, `harvest`, `roastLevel`, `source` (`Home roast`, `Commercial` or `Blend`), `roaster`, `roastDate` (bag date for commercial coffee), `roastNote`, `bagNotes`, `note`, and `match` (keywords used to recognise the bean in raw notes; not published). Roast batches live in `catalog/roasts.json` (above).
