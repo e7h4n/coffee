@@ -9,8 +9,24 @@
     "name": "ALO Boore Guji",
     "full": "Ethiopia Guji, ALO Boore, Honey",
     "origin": "Ethiopia",
+    "region": "Guji",
     "process": "Honey",
-    "source": "Home roast"
+    "source": "Home roast",
+    "roaster": "DIY fluid-bed (home)",
+    "roasts": [
+      {
+        "batch": "Oct 31 batch 3",
+        "date": "2026-10-31",
+        "green": 100.8,
+        "roasted": 88.9,
+        "fc": "7:24",
+        "fcTemp": 198.3,
+        "drop": "8:36",
+        "dropTemp": 208.2,
+        "dev": "1:12",
+        "devPct": 14
+      }
+    ]
   },
   "batch": "Oct 31 batch 3",
   "roastDate": "2026-10-31",

@@ -28,7 +28,7 @@
   var SVGNS = 'http://www.w3.org/2000/svg';
   var V = window.DATA_VERSION && window.DATA_VERSION.indexOf('__') !== 0 ? window.DATA_VERSION : String(Date.now());
 
-  var BEANS, BREWS, BY_SLUG = {}, LAST_DAY, DAYS;
+  var BEANS, BREWERS, BREWS, BY_SLUG = {}, LAST_DAY, DAYS;
 
   // ---------- utils ----------
   function h(tag, attrs, kids) {
@@ -165,6 +165,8 @@
     var m = path.match(/^\/b\/([\w-]+)/);
     if (m) return { name: 'brew', slug: m[1], q: q };
     if (path.indexOf('/compare') === 0) return { name: 'compare', q: q };
+    var c = path.match(/^\/(beans|brewers)(?:\/([\w-]+))?/);
+    if (c) return { name: c[2] ? c[1].slice(0, -1) : c[1], id: c[2], q: q };
     return { name: 'home', q: q };
   }
 
@@ -324,10 +326,10 @@
         if (pi === 0 && mk.label) s('text', { x: x(mk.t) + 4, y: top + 11, class: 'marker-label', text: mk.label }, svg);
       });
       p.series.forEach(function (se) {
-        pathLine(g, se.ts, se.vs.map(function (v) { return v == null ? null : Math.min(Math.max(v, p.dom[0] - 3), p.dom[1] + 3); }), x, y, se.color, 2);
+        pathLine(g, se.ts, se.vs.map(function (v) { return v == null ? null : Math.min(Math.max(v, p.dom[0] - 3), p.dom[1] + 3); }), x, y, se.color, se.width || 2);
       });
       if (opt.endLabels !== false) {
-        var labels = p.series.map(function (se) {
+        var labels = p.series.filter(function (se) { return !se.noLabel; }).map(function (se) {
           var i = se.vs.length - 1; while (i > 0 && se.vs[i] == null) i--;
           if (i < 0 || se.vs[i] == null) return null;
           return { se: se, ex: x(se.ts[i]), ey: y(Math.min(Math.max(se.vs[i], p.dom[0]), p.dom[1])), v: se.vs[i] };
@@ -362,6 +364,7 @@
       var rows = [];
       layout.forEach(function (Lp) {
         Lp.p.series.forEach(function (se) {
+          if (se.noTip) return;
           if (!se.ts.length || tVal < se.ts[0] - 1 || tVal > se.ts[se.ts.length - 1] + 1) return;
           var i = nearestIdx(se.ts, tVal), v = se.vs[i];
           if (v == null) return;
@@ -455,14 +458,14 @@
     if (brewer === 'V60') { var k = r * 1.25; a.d = 'M' + cx + ' ' + (cy - k) + 'L' + (cx + k) + ' ' + (cy + k * .8) + 'L' + (cx - k) + ' ' + (cy + k * .8) + 'Z'; a['stroke-linejoin'] = 'round'; return s('path', a, g); }
     a.cx = cx; a.cy = cy; a.r = r; return s('circle', a, g);
   }
-  function shapeLegend() {
+  function shapeLegend(noZone) {
     function k(br, label) {
       var sv = s('svg', { width: 12, height: 12, viewBox: '0 0 12 12' });
       shape(sv, br, 6, 6.3, 4, 'var(--text-secondary)', 1);
       return h('span', { class: 'key' }, [sv, label]);
     }
     return h('div', { class: 'legend' }, [k('Switch', 'Switch'), k('Hoop', 'Hoop'), k('V60', 'V60'),
-      h('span', { class: 'key' }, [h('span', { class: 'zone-key' }), 'SCA ideal zone: 18 to 22% EY, 1.15 to 1.35% TDS'])]);
+      noZone ? null : h('span', { class: 'key' }, [h('span', { class: 'zone-key' }), 'SCA ideal zone: 18 to 22% EY, 1.15 to 1.35% TDS'])]);
   }
   function goldCupCard(title, note) {
     var box = h('div', {});
@@ -810,13 +813,13 @@
         h('p', { class: 'taste-big' + (b.note ? '' : ' muted'), text: b.note || 'No tasting notes yet.' }),
         group('Flavor wheel', flavorChips), group('Main tastes', tasteChips), group('Mouthfeel', mfChips)
       ])]),
-      h('section', { class: 'card' }, [h('div', { class: 'card-h' }, [h('h3', { text: 'Method' })]), h('div', { class: 'card-b' }, [
+      h('section', { class: 'card' }, [h('div', { class: 'card-h' }, [h('h3', { text: 'Method' }), BREWERS[b.brewer] ? h('a', { class: 'inline-link', href: '#/brewers/' + b.brewer, text: 'Brewer page →' }) : null]), h('div', { class: 'card-b' }, [
         kv([['Brewer', BREWER[b.brewer] + (b.scales === 2 ? ' (two scales)' : '')], ['Grinder', b.grinder ? GRINDER[b.grinder] : 'Not recorded'], ['Setting', b.grind ? b.grind + (b.grinder === 'C40' ? ' clicks' : '') : null],
           ['Dose', fmt(b.dose, 1) + ' g'], ['Water', fmt(b.water, 1) + ' g'], ['Notes', b.method]]),
         b.correction ? h('div', { class: 'callout', text: 'Data correction: ' + b.correction }) : null,
         b.manual ? h('div', { class: 'callout', text: 'Entered by hand from a photo of the watch screen; the watch failed to upload this brew.' }) : null
       ])]),
-      h('section', { class: 'card' }, [h('div', { class: 'card-h' }, [h('h3', { text: 'Bean and roast' })]), h('div', { class: 'card-b' }, [
+      h('section', { class: 'card' }, [h('div', { class: 'card-h' }, [h('h3', { text: 'Bean and roast' }), bean ? h('a', { class: 'inline-link', href: '#/beans/' + b.bean, text: 'Bean page →' }) : null]), h('div', { class: 'card-b' }, [
         bean ? kv([['Coffee', bean.full], ['Origin', bean.origin], ['Process', bean.process], ['Source', bean.source + (bean.roaster ? ', ' + bean.roaster : '')], ['Batch', b.batch], ['Roasted', b.roastDate ? dayLabel(b.roastDate) : null], ['Rest', b.rest != null ? plural(b.rest, 'day') : null]])
           : h('p', { class: 'muted', text: 'The bean for this brew was not recorded.' })
       ])]),
@@ -994,14 +997,295 @@
     ]);
   }
 
+  // ---------- CATALOG HELPERS ----------
+  function brewStats(list) {
+    var num = function (k) { return list.map(function (b) { return b[k]; }).filter(function (v) { return v != null; }); };
+    var rated = list.filter(function (b) { return b.rating; });
+    return {
+      n: list.length, liked: list.filter(function (b) { return b.rating === 'liked'; }).length, rated: rated.length,
+      ey: median(num('ey')), tds: median(num('tds')), time: median(num('time')), peak: median(num('peak')),
+      first: list.length ? list[0].date : null, last: list.length ? list[list.length - 1].date : null,
+      days: new Set(list.map(function (b) { return b.date; })).size
+    };
+  }
+  function tile(l, v, u, sub) {
+    return h('div', { class: 'card tile' }, [h('div', { class: 'l', text: l }), h('div', { class: 'v' }, [v, u ? h('small', { text: u }) : null]), sub ? h('div', { class: 's', text: sub }) : null]);
+  }
+  function kv(pairs) {
+    var dl = h('dl', { class: 'kv' });
+    pairs.forEach(function (p) { if (p[1] == null || p[1] === '') return; dl.appendChild(h('dt', { text: p[0] })); dl.appendChild(h('dd', { text: String(p[1]) })); });
+    return dl;
+  }
+  function card(title, kids, aside) {
+    return h('section', { class: 'card' }, [h('div', { class: 'card-h' }, [h('h2', { text: title }), aside || null]), h('div', { class: 'card-b' }, kids)]);
+  }
+  function brewTable(list, col) {
+    var tb = h('tbody');
+    list.slice().reverse().forEach(function (b) {
+      var tr = h('tr', { class: 'link', tabindex: 0 }, [
+        h('td', { class: 'num', style: 'white-space:nowrap', text: dayLabel(b.date) + ' #' + b.cup }),
+        col === 'bean' ? h('td', { style: 'white-space:nowrap' }, [h('span', { class: b.bean ? '' : 'muted', text: beanName(b) })]) : h('td', { style: 'white-space:nowrap', text: BREWER[b.brewer] }),
+        h('td', { class: 'n', text: fmtRatio(b.ratio) }), h('td', { class: 'n', text: fmt(b.tds, 2) }), h('td', { class: 'n', text: fmt(b.ey, 1) }),
+        h('td', { class: 'n', text: fmtTime(b.time) }), h('td', {}, [ratingEl(b.rating)]), h('td', { class: 'note', text: b.note || '' })
+      ]);
+      tr.addEventListener('click', function () { location.hash = '#/b/' + b.slug; });
+      tr.addEventListener('keydown', function (e) { if (e.key === 'Enter') location.hash = '#/b/' + b.slug; });
+      tb.appendChild(tr);
+    });
+    return h('div', { class: 'scroll-x' }, [h('table', { class: 'list-table' }, [
+      h('thead', {}, [h('tr', {}, [h('th', { text: 'Date' }), h('th', { text: col === 'bean' ? 'Bean' : 'Brewer' }), h('th', { class: 'n', text: 'Ratio' }), h('th', { class: 'n', text: 'TDS %' }),
+        h('th', { class: 'n', text: 'Yield %' }), h('th', { class: 'n', text: 'Time' }), h('th', { text: 'Rating' }), h('th', { text: 'Tasting' })])]), tb])]);
+  }
+  // Median of a thumbnail series across brews on a 2 s grid, kept where at least half the brews still have data.
+  function medianCurve(list, field) {
+    var withT = list.filter(function (b) { return b.thumb && b.thumb[field]; });
+    if (!withT.length) return null;
+    var maxT = Math.max.apply(null, withT.map(function (b) { return b.thumb.t[b.thumb.t.length - 1]; }));
+    var need = Math.max(1, Math.ceil(withT.length / 2));
+    var ts = [], vs = [];
+    for (var t = 0; t <= maxT; t += 2) {
+      var vals = [];
+      withT.forEach(function (b) {
+        var tt = b.thumb.t; if (t > tt[tt.length - 1]) return;
+        var i = nearestIdx(tt, t); if (Math.abs(tt[i] - t) <= 1.5 && b.thumb[field][i] != null) vals.push(b.thumb[field][i]);
+      });
+      if (vals.length >= need) { ts.push(t); vs.push(median(vals)); }
+    }
+    return { ts: ts, vs: vs, n: withT.length };
+  }
+  // Every brew in gray, the median in the accent color (emphasis, not categorical).
+  function overlayChart(container, list) {
+    var withT = list.filter(function (b) { return b.thumb; });
+    if (!withT.length) { container.replaceChildren(h('div', { class: 'empty', style: 'padding:28px 16px', text: 'No curves recorded with this brewer yet.' })); return; }
+    var xmax = Math.max(X_MAX, Math.ceil(Math.max.apply(null, withT.map(function (b) { return b.time || 0; })) / 60) * 60);
+    function panel(field, title, sub, dom, ticks, height, f) {
+      var series = withT.filter(function (b) { return b.thumb[field]; }).map(function (b) {
+        return { ts: b.thumb.t, vs: b.thumb[field], color: 'var(--deemph)', width: 1.25, noTip: true, noLabel: true };
+      });
+      var m = medianCurve(withT, field);
+      if (m && m.ts.length) series.push({ ts: m.ts, vs: m.vs, color: 'var(--s1)', name: 'Median of ' + plural(m.n, 'brew'), endName: 'median' });
+      return { title: title, subtitle: sub, unit: field === 'p' ? '°C' : 'g', dom: dom, ticks: ticks, height: height, fmt: f, series: series };
+    }
+    var panels = [panel('w', 'Water poured', 'g', W_DOM, [0, 100, 200, 300], 150),
+      panel('p', 'Slurry temperature', '°C', T_DOM, [60, 70, 80, 90, 100], 130, function (v) { return (+v).toFixed(1); })];
+    if (withT.some(function (b) { return b.thumb.o; })) panels.push(panel('o', 'Beverage out', 'g, two-scale brews', W_DOM, [0, 100, 200, 300], 120));
+    timeChart(container, { xDom: [0, xmax], panels: panels });
+  }
+  function restScatter(container, list) {
+    var width = Math.max(260, container.clientWidth || 320), height = 220, M = { l: 38, r: 12, t: 10, b: 36 };
+    var xMax = Math.max(5, Math.ceil((Math.max.apply(null, list.map(function (b) { return b.rest; })) + 1) / 5) * 5);
+    var x = lin(0, xMax, M.l, width - M.r), y = lin(EY_DOM[0], EY_DOM[1], height - M.b, M.t);
+    var svg = s('svg', { width: width, height: height, viewBox: '0 0 ' + width + ' ' + height, role: 'img', 'aria-label': 'Extraction yield by days off roast' });
+    var tickStyle = 'fill:var(--text-muted);font-size:11px;font-variant-numeric:tabular-nums';
+    s('rect', { x: M.l, y: y(SCA.ey[1]), width: width - M.r - M.l, height: y(SCA.ey[0]) - y(SCA.ey[1]), fill: 'var(--zone)' }, svg);
+    var step = xMax > 20 ? 5 : xMax > 10 ? 2 : 1;
+    for (var d = 0; d <= xMax; d += step) {
+      s('line', { x1: Math.round(x(d)) + .5, x2: Math.round(x(d)) + .5, y1: M.t, y2: height - M.b, stroke: d === 0 ? 'var(--axis)' : 'var(--grid)', 'stroke-width': 1 }, svg);
+      s('text', { x: x(d), y: height - M.b + 16, 'text-anchor': 'middle', style: tickStyle, text: String(d) }, svg);
+    }
+    for (var e = EY_DOM[0]; e <= EY_DOM[1]; e += 2) {
+      s('line', { x1: M.l, x2: width - M.r, y1: Math.round(y(e)) + .5, y2: Math.round(y(e)) + .5, stroke: e === EY_DOM[0] ? 'var(--axis)' : 'var(--grid)', 'stroke-width': 1 }, svg);
+      s('text', { x: M.l - 6, y: y(e) + 4, 'text-anchor': 'end', style: tickStyle, text: String(e) }, svg);
+    }
+    s('text', { x: width - M.r, y: height - 4, 'text-anchor': 'end', class: 'axis-title', text: 'Days off roast' }, svg);
+    s('text', { x: M.l + 4, y: M.t + 11, class: 'axis-title', text: 'Yield %' }, svg);
+    var P = list.map(function (b) { return { b: b, px: x(b.rest), py: y(Math.min(Math.max(b.ey, EY_DOM[0]), EY_DOM[1])) }; });
+    P.forEach(function (p) { shape(svg, p.b.brewer, p.px, p.py, 4.5, 'var(--s1)', 1); });
+    var ring = s('circle', { r: 9, fill: 'none', stroke: 'var(--text-primary)', 'stroke-width': 1.5, visibility: 'hidden' }, svg);
+    var hit = s('rect', { x: 0, y: 0, width: width, height: height, fill: 'transparent' }, svg), cur = null;
+    hit.addEventListener('pointermove', function (ev) {
+      var r = svg.getBoundingClientRect(), mx = (ev.clientX - r.left) * (width / r.width), my = (ev.clientY - r.top) * (height / r.height);
+      var best = null, bd = 24 * 24;
+      P.forEach(function (p) { var dd = (p.px - mx) * (p.px - mx) + (p.py - my) * (p.py - my); if (dd < bd) { bd = dd; best = p; } });
+      cur = best; hit.style.cursor = best ? 'pointer' : 'default';
+      if (!best) { ring.setAttribute('visibility', 'hidden'); hideTip(); return; }
+      ring.setAttribute('cx', best.px); ring.setAttribute('cy', best.py); ring.setAttribute('visibility', 'visible');
+      showTip(ev, dayLabel(best.b.date) + ' · cup ' + best.b.cup + ' · ' + BREWER[best.b.brewer], [{ value: 'Yield ' + fmt(best.b.ey, 1) + '% after ' + plural(best.b.rest, 'day') }, { value: best.b.rating ? RATING[best.b.rating][0] : 'Unrated' }]);
+    });
+    hit.addEventListener('pointerleave', function () { cur = null; ring.setAttribute('visibility', 'hidden'); hideTip(); });
+    hit.addEventListener('click', function () { if (cur) location.hash = '#/b/' + cur.b.slug; });
+    container.replaceChildren(svg);
+  }
+  function descriptorCounts(list) {
+    var c = {};
+    list.forEach(function (b) {
+      b.flavor.forEach(function (f) { c[f] = (c[f] || 0) + 1; });
+      b.tastes.forEach(function (t) { var k = t[0] + (t[1] ? ' · ' + t[1] : ''); c[k] = (c[k] || 0) + 1; });
+      b.mouthfeel.forEach(function (m) { c[m] = (c[m] || 0) + 1; });
+    });
+    return Object.keys(c).sort(function (a, b) { return c[b] - c[a] || a.localeCompare(b); }).map(function (k) {
+      return h('span', { class: 'chip-d' }, [WHEEL[k] ? h('span', { class: 'cat', text: WHEEL[k] }) : null, k + (c[k] > 1 ? ' ×' + c[k] : '')]);
+    });
+  }
+  function beanBrews(id) { return BREWS.filter(function (b) { return (b.bean || '__none') === id; }); }
+  function brewerBrews(code) { return BREWS.filter(function (b) { return b.brewer === code; }); }
+
+  // ---------- BEANS ----------
+  function renderBeans() {
+    var app = document.getElementById('app'); app.replaceChildren();
+    document.title = 'Beans · Daily Brew Log';
+    var ids = Object.keys(BEANS);
+    var home = ids.filter(function (id) { return BEANS[id].source === 'Home roast'; }).length;
+    app.appendChild(h('div', { class: 'page-head' }, [h('h1', { text: 'Beans' }), h('p', { text: plural(ids.length, 'coffee') + ' · ' + home + ' home roasted · newest brew first' })]));
+    [['Home roast', 'Home roast'], ['Commercial', 'Commercial'], ['Blends', 'Blend']].forEach(function (grp) {
+      var list = ids.filter(function (id) { return BEANS[id].source === grp[1]; }).map(function (id) { return { id: id, st: brewStats(beanBrews(id)) }; })
+        .sort(function (a, b) { return (b.st.last || '').localeCompare(a.st.last || ''); });
+      if (!list.length) return;
+      app.appendChild(h('div', { class: 'section-h', text: grp[0] }));
+      app.appendChild(h('div', { class: 'cat-grid' }, list.map(function (it) {
+        var bn = BEANS[it.id], st = it.st;
+        var sub = [bn.origin, bn.process, bn.roaster || bn.source].filter(function (v, i, a) { return v && a.indexOf(v) === i; }).join(' · ');
+        return h('a', { class: 'card cat-card', href: '#/beans/' + it.id }, [
+          h('div', { class: 'cat-top' }, [h('h3', { text: bn.name }), h('span', { class: 'muted', style: 'font-size:12px', text: plural(st.n, 'brew') })]),
+          h('div', { class: 'cat-sub', text: sub }),
+          h('div', { class: 'stats' }, [stat('Median yield', fmt(st.ey, 1), '%'), stat('Median TDS', fmt(st.tds, 2), '%'), stat('Liked', st.rated ? st.liked + '/' + st.rated : '-'), stat('Last brewed', st.last ? shortDay(st.last) : '-')]),
+          bn.bagNotes ? h('div', { class: 'chips-d' }, bn.bagNotes.map(function (n) { return h('span', { class: 'chip-d', text: n }); })) : null
+        ]);
+      })));
+    });
+    var none = beanBrews('__none');
+    if (none.length) app.appendChild(h('p', { class: 'card-note', style: 'margin-top:18px' }, [plural(none.length, 'brew') + ' have no recorded bean. ', h('a', { class: 'inline-link', href: '#/?bean=__none', text: 'Show them' })]));
+  }
+  function renderBean(id) {
+    var app = document.getElementById('app'); app.replaceChildren();
+    var bn = BEANS[id];
+    app.appendChild(h('div', { class: 'crumbs' }, [h('a', { href: '#/beans', text: '← Beans' }), h('span')]));
+    if (!bn) { app.appendChild(h('div', { class: 'card empty', text: 'Bean not found.' })); return; }
+    document.title = bn.name + ' · Daily Brew Log';
+    var list = beanBrews(id), st = brewStats(list);
+    var tags = [bn.origin, bn.process, bn.roastLevel ? bn.roastLevel + ' roast' : null, bn.source, bn.roaster].filter(Boolean);
+    app.appendChild(h('div', { class: 'detail-head' }, [
+      h('div', {}, [h('div', { class: 'when', text: 'Bean' }), h('h1', { text: bn.name }), h('div', { class: 'meta' }, tags.map(function (t) { return h('span', { class: 'tag', text: t }); }))]),
+      list.length ? h('a', { class: 'ghost-btn', href: '#/?bean=' + id, text: 'Show in brew list' }) : null
+    ]));
+    app.appendChild(h('div', { class: 'tiles' }, [
+      tile('Brews', String(st.n), '', st.n ? plural(st.days, 'day') : null),
+      tile('Liked', st.rated ? String(st.liked) : '-', '', st.rated ? 'of ' + st.rated + ' rated' : 'No ratings yet'),
+      tile('Median yield', fmt(st.ey, 1), st.ey != null ? '%' : ''),
+      tile('Median TDS', fmt(st.tds, 2), st.tds != null ? '%' : ''),
+      tile('First brewed', st.first ? shortDay(st.first) : '-'),
+      tile('Last brewed', st.last ? shortDay(st.last) : '-')
+    ]));
+    var about = card('About', [kv([['Coffee', bn.full], ['Origin', bn.origin], ['Region', bn.region], ['Farm', bn.farm], ['Producer', bn.producer], ['Altitude', bn.altitude],
+      ['Variety', bn.variety], ['Grade', bn.grade], ['Process', bn.process + (bn.processNote && bn.processNote !== bn.process ? ' (' + bn.processNote + ')' : '')], ['Harvest', bn.harvest],
+      ['Roast', bn.roastLevel], ['Roaster', bn.roaster], ['Roasted', bn.roastDate ? dayLabel(bn.roastDate) + ', ' + bn.roastDate.slice(0, 4) : bn.roastNote],
+      ['Bag notes', bn.bagNotes ? bn.bagNotes.join(', ') : null]]), bn.note ? h('p', { class: 'card-note', text: bn.note }) : null]);
+    var left = h('div', { class: 'stack' }, [about]);
+    if (bn.roasts && bn.roasts.length) {
+      var tb = h('tbody');
+      bn.roasts.forEach(function (r) {
+        var rs = brewStats(list.filter(function (b) { return b.batch === r.batch; }));
+        var loss = r.lossPct != null ? r.lossPct : (r.green && r.roasted ? (1 - r.roasted / r.green) * 100 : null);
+        tb.appendChild(h('tr', {}, [
+          h('td', {}, [h('strong', { text: r.batch }), r.note || r.color ? h('div', { class: 'muted', style: 'font-size:12px', text: [r.color, r.note].filter(Boolean).join('. ') }) : null]),
+          h('td', { class: 'n', text: (r.green != null ? r.green + ' g' : '-') + (r.roasted != null ? ' → ' + r.roasted + ' g' : '') }),
+          h('td', { class: 'n', text: loss != null ? loss.toFixed(1) + '%' : '-' }),
+          h('td', { class: 'n', text: r.fc ? r.fc + (r.fcTemp ? ' · ' + r.fcTemp + ' °C' : '') : '-' }),
+          h('td', { class: 'n', text: r.drop ? r.drop + (r.dropTemp ? ' · ' + r.dropTemp + ' °C' : '') : '-' }),
+          h('td', { class: 'n', text: r.dev ? r.dev + (r.devPct != null ? ' (' + r.devPct + '%)' : '') : '-' }),
+          h('td', { class: 'n', text: rs.n ? rs.n + ' · ' + fmt(rs.ey, 1) + '%' : '-' }),
+          h('td', { class: 'n', text: rs.rated ? rs.liked + '/' + rs.rated : '-' })
+        ]));
+      });
+      left.appendChild(card('Roast log', [h('div', { class: 'scroll-x' }, [h('table', { class: 'list-table' }, [h('thead', {}, [h('tr', {}, [
+        h('th', { text: 'Batch' }), h('th', { class: 'n', text: 'Green → roasted' }), h('th', { class: 'n', text: 'Loss' }), h('th', { class: 'n', text: 'First crack' }),
+        h('th', { class: 'n', text: 'Drop' }), h('th', { class: 'n', text: 'Development' }), h('th', { class: 'n', text: 'Brews · median yield' }), h('th', { class: 'n', text: 'Liked' })])]), tb])])]));
+    }
+    var chips = descriptorCounts(list);
+    left.appendChild(card('Tasting across brews', [chips.length ? h('div', { class: 'chips-d' }, chips) : h('p', { class: 'muted', text: 'No SCA descriptors recorded for this bean yet.' }),
+      h('p', { class: 'card-note', text: 'How often each SCA flavor wheel term, main taste and mouthfeel term appears across the brews of this bean.' })]));
+    var gcc = goldCupCard('Brewing control chart', 'Blue marks brews of this bean.');
+    var restBox = h('div', {});
+    var right = h('div', { class: 'stack' }, [gcc.card]);
+    var withRest = list.filter(function (b) { return b.rest != null && b.ey != null; });
+    if (withRest.length >= 2) right.appendChild(card('Yield by days off roast', [restBox, shapeLegend(true), h('p', { class: 'card-note', text: 'The shaded band is the SCA 18 to 22% yield range.' })]));
+    app.appendChild(h('div', { class: 'two-col' }, [left, right]));
+    app.appendChild(h('div', { style: 'margin-top:16px' }, [card('Brews', [list.length ? brewTable(list, 'brewer') : h('p', { class: 'muted', text: 'No brews yet.' })])]));
+    goldCup(gcc.box, { height: 250, style: function (b) { return b.bean === id ? { color: 'var(--s1)', on: true } : { color: 'var(--deemph)', on: false }; }, onClick: function (b) { location.hash = '#/b/' + b.slug; } });
+    if (withRest.length >= 2) restScatter(restBox, withRest);
+  }
+
+  // ---------- BREWERS ----------
+  function renderBrewers() {
+    var app = document.getElementById('app'); app.replaceChildren();
+    document.title = 'Brewers · Daily Brew Log';
+    var codes = Object.keys(BREWERS).map(function (c) { return { c: c, st: brewStats(brewerBrews(c)) }; }).sort(function (a, b) { return b.st.n - a.st.n; });
+    app.appendChild(h('div', { class: 'page-head' }, [h('h1', { text: 'Brewers' }), h('p', { text: plural(codes.length, 'brewer') + ' · ' + plural(BREWS.length, 'brew') })]));
+    app.appendChild(h('div', { class: 'cat-grid' }, codes.map(function (it) {
+      var br = BREWERS[it.c], st = it.st;
+      return h('a', { class: 'card cat-card', href: '#/brewers/' + it.c }, [
+        h('div', { class: 'cat-top' }, [h('h3', { text: br.name }), h('span', { class: 'muted', style: 'font-size:12px', text: plural(st.n, 'brew') })]),
+        h('div', { class: 'cat-sub', text: [br.type, br.material].filter(Boolean).join(' · ') }),
+        h('div', { class: 'stats' }, [stat('Median yield', fmt(st.ey, 1), '%'), stat('Median TDS', fmt(st.tds, 2), '%'), stat('Median time', fmtTime(st.time)), stat('Peak slurry', fmt(st.peak, 1), st.peak != null ? '°C' : '')]),
+        h('div', { class: 'cat-sub muted', text: br.formula === 'immersion' ? 'Immersion formula for extraction yield' : 'Beverage formula for extraction yield' })
+      ]);
+    })));
+    var withCurves = codes.filter(function (it) { return brewerBrews(it.c).some(function (b) { return b.thumb; }); });
+    if (withCurves.length) {
+      var box = h('div', {});
+      app.appendChild(h('div', { style: 'margin-top:16px' }, [card('Median slurry temperature by brewer', [
+        legendKeys(withCurves.map(function (it, i) { return { color: slotVar(i + 1), name: BREWERS[it.c].name + ' (' + plural(brewerBrews(it.c).filter(function (b) { return b.thumb; }).length, 'curve') + ')' }; })), box,
+        h('p', { class: 'card-note', text: 'Median probe reading across every brew with a curve, from the first pour. Brewers without curves are not shown.' })])]));
+      var series = withCurves.map(function (it, i) {
+        var m = medianCurve(brewerBrews(it.c), 'p');
+        return { ts: m.ts, vs: m.vs, color: slotVar(i + 1), name: BREWERS[it.c].name, endName: it.c };
+      });
+      timeChart(box, { xDom: [0, X_MAX], panels: [{ title: 'Slurry temperature', subtitle: '°C', unit: '°C', dom: T_DOM, ticks: [60, 70, 80, 90, 100], height: 200, fmt: function (v) { return (+v).toFixed(1); }, series: series }] });
+    }
+  }
+  function renderBrewer(code) {
+    var app = document.getElementById('app'); app.replaceChildren();
+    var br = BREWERS[code];
+    app.appendChild(h('div', { class: 'crumbs' }, [h('a', { href: '#/brewers', text: '← Brewers' }), h('span')]));
+    if (!br) { app.appendChild(h('div', { class: 'card empty', text: 'Brewer not found.' })); return; }
+    document.title = br.name + ' · Daily Brew Log';
+    var list = brewerBrews(code), st = brewStats(list);
+    app.appendChild(h('div', { class: 'detail-head' }, [
+      h('div', {}, [h('div', { class: 'when', text: 'Brewer' }), h('h1', { text: br.name }), h('div', { class: 'meta' }, [br.maker, br.material, br.formula === 'immersion' ? 'Immersion formula' : 'Beverage formula'].filter(Boolean).map(function (t) { return h('span', { class: 'tag', text: t }); }))]),
+      list.length ? h('a', { class: 'ghost-btn', href: '#/?brewer=' + code, text: 'Show in brew list' }) : null
+    ]));
+    app.appendChild(h('div', { class: 'tiles' }, [
+      tile('Brews', String(st.n), '', st.n ? plural(st.days, 'day') : null),
+      tile('Liked', st.rated ? String(st.liked) : '-', '', st.rated ? 'of ' + st.rated + ' rated' : 'No ratings yet'),
+      tile('Median yield', fmt(st.ey, 1), st.ey != null ? '%' : ''),
+      tile('Median TDS', fmt(st.tds, 2), st.tds != null ? '%' : ''),
+      tile('Median time', fmtTime(st.time)),
+      tile('Peak slurry', fmt(st.peak, 1), st.peak != null ? '°C' : '', st.peak != null ? 'Median of probe peaks' : 'No probe curves')
+    ]));
+    var chartBox = h('div', {});
+    var withT = list.filter(function (b) { return b.thumb; }).length;
+    var left = h('div', { class: 'stack' }, [
+      card('Every brew, overlaid', [withT ? legendKeys([{ color: 'var(--deemph)', name: 'Each brew' }, { color: 'var(--s1)', name: 'Median' }]) : null, chartBox,
+        withT ? h('p', { class: 'card-note', text: plural(withT, 'brew') + ' with curves, on the same axes as every brew card.' }) : null]),
+      card('About', [kv([['Maker', br.maker], ['Type', br.type], ['Material', br.material], ['Method', br.method],
+        ['Yield', br.formula === 'immersion' ? 'Immersion formula: TDS / (1 - TDS) × water / dose' : 'Beverage formula: TDS × beverage / dose'], ['Notes', br.notes]])])
+    ]);
+    var gcc = goldCupCard('Brewing control chart', 'Blue marks brews made with this brewer.');
+    var counts = {};
+    list.forEach(function (b) { var k = b.bean || '__none'; counts[k] = (counts[k] || 0) + 1; });
+    var beanList = h('div', { class: 'chips-d' }, Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; }).map(function (k) {
+      return k === '__none' ? h('span', { class: 'chip-d', text: 'Unrecorded ×' + counts[k] }) : h('a', { class: 'chip-d', style: 'text-decoration:none', href: '#/beans/' + k, text: BEANS[k].name + ' ×' + counts[k] });
+    }));
+    app.appendChild(h('div', { class: 'two-col' }, [left, h('div', { class: 'stack' }, [gcc.card, card('Beans brewed', [beanList])])]));
+    app.appendChild(h('div', { style: 'margin-top:16px' }, [card('Brews', [list.length ? brewTable(list, 'bean') : h('p', { class: 'muted', text: 'No brews yet.' })])]));
+    overlayChart(chartBox, list);
+    goldCup(gcc.box, { height: 250, style: function (b) { return b.brewer === code ? { color: 'var(--s1)', on: true } : { color: 'var(--deemph)', on: false }; }, onClick: function (b) { location.hash = '#/b/' + b.slug; } });
+  }
+
   // ---------- boot ----------
   function rerender() {
     var r = parseRoute();
     hideTip(); closeDD(); openDD = null;
-    if (r.name !== 'brew') document.title = 'Daily Brew Log';
+    if (r.name === 'home' || r.name === 'compare') document.title = 'Daily Brew Log';
     if (r.name === 'brew') renderBrew(r);
     else if (r.name === 'compare') renderCompare(r);
+    else if (r.name === 'beans') renderBeans();
+    else if (r.name === 'bean') renderBean(r.id);
+    else if (r.name === 'brewers') renderBrewers();
+    else if (r.name === 'brewer') renderBrewer(r.id);
     else renderHome(r);
+    var navKey = { home: 'home', brew: 'home', compare: 'home', beans: 'beans', bean: 'beans', brewers: 'brewers', brewer: 'brewers' }[r.name];
+    document.querySelectorAll('.tabs a').forEach(function (a) { if (a.getAttribute('data-nav') === navKey) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
     renderTray();
   }
   var lastRoute = '';
@@ -1027,7 +1311,8 @@
   themeLabel();
 
   fetch('data/index.json?v=' + V).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (d) {
-    BEANS = d.beans;
+    BEANS = d.beans; BREWERS = d.brewers || {};
+    Object.keys(BREWERS).forEach(function (k) { BREWER[k] = BREWERS[k].name; });
     BREWS = d.brews.slice().sort(function (a, b) { return a.date === b.date ? a.cup - b.cup : (a.date < b.date ? -1 : 1); });
     BREWS.forEach(function (b, i) { b.idx = i; BY_SLUG[b.slug] = b; });
     LAST_DAY = BREWS[BREWS.length - 1].date;

@@ -9,10 +9,20 @@
     "name": "SEY Esmeralda Gesha",
     "full": "SEY Coffee, Hacienda La Esmeralda, Lino 6HC, Gesha, Honey",
     "origin": "Panama",
+    "region": "Boquete",
+    "farm": "Hacienda La Esmeralda, Canas Verdes, Lino plot",
+    "variety": "Gesha",
     "process": "Honey",
+    "harvest": "2026",
     "source": "Commercial",
     "roaster": "SEY Coffee",
-    "roastDate": "2026-10-15"
+    "roastDate": "2026-10-15",
+    "bagNotes": [
+      "Jasmine",
+      "Bergamot",
+      "Peach",
+      "Raw honey"
+    ]
   },
   "batch": null,
   "roastDate": "2026-10-15",

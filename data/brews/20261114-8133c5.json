@@ -7,11 +7,19 @@
   "bean": {
     "id": "geshavillage",
     "name": "Gesha Village Gold Label",
-    "full": "Ethiopia Gesha Village Gold Label, Gesha 1931, Natural, light roast",
+    "full": "Ethiopia Gesha Village Gold Label, Gesha 1931, Natural",
     "origin": "Ethiopia",
+    "farm": "Gesha Village",
+    "variety": "Gesha 1931",
     "process": "Natural",
+    "roastLevel": "Light",
     "source": "Commercial",
-    "roastDate": "2026-11-04"
+    "roastDate": "2026-11-04",
+    "bagNotes": [
+      "Kumquat",
+      "White peach",
+      "Honey"
+    ]
   },
   "batch": null,
   "roastDate": "2026-11-04",

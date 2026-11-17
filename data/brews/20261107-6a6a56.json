@@ -7,12 +7,20 @@
   "bean": {
     "id": "darkrider",
     "name": "Captain George Dark Rider",
-    "full": "Captain George No.02 Dark Rider, Colombia Huila, Caturra, Washed, medium-dark roast",
+    "full": "Captain George No.02 Dark Rider, Colombia Huila, Caturra, Washed",
     "origin": "Colombia",
+    "region": "Huila",
+    "variety": "Caturra",
     "process": "Washed",
+    "roastLevel": "Medium-dark",
     "source": "Commercial",
     "roaster": "Captain George",
-    "roastDate": "2026-11-03"
+    "roastDate": "2026-11-03",
+    "bagNotes": [
+      "Chocolate",
+      "Hazelnut",
+      "Apple"
+    ]
   },
   "batch": null,
   "roastDate": "2026-11-03",

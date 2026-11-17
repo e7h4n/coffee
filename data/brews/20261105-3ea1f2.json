@@ -7,11 +7,20 @@
   "bean": {
     "id": "aokka",
     "name": "AOKKA Brazil Chocolate",
-    "full": "AOKKA Brazil \"Chocolate\", Sao Antonio, Mundo Novo / Catuai / Catucai, Natural, medium roast",
+    "full": "AOKKA Brazil \"Chocolate\", Sao Antonio, Natural",
     "origin": "Brazil",
+    "region": "Sao Antonio",
+    "altitude": "1100 m",
+    "variety": "Mundo Novo, Catuai, Catucai",
     "process": "Natural",
+    "roastLevel": "Medium",
     "source": "Commercial",
-    "roaster": "AOKKA"
+    "roaster": "AOKKA",
+    "bagNotes": [
+      "Chocolate",
+      "Nut",
+      "Toffee"
+    ]
   },
   "batch": null,
   "roastDate": null,

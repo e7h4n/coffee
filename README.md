@@ -33,6 +33,14 @@ Only normalized, curated fields: the brew date and its cup number that day (no c
 
 Extraction yield uses the immersion formula for the Hario Switch (`TDS / (1 - TDS) × water / dose`) and the beverage formula for the Hoop and V60 (`TDS × beverage / dose`).
 
+## Bean and brewer catalogs
+
+The site has a page for every coffee (`#/beans`) and every brewer (`#/brewers`), built from two hand-kept files that are published as `data/beans.json` and `data/brewers.json`.
+
+`catalog/beans.json` is keyed by bean id. Fields: `name`, `full`, `origin`, `region`, `farm`, `producer`, `altitude`, `variety`, `grade`, `process`, `processNote`, `harvest`, `roastLevel`, `source` (`Home roast`, `Commercial` or `Blend`), `roaster`, `roastDate` (bag date for commercial coffee), `roastNote`, `bagNotes`, `note`, and `match` (keywords used to recognise the bean in raw notes; not published). Home roasts can list `roasts`, one entry per batch: `batch` (must equal the `batch` used in `catalog/brews.json`), `date`, `green`, `roasted` or `lossPct`, `fc` / `fcTemp` (first crack), `drop` / `dropTemp`, `dev` / `devPct` (development), `color`, `note`. The bean page joins each batch to its brews.
+
+`catalog/brewers.json` is keyed by the brewer code that Coffee Watch writes (`Switch`, `Hoop`, `V60`). Fields: `name`, `maker`, `type`, `material`, `formula` (`immersion` or `beverage`), `method`, `notes`. A new brewer code in the raw records is reported by `npm run sync` until it is added here.
+
 ## Curation fields
 
 `catalog/brews.json` is keyed by the record id without its device prefix (`<random>-<seq>`, or the full `manual-…` id). Every field is optional:

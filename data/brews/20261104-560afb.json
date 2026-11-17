@@ -9,8 +9,25 @@
     "name": "Ethiopia Limu",
     "full": "Ethiopia Limu G2, Washed",
     "origin": "Ethiopia",
+    "region": "Limu",
+    "grade": "G2",
     "process": "Washed",
-    "source": "Home roast"
+    "source": "Home roast",
+    "roaster": "DIY fluid-bed (home)",
+    "roasts": [
+      {
+        "batch": "Oct 31 batch 1",
+        "date": "2026-10-31",
+        "green": 100,
+        "roasted": 88.2,
+        "fc": "7:24",
+        "fcTemp": 200.7,
+        "drop": "8:06",
+        "dropTemp": 204.6,
+        "dev": "0:42",
+        "devPct": 8.6
+      }
+    ]
   },
   "batch": "Oct 31 batch 1",
   "roastDate": "2026-10-31",

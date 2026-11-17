@@ -442,7 +442,7 @@
   },
   "57469a1fdb0bc4e9-1": {
    "bean": "syrina",
-   "batch": "Nov 12 roast",
+   "batch": "Nov 12 batch C",
    "grinder": "MAVO",
    "grind": "7",
    "rating": "disliked",
@@ -467,7 +467,7 @@
   },
   "57469a1fdb0bc4e9-3": {
    "bean": "syrina",
-   "batch": "Nov 12 roast",
+   "batch": "Nov 12 batch C",
    "grinder": "C40",
    "grind": "24",
    "valve": 120,

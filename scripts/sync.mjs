@@ -17,6 +17,7 @@ const RAW = path.resolve(process.argv[2] || path.join(ROOT, 'raw'));
 const DATA = path.join(ROOT, 'data');
 const beans = JSON.parse(fs.readFileSync(path.join(ROOT, 'catalog/beans.json'), 'utf8'));
 const curated = JSON.parse(fs.readFileSync(path.join(ROOT, 'catalog/brews.json'), 'utf8')).brews;
+const brewers = JSON.parse(fs.readFileSync(path.join(ROOT, 'catalog/brewers.json'), 'utf8'));
 
 if (!fs.existsSync(RAW)) {
   console.error(`Raw directory not found: ${RAW}\nCopy Dropbox /Apps/CoffeeWatch there first, or pass its path.`);
@@ -136,6 +137,8 @@ for (const f of files) {
     hasTrace: !!trace, thumb: trace ? trace.thumb : null,
   };
   brews.push({ brew, trace });
+  if (!brewers[r.brewer]) warnings.push(`${day} ${slug}: brewer "${r.brewer}" is missing from catalog/brewers.json`);
+  if (bean && !beans[bean]) warnings.push(`${day} ${slug}: bean "${bean}" is missing from catalog/beans.json`);
   if (!curated[sid] && !notes.sca) warnings.push(`${day} ${slug}: not curated yet (bean ${bean || 'unknown'}); add it to catalog/brews.json`);
 }
 brews.sort((a, b) => (a.brew.date + a.brew._order).localeCompare(b.brew.date + b.brew._order));
@@ -154,7 +157,9 @@ for (const { brew, trace } of brews) {
   }
 }
 const list = brews.map((x) => x.brew);
-fs.writeFileSync(path.join(DATA, 'index.json'), JSON.stringify({ beans: publicBeans, brews: list }) + '\n');
+fs.writeFileSync(path.join(DATA, 'index.json'), JSON.stringify({ beans: publicBeans, brewers, brews: list }) + '\n');
+fs.writeFileSync(path.join(DATA, 'beans.json'), JSON.stringify(publicBeans, null, 2) + '\n');
+fs.writeFileSync(path.join(DATA, 'brewers.json'), JSON.stringify(brewers, null, 2) + '\n');
 const esc = (v) => (v == null ? '' : /[",\n]/.test(String(v)) ? `"${String(v).replace(/"/g, '""')}"` : String(v));
 const head = ['slug', 'date', 'cup', 'bean', 'brewer', 'grinder', 'grind', 'dose_g', 'water_g', 'beverage_g', 'ratio', 'tds_percent', 'extraction_percent', 'formula', 'time_s', 'valve_s', 'probe_peak_c', 'rest_days', 'rating', 'flavor', 'note'];
 const rows = list.map((b) => [b.slug, b.date, b.cup, b.bean ? beans[b.bean].name : '', b.brewer, b.grinder, b.grind, b.dose, b.water, b.beverage, b.ratio, b.tds, b.ey, b.formula, b.time, b.valve, b.peak, b.rest, b.rating, b.flavor.join('; '), b.note].map(esc).join(','));

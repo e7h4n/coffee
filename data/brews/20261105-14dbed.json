@@ -7,11 +7,15 @@
   "bean": {
     "id": "eltambo",
     "name": "SEY El Tambo",
-    "full": "SEY Coffee, Daniel Caro Lopez, El Tambo, Chiroso, Washed",
+    "full": "SEY Coffee, Daniel Caro Lopez, El Tambo (end of season), Chiroso, Washed",
     "origin": "Colombia",
+    "producer": "Daniel Caro Lopez",
+    "farm": "El Tambo",
+    "variety": "Chiroso",
     "process": "Washed",
     "source": "Commercial",
-    "roaster": "SEY Coffee"
+    "roaster": "SEY Coffee",
+    "roastNote": "Roasted in the first week of October 2026"
   },
   "batch": "Roasted early Oct",
   "roastDate": null,

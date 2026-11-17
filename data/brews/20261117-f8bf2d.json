@@ -7,10 +7,55 @@
   "bean": {
     "id": "syrina",
     "name": "Yunnan Syrina",
-    "full": "China Yunnan Lincang, The Nest Estate, Syrina, 1700-1800 m, Dark Forest Natural (competition green)",
+    "full": "China Yunnan Lincang, The Nest Estate, Syrina, Dark Forest Natural",
     "origin": "China",
+    "region": "Yunnan, Lincang",
+    "farm": "The Nest Estate",
+    "altitude": "1700 to 1800 m",
     "process": "Natural",
-    "source": "Home roast"
+    "processNote": "Dark Forest Natural",
+    "source": "Home roast",
+    "roaster": "Cardputer Roast (home)",
+    "note": "Green coffee from the Yinianyisu Cup roasting competition in Beijing.",
+    "roasts": [
+      {
+        "batch": "Nov 12 batch C",
+        "date": "2026-11-12",
+        "green": 100,
+        "lossPct": 13,
+        "fc": "8:21",
+        "fcTemp": 197.9,
+        "drop": "8:53",
+        "dropTemp": 209,
+        "dev": "0:32",
+        "color": "Omni 75.4 whole, 90.2 ground"
+      },
+      {
+        "batch": "Nov 14 batch D",
+        "date": "2026-11-14",
+        "green": 100,
+        "roasted": 87.5,
+        "fc": "7:09",
+        "fcTemp": 202.9,
+        "drop": "7:33",
+        "dropTemp": 209.1,
+        "dev": "0:24",
+        "devPct": 5.3
+      },
+      {
+        "batch": "Nov 15 batch F",
+        "date": "2026-11-15",
+        "green": 204.5,
+        "roasted": 180.9,
+        "fc": "6:38",
+        "fcTemp": 202.5,
+        "drop": "6:59",
+        "dropTemp": 206.6,
+        "dev": "0:21",
+        "color": "Omni 78.9 whole, 99.7 ground",
+        "note": "The last Syrina batch."
+      }
+    ]
   },
   "batch": "Nov 15 batch F",
   "roastDate": "2026-11-15",

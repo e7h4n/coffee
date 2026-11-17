@@ -1,0 +1,235 @@
+{
+  "gotiti": {
+    "name": "Gotiti Honey Moon",
+    "full": "Ethiopia Yirgacheffe Gotiti, Heirloom, DFW \"Honey Moon\" Washed 3.0",
+    "origin": "Ethiopia",
+    "region": "Yirgacheffe, Gotiti",
+    "variety": "Heirloom",
+    "process": "Washed",
+    "processNote": "DFW \"Honey Moon\" washed 3.0",
+    "source": "Home roast",
+    "roaster": "myERoast (home)",
+    "roasts": [
+      {
+        "batch": "Nov 4 roast",
+        "date": "2026-11-04",
+        "green": 100,
+        "roasted": 86.4,
+        "fc": "7:35",
+        "fcTemp": 197.2,
+        "drop": "9:12",
+        "dropTemp": 205.2,
+        "dev": "1:37",
+        "devPct": 17.6
+      },
+      {
+        "batch": "Nov 6 batch 4",
+        "date": "2026-11-06",
+        "green": 300,
+        "roasted": 265,
+        "fc": "7:57",
+        "fcTemp": 202.2,
+        "drop": "9:00",
+        "dropTemp": 206.1,
+        "dev": "1:03",
+        "devPct": 11.7,
+        "note": "Heater at full power from 7:00; the lightest batch of the day."
+      }
+    ]
+  },
+  "syrina": {
+    "name": "Yunnan Syrina",
+    "full": "China Yunnan Lincang, The Nest Estate, Syrina, Dark Forest Natural",
+    "origin": "China",
+    "region": "Yunnan, Lincang",
+    "farm": "The Nest Estate",
+    "altitude": "1700 to 1800 m",
+    "process": "Natural",
+    "processNote": "Dark Forest Natural",
+    "source": "Home roast",
+    "roaster": "Cardputer Roast (home)",
+    "note": "Green coffee from the Yinianyisu Cup roasting competition in Beijing.",
+    "roasts": [
+      {
+        "batch": "Nov 12 batch C",
+        "date": "2026-11-12",
+        "green": 100,
+        "lossPct": 13,
+        "fc": "8:21",
+        "fcTemp": 197.9,
+        "drop": "8:53",
+        "dropTemp": 209,
+        "dev": "0:32",
+        "color": "Omni 75.4 whole, 90.2 ground"
+      },
+      {
+        "batch": "Nov 14 batch D",
+        "date": "2026-11-14",
+        "green": 100,
+        "roasted": 87.5,
+        "fc": "7:09",
+        "fcTemp": 202.9,
+        "drop": "7:33",
+        "dropTemp": 209.1,
+        "dev": "0:24",
+        "devPct": 5.3
+      },
+      {
+        "batch": "Nov 15 batch F",
+        "date": "2026-11-15",
+        "green": 204.5,
+        "roasted": 180.9,
+        "fc": "6:38",
+        "fcTemp": 202.5,
+        "drop": "6:59",
+        "dropTemp": 206.6,
+        "dev": "0:21",
+        "color": "Omni 78.9 whole, 99.7 ground",
+        "note": "The last Syrina batch."
+      }
+    ]
+  },
+  "limu": {
+    "name": "Ethiopia Limu",
+    "full": "Ethiopia Limu G2, Washed",
+    "origin": "Ethiopia",
+    "region": "Limu",
+    "grade": "G2",
+    "process": "Washed",
+    "source": "Home roast",
+    "roaster": "DIY fluid-bed (home)",
+    "roasts": [
+      {
+        "batch": "Oct 31 batch 1",
+        "date": "2026-10-31",
+        "green": 100,
+        "roasted": 88.2,
+        "fc": "7:24",
+        "fcTemp": 200.7,
+        "drop": "8:06",
+        "dropTemp": 204.6,
+        "dev": "0:42",
+        "devPct": 8.6
+      }
+    ]
+  },
+  "alo": {
+    "name": "ALO Boore Guji",
+    "full": "Ethiopia Guji, ALO Boore, Honey",
+    "origin": "Ethiopia",
+    "region": "Guji",
+    "process": "Honey",
+    "source": "Home roast",
+    "roaster": "DIY fluid-bed (home)",
+    "roasts": [
+      {
+        "batch": "Oct 31 batch 3",
+        "date": "2026-10-31",
+        "green": 100.8,
+        "roasted": 88.9,
+        "fc": "7:24",
+        "fcTemp": 198.3,
+        "drop": "8:36",
+        "dropTemp": 208.2,
+        "dev": "1:12",
+        "devPct": 14
+      }
+    ]
+  },
+  "mix1031": {
+    "name": "Oct 31 Roast Blend",
+    "full": "Blend of the Oct 31 home roasts: Limu batches 1 and 2 with ALO Boore Guji batch 3",
+    "origin": "Ethiopia",
+    "process": "Blend",
+    "source": "Home roast",
+    "roaster": "DIY fluid-bed (home)"
+  },
+  "darkrider": {
+    "name": "Captain George Dark Rider",
+    "full": "Captain George No.02 Dark Rider, Colombia Huila, Caturra, Washed",
+    "origin": "Colombia",
+    "region": "Huila",
+    "variety": "Caturra",
+    "process": "Washed",
+    "roastLevel": "Medium-dark",
+    "source": "Commercial",
+    "roaster": "Captain George",
+    "roastDate": "2026-11-03",
+    "bagNotes": [
+      "Chocolate",
+      "Hazelnut",
+      "Apple"
+    ]
+  },
+  "eltambo": {
+    "name": "SEY El Tambo",
+    "full": "SEY Coffee, Daniel Caro Lopez, El Tambo (end of season), Chiroso, Washed",
+    "origin": "Colombia",
+    "producer": "Daniel Caro Lopez",
+    "farm": "El Tambo",
+    "variety": "Chiroso",
+    "process": "Washed",
+    "source": "Commercial",
+    "roaster": "SEY Coffee",
+    "roastNote": "Roasted in the first week of October 2026"
+  },
+  "esmeralda": {
+    "name": "SEY Esmeralda Gesha",
+    "full": "SEY Coffee, Hacienda La Esmeralda, Lino 6HC, Gesha, Honey",
+    "origin": "Panama",
+    "region": "Boquete",
+    "farm": "Hacienda La Esmeralda, Canas Verdes, Lino plot",
+    "variety": "Gesha",
+    "process": "Honey",
+    "harvest": "2026",
+    "source": "Commercial",
+    "roaster": "SEY Coffee",
+    "roastDate": "2026-10-15",
+    "bagNotes": [
+      "Jasmine",
+      "Bergamot",
+      "Peach",
+      "Raw honey"
+    ]
+  },
+  "geshavillage": {
+    "name": "Gesha Village Gold Label",
+    "full": "Ethiopia Gesha Village Gold Label, Gesha 1931, Natural",
+    "origin": "Ethiopia",
+    "farm": "Gesha Village",
+    "variety": "Gesha 1931",
+    "process": "Natural",
+    "roastLevel": "Light",
+    "source": "Commercial",
+    "roastDate": "2026-11-04",
+    "bagNotes": [
+      "Kumquat",
+      "White peach",
+      "Honey"
+    ]
+  },
+  "aokka": {
+    "name": "AOKKA Brazil Chocolate",
+    "full": "AOKKA Brazil \"Chocolate\", Sao Antonio, Natural",
+    "origin": "Brazil",
+    "region": "Sao Antonio",
+    "altitude": "1100 m",
+    "variety": "Mundo Novo, Catuai, Catucai",
+    "process": "Natural",
+    "roastLevel": "Medium",
+    "source": "Commercial",
+    "roaster": "AOKKA",
+    "bagNotes": [
+      "Chocolate",
+      "Nut",
+      "Toffee"
+    ]
+  },
+  "leftover": {
+    "name": "Leftover Blend",
+    "full": "Whatever beans were left over, mixed together",
+    "origin": "Mixed",
+    "process": "Blend",
+    "source": "Blend"
+  }
+}

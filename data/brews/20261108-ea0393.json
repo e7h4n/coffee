@@ -10,7 +10,8 @@
     "full": "Blend of the Oct 31 home roasts: Limu batches 1 and 2 with ALO Boore Guji batch 3",
     "origin": "Ethiopia",
     "process": "Blend",
-    "source": "Home roast"
+    "source": "Home roast",
+    "roaster": "DIY fluid-bed (home)"
   },
   "batch": null,
   "roastDate": "2026-10-31",
