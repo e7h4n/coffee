@@ -13,6 +13,7 @@
     "source": "Home roast",
     "roaster": "DIY fluid-bed (home)"
   },
+  "roast": null,
   "batch": null,
   "roastDate": "2026-10-31",
   "rest": 8,

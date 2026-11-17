@@ -1,0 +1,304 @@
+{
+ "_doc": "Roast batches. Times are seconds from charge; temperatures are the bean probe in °C. 'log' points to a Cardputer Roast log under raw/roasts (without extension); values in this file override the log.",
+ "roasts": {
+  "2026-10-31-limu-1": {
+   "bean": "limu",
+   "label": "Limu batch 1",
+   "date": "2026-10-31",
+   "machine": "myERoast DIY fluid-bed",
+   "green": 100.0,
+   "roasted": 88.2,
+   "dry": {
+    "t": 297,
+    "bt": 154.5
+   },
+   "fc": {
+    "t": 444,
+    "bt": 200.7
+   },
+   "drop": {
+    "t": 486,
+    "bt": 204.6
+   },
+   "curveSource": "marks",
+   "sortKey": "1"
+  },
+  "2026-10-31-limu-2": {
+   "bean": "limu",
+   "label": "Limu batch 2",
+   "date": "2026-10-31",
+   "machine": "myERoast DIY fluid-bed",
+   "green": 101.9,
+   "roasted": 90.2,
+   "dry": {
+    "t": 316,
+    "bt": 159.7
+   },
+   "fc": {
+    "t": 440,
+    "bt": 200.6
+   },
+   "drop": {
+    "t": 486,
+    "bt": 201.9
+   },
+   "curveSource": "marks",
+   "note": "Stored mixed with the other Oct 31 roasts later on.",
+   "sortKey": "2"
+  },
+  "2026-10-31-alo-3": {
+   "bean": "alo",
+   "label": "ALO batch 3",
+   "date": "2026-10-31",
+   "machine": "myERoast DIY fluid-bed",
+   "green": 100.8,
+   "roasted": 88.9,
+   "dry": {
+    "t": 276,
+    "bt": 144.9
+   },
+   "fc": {
+    "t": 444,
+    "bt": 198.3
+   },
+   "drop": {
+    "t": 516,
+    "bt": 208.2
+   },
+   "curveSource": "marks",
+   "sortKey": "3"
+  },
+  "2026-11-04-gotiti": {
+   "bean": "gotiti",
+   "label": "Gotiti Nov 4",
+   "date": "2026-11-04",
+   "machine": "myERoast DIY fluid-bed",
+   "green": 100.0,
+   "roasted": 86.4,
+   "dry": {
+    "t": 315,
+    "bt": 159.3
+   },
+   "fc": {
+    "t": 455,
+    "bt": 197.2
+   },
+   "drop": {
+    "t": 552,
+    "bt": 205.2
+   },
+   "image": "img/roasts/2026-11-04-gotiti.jpg",
+   "note": "Development flattened toward the end. Same-day cupping: roasted nuts and hazelnut, a little barley tea, thin; sweetness grew as it cooled."
+  },
+  "2026-11-06-gotiti-1": {
+   "bean": "gotiti",
+   "label": "Gotiti Nov 6 #1",
+   "date": "2026-11-06",
+   "machine": "myERoast DIY fluid-bed",
+   "green": 200,
+   "roasted": 173,
+   "curveName": "Honey Moon 3.0 200g V2",
+   "dry": {
+    "t": 313,
+    "bt": 154.3
+   },
+   "fc": {
+    "t": 465,
+    "bt": 202.5
+   },
+   "fcEnd": {
+    "t": 591,
+    "bt": 203.7
+   },
+   "drop": {
+    "t": 620,
+    "bt": 212.1
+   },
+   "image": "img/roasts/2026-11-06-gotiti-1.jpg",
+   "note": "Fan cut at 7:00 sped up the approach to first crack; flat stretch 8:05 to 9:05, then a late surge to 212 °C. Stored mixed with batch 2."
+  },
+  "2026-11-06-gotiti-2": {
+   "bean": "gotiti",
+   "label": "Gotiti Nov 6 #2",
+   "date": "2026-11-06",
+   "machine": "myERoast DIY fluid-bed",
+   "green": 200,
+   "roasted": 171,
+   "dry": {
+    "t": 299,
+    "bt": 149.9
+   },
+   "fc": {
+    "t": 465,
+    "bt": 198.6
+   },
+   "drop": {
+    "t": 621,
+    "bt": 212.5
+   },
+   "image": "img/roasts/2026-11-06-gotiti-2.jpg",
+   "note": "Fan locked at about 51%; slow, steady development to 212.5 °C. Stored mixed with batch 1; a faint rubbery smell on day 1."
+  },
+  "2026-11-06-gotiti-3": {
+   "bean": "gotiti",
+   "label": "Gotiti Nov 6 #3",
+   "date": "2026-11-06",
+   "machine": "myERoast DIY fluid-bed",
+   "green": 200,
+   "roasted": 172,
+   "drop": {
+    "t": 580,
+    "bt": 216.6
+   },
+   "image": "img/roasts/2026-11-06-gotiti-3.jpg",
+   "note": "First crack was not marked (estimated 7:50 to 8:00). Heater and fan glitched around 8:35, then the bean temperature surged to about 218 °C. A faint rubbery smell on day 1."
+  },
+  "2026-11-06-gotiti-4": {
+   "bean": "gotiti",
+   "label": "Gotiti Nov 6 #4",
+   "date": "2026-11-06",
+   "machine": "myERoast DIY fluid-bed",
+   "green": 300,
+   "roasted": 265,
+   "dry": {
+    "t": 259,
+    "bt": 143.6
+   },
+   "fc": {
+    "t": 477,
+    "bt": 202.2
+   },
+   "drop": {
+    "t": 540,
+    "bt": 206.1
+   },
+   "image": "img/roasts/2026-11-06-gotiti-4.jpg",
+   "note": "300 g was too much for the heater: it stayed at full power from 7:00 to drop. The lightest batch of the day and no rubbery smell."
+  },
+  "2026-11-12-syrina-a": {
+   "bean": "syrina",
+   "label": "Syrina A",
+   "date": "2026-11-12",
+   "machine": "Cardputer Roast on a DIY fluid-bed",
+   "log": "artisan/2026-11-12/R0012",
+   "green": 100,
+   "roasted": 86,
+   "colorWhole": 66.4,
+   "colorGround": 75.4,
+   "colorNote": "single warm reading",
+   "note": "Dropped by the app's 206 °C auto-drop protection, which was then turned off. RoR collapsed about 20 s before first crack."
+  },
+  "2026-11-12-syrina-b": {
+   "bean": "syrina",
+   "label": "Syrina B",
+   "date": "2026-11-12",
+   "machine": "Cardputer Roast on a DIY fluid-bed",
+   "log": "artisan/2026-11-12/R0013",
+   "green": 100,
+   "roasted": 85,
+   "colorWhole": 57.3,
+   "colorGround": 61.7,
+   "note": "Ran 107 s past first crack instead of the planned 55 s; RoR crashed at first crack like A.",
+   "lossPct": 14.9
+  },
+  "2026-11-12-syrina-c": {
+   "bean": "syrina",
+   "label": "Syrina C",
+   "date": "2026-11-12",
+   "machine": "Cardputer Roast on a DIY fluid-bed",
+   "log": "artisan/2026-11-12/R0014",
+   "green": 100,
+   "roasted": 87,
+   "colorWhole": 75.4,
+   "colorGround": 90.2,
+   "note": "Manual heat from about 185 °C: the beans stalled for about 30 s, then RoR held near 20 through first crack."
+  },
+  "2026-11-14-syrina-d": {
+   "bean": "syrina",
+   "label": "Syrina D",
+   "date": "2026-11-14",
+   "machine": "Cardputer Roast on a DIY fluid-bed",
+   "log": "cardputer/Roast Logs/20261114-020724",
+   "colorWhole": 71.2,
+   "colorGround": 87.0,
+   "note": "Dropped by temperature at 209 °C after 24 s of development."
+  },
+  "2026-11-14-syrina-f": {
+   "bean": "syrina",
+   "label": "Syrina F",
+   "date": "2026-11-14",
+   "machine": "Cardputer Roast on a DIY fluid-bed",
+   "green": 100,
+   "roasted": 87.7,
+   "curveName": "Syrina F 100g",
+   "dry": {
+    "t": 222,
+    "bt": 155.0
+   },
+   "fc": {
+    "t": 393,
+    "bt": 201.1
+   },
+   "drop": {
+    "t": 420,
+    "bt": 205.0
+   },
+   "colorWhole": 76.0,
+   "colorGround": 87.9,
+   "curveSource": "marks",
+   "note": "The roast log was not uploaded, so only the marks are known. First roast on the reworked controller; no RoR crash.",
+   "sortKey": "20261114-140147"
+  },
+  "2026-11-14-syrina-x1": {
+   "bean": "syrina",
+   "label": "Syrina X1",
+   "date": "2026-11-14",
+   "machine": "Cardputer Roast on a DIY fluid-bed",
+   "log": "cardputer/Roast Logs/20261114-143137",
+   "colorWhole": 80.3,
+   "colorGround": 91.2,
+   "note": "150 g on curve F."
+  },
+  "2026-11-14-syrina-x2": {
+   "bean": "syrina",
+   "label": "Syrina X2",
+   "date": "2026-11-14",
+   "machine": "Cardputer Roast on a DIY fluid-bed",
+   "log": "cardputer/Roast Logs/20261114-144733",
+   "green": 150,
+   "note": "150 g on curve F (the log recorded 100 g green by mistake)."
+  },
+  "2026-11-15-syrina-204g": {
+   "bean": "syrina",
+   "label": "Syrina Nov 15 (204.5 g)",
+   "date": "2026-11-15",
+   "machine": "Cardputer Roast on a DIY fluid-bed",
+   "log": "cardputer/Roast Logs/20261115-074043",
+   "colorWhole": 78.9,
+   "colorGround": 99.7,
+   "colorNote": "single reading",
+   "note": "The last Syrina batch, 204.5 g on curve F.",
+   "short": "Nov 15"
+  },
+  "2026-11-15-huakui-b": {
+   "bean": "huakui",
+   "label": "Huakui B",
+   "date": "2026-11-15",
+   "machine": "Cardputer Roast on a DIY fluid-bed",
+   "log": "cardputer/Roast Logs/20261115-140136",
+   "colorWhole": 67.4,
+   "colorGround": 88.3,
+   "note": "Curve B: longer, slower development. Cupped right after roasting: clearly sweeter and fuller, nutty and floral."
+  },
+  "2026-11-15-huakui-a": {
+   "bean": "huakui",
+   "label": "Huakui A",
+   "date": "2026-11-15",
+   "machine": "Cardputer Roast on a DIY fluid-bed",
+   "log": "cardputer/Roast Logs/20261115-141554",
+   "colorWhole": 72.9,
+   "colorGround": 100.1,
+   "note": "Curve A: shorter, faster development. Cupped right after roasting: thinner, a little bitter."
+  }
+ }
+}

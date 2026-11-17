@@ -6,11 +6,12 @@ Each brew shows TDS, extraction yield, brew ratio and time, the pour and slurry-
 
 ## Updating the site
 
-1. Copy the Dropbox folder `Apps/CoffeeWatch` into `raw/` (it is git-ignored and never published), or pass its path directly.
+1. Copy the Dropbox folder `Apps/CoffeeWatch` into `raw/` (it is git-ignored and never published), or pass its path directly. For roast curves, also copy `Apps/Cardputer Roast` to `raw/roasts/cardputer/` and `Apps/CoffeeWatch/Artisan 烘焙记录` to `raw/roasts/artisan/` (or pass that folder as the second argument).
 2. Regenerate the public data:
    ```sh
    npm run sync                                  # reads ./raw
    npm run sync -- ~/Dropbox/Apps/CoffeeWatch    # or any folder
+   npm run sync -- raw raw/roasts                # brews folder, then roasts folder
    ```
    The script lists brews that are not curated yet.
 3. Add or adjust those brews in `catalog/brews.json` (and new coffees in `catalog/beans.json`), then run `npm run sync` again.
@@ -33,11 +34,17 @@ Only normalized, curated fields: the brew date and its cup number that day (no c
 
 Extraction yield uses the immersion formula for the Hario Switch (`TDS / (1 - TDS) × water / dose`) and the beverage formula for the Hoop and V60 (`TDS × beverage / dose`).
 
+## Roast batches
+
+`catalog/roasts.json` holds one entry per roast batch, keyed by an id such as `2026-11-15-huakui-b`. Fields: `bean`, `label`, `short` (optional chart label), `date`, `machine`, `curveName`, `green`, `roasted`, `lossPct`, the marks `dry`, `fc`, `fcEnd` and `drop` (each `{ "t": seconds from charge, "bt": °C }`), `colorWhole` / `colorGround` / `colorNote` (Omni), `note`, `image` (a curve screenshot under `web/img/roasts/`), `sortKey`, and `log`. `log` points to a Cardputer Roast log under `raw/roasts` without its extension (for example `cardputer/Roast Logs/20261115-140136`); `npm run sync` reads its `.json` summary and `.csv` curve, fills in any marks and weights the catalog leaves out, and writes the curve to `data/roasts/<id>.json` (2 s steps of bean temperature, target, heater, fan and RoR). Catalog values always override the log, which is how mis-entered green weights are corrected.
+
+A brew points at its batch with `roast` in `catalog/brews.json`; the brew then takes its bean, batch label and roast date (for days off roast) from the batch. The site shows every batch at `#/roasts`, each with its curve, marks and the brews made from it, and bean pages overlay up to four logged curves.
+
 ## Bean and brewer catalogs
 
 The site has a page for every coffee (`#/beans`) and every brewer (`#/brewers`), built from two hand-kept files that are published as `data/beans.json` and `data/brewers.json`.
 
-`catalog/beans.json` is keyed by bean id. Fields: `name`, `full`, `origin`, `region`, `farm`, `producer`, `altitude`, `variety`, `grade`, `process`, `processNote`, `harvest`, `roastLevel`, `source` (`Home roast`, `Commercial` or `Blend`), `roaster`, `roastDate` (bag date for commercial coffee), `roastNote`, `bagNotes`, `note`, and `match` (keywords used to recognise the bean in raw notes; not published). Home roasts can list `roasts`, one entry per batch: `batch` (must equal the `batch` used in `catalog/brews.json`), `date`, `green`, `roasted` or `lossPct`, `fc` / `fcTemp` (first crack), `drop` / `dropTemp`, `dev` / `devPct` (development), `color`, `note`. The bean page joins each batch to its brews.
+`catalog/beans.json` is keyed by bean id. Fields: `name`, `full`, `origin`, `region`, `farm`, `producer`, `altitude`, `variety`, `grade`, `process`, `processNote`, `harvest`, `roastLevel`, `source` (`Home roast`, `Commercial` or `Blend`), `roaster`, `roastDate` (bag date for commercial coffee), `roastNote`, `bagNotes`, `note`, and `match` (keywords used to recognise the bean in raw notes; not published). Roast batches live in `catalog/roasts.json` (above).
 
 `catalog/brewers.json` is keyed by the brewer code that Coffee Watch writes (`Switch`, `Hoop`, `V60`). Fields: `name`, `maker`, `type`, `material`, `formula` (`immersion` or `beverage`), `method`, `notes`. A new brewer code in the raw records is reported by `npm run sync` until it is added here.
 
@@ -49,7 +56,8 @@ The site has a page for every coffee (`#/beans`) and every brewer (`#/brewers`),
 
 | Field | Meaning |
 | --- | --- |
-| `bean`, `batch`, `roastDate` | Key in `catalog/beans.json`, roast batch label, roast date (`YYYY-MM-DD`) |
+| `roast` | Roast batch id in `catalog/roasts.json`; sets the bean, batch label and roast date |
+| `bean`, `batch`, `roastDate` | For coffees without a roast batch: key in `catalog/beans.json`, a free-text batch label and the roast date (`YYYY-MM-DD`) |
 | `grinder`, `grind` | `C40` or `MAVO` (Phantox Pro), and the setting |
 | `valve` | Valve-open time in seconds, when the record does not have it |
 | `rating` | `liked`, `ok` or `disliked` |

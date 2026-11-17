@@ -14,11 +14,16 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const RAW = path.resolve(process.argv[2] || path.join(ROOT, 'raw'));
+// Roast logs: a local copy of Dropbox /Apps/Cardputer Roast (as cardputer/) and
+// /Apps/CoffeeWatch/Artisan 烘焙记录 (as artisan/). Optional third argument.
+const RAW_ROASTS = path.resolve(process.argv[3] || path.join(ROOT, 'raw', 'roasts'));
 const DATA = path.join(ROOT, 'data');
 const beans = JSON.parse(fs.readFileSync(path.join(ROOT, 'catalog/beans.json'), 'utf8'));
 const curated = JSON.parse(fs.readFileSync(path.join(ROOT, 'catalog/brews.json'), 'utf8')).brews;
 const brewers = JSON.parse(fs.readFileSync(path.join(ROOT, 'catalog/brewers.json'), 'utf8'));
 const { _doc: _gearDoc, ...gear } = JSON.parse(fs.readFileSync(path.join(ROOT, 'catalog/gear.json'), 'utf8'));
+const warnings0 = [];
+const roastCatalog = JSON.parse(fs.readFileSync(path.join(ROOT, 'catalog/roasts.json'), 'utf8')).roasts;
 
 if (!fs.existsSync(RAW)) {
   console.error(`Raw directory not found: ${RAW}\nCopy Dropbox /Apps/CoffeeWatch there first, or pass its path.`);
@@ -101,8 +106,55 @@ function parseTrace(file, elapsedMs) {
   return { csv: csv.join('\n') + '\n', chart, thumb, peak: Number.isFinite(peak) ? peak : null };
 }
 
+// ---------- roasts ----------
+function parseRoastLog(stem) {
+  const jp = path.join(RAW_ROASTS, stem + '.json'), cp = path.join(RAW_ROASTS, stem + '.csv');
+  if (!fs.existsSync(jp) || !fs.existsSync(cp)) return null;
+  const meta = JSON.parse(fs.readFileSync(jp, 'utf8'));
+  const lines = fs.readFileSync(cp, 'utf8').split(/\r?\n/).filter((l) => l && !l.startsWith('#'));
+  const cols = lines[0].split(',');
+  const ix = (n) => cols.indexOf(n);
+  const num = (v) => (v === undefined || v === '' ? null : Number(v));
+  const end = meta.marks && meta.marks.drop ? meta.marks.drop.t : Infinity;
+  const series = { t: [], bt: [], target: [], heat: [], fan: [], ror: [] };
+  let next = 0;
+  for (const l of lines.slice(1)) {
+    const c = l.split(','), tt = Number(c[ix('t')]);
+    if (!(tt >= 0) || tt > end || tt < next) continue;
+    series.t.push(tt);
+    for (const k of ['bt', 'target', 'heat', 'fan', 'ror']) series[k].push(ix(k) >= 0 ? r1(num(c[ix(k)])) : null);
+    next = tt - (tt % 2) + 2; // 2 s steps
+  }
+  return { meta, series };
+}
+const roasts = {}, roastSeries = {};
+for (const [id, c] of Object.entries(roastCatalog)) {
+  const log = c.log ? parseRoastLog(c.log) : null;
+  if (c.log && !log) warnings0.push(`roast ${id}: log ${c.log} not found under ${RAW_ROASTS}`);
+  const m = log ? log.meta : {};
+  const mark = (k, mk) => c[k] ?? (m.marks && m.marks[mk] ? { t: m.marks[mk].t, bt: m.marks[mk].bt } : null);
+  const fc = mark('fc', 'fc_start'), drop = mark('drop', 'drop'), dry = mark('dry', 'dry');
+  const green = c.green ?? m.green_g ?? null, roasted = c.roasted ?? m.roasted_g ?? null;
+  // the log's own loss wins unless the catalog corrects the weights
+  const lossPct = c.lossPct ?? (c.green == null && c.roasted == null && m.loss_pct != null ? m.loss_pct : green && roasted ? r1((1 - roasted / green) * 100) : null);
+  const devS = fc && drop ? drop.t - fc.t : null;
+  const thumb = log ? { t: [], bt: [], target: [] } : null;
+  if (log) log.series.t.forEach((tt, i) => { if (i % 3 === 0 || i === log.series.t.length - 1) { thumb.t.push(tt); thumb.bt.push(log.series.bt[i]); thumb.target.push(log.series.target[i]); } });
+  roasts[id] = {
+    id, bean: c.bean, label: c.label, short: c.short ?? null, date: c.date, machine: c.machine, curveName: c.curveName ?? m.curve ?? null,
+    green, roasted, lossPct, dry, fc, fcEnd: c.fcEnd ?? null, drop,
+    devS, devPct: devS != null && drop.t ? r1((devS / drop.t) * 100) : null, deltaT: fc && drop ? r1(drop.bt - fc.bt) : null,
+    rorAtFc: m.ror_at_fc ?? null, maxHeat: m.max_heat_pct ?? null,
+    colorWhole: c.colorWhole ?? null, colorGround: c.colorGround ?? null, colorNote: c.colorNote ?? null,
+    note: c.note ?? null, image: c.image ?? null,
+    curveSource: log ? 'log' : c.image ? 'image' : 'marks', thumb,
+    _sort: c.date + (c.sortKey ?? (c.log ? path.basename(c.log) : id)),
+  };
+  if (log) roastSeries[id] = log.series;
+}
+
 const files = fs.readdirSync(RAW).filter((f) => /^brew-.*\.json$/.test(f));
-const brews = [], warnings = [];
+const brews = [], warnings = [...warnings0];
 for (const f of files) {
   const r = JSON.parse(fs.readFileSync(path.join(RAW, f), 'utf8'));
   if (r.status !== 'complete') continue;
@@ -113,8 +165,11 @@ for (const f of files) {
   let day, order;
   if (r.created_at) { const ms = Date.parse(r.created_at); day = isoDay(ms); order = hhmm(ms); }
   else { const d = r.id.split('-')[1]; day = `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6, 8)}`; order = cur.order || '23:59'; }
-  const bean = cur.bean ?? sca.bean ?? matchBean(notes.bean);
-  const roastDate = cur.roastDate ?? sca.roastDate ?? (bean && beans[bean].roastDate) ?? (/^\d{4}-\d{2}-\d{2}$/.test(notes.roast_date || '') ? notes.roast_date : null);
+  const roast = cur.roast ?? sca.roast ?? null;
+  if (roast && !roasts[roast]) warnings.push(`${day}: roast "${roast}" is missing from catalog/roasts.json`);
+  const rz = roast ? roasts[roast] : null;
+  const bean = cur.bean ?? sca.bean ?? (rz && rz.bean) ?? matchBean(notes.bean);
+  const roastDate = (rz && rz.date) ?? cur.roastDate ?? sca.roastDate ?? (bean && beans[bean].roastDate) ?? (/^\d{4}-\d{2}-\d{2}$/.test(notes.roast_date || '') ? notes.roast_date : null);
   const slug = day.replace(/-/g, '') + '-' + crypto.createHash('sha1').update(sid).digest('hex').slice(0, 6);
   const tracePath = path.join(RAW, `brew-${r.id}-trace.csv`);
   const elapsed = r.elapsed_ms ? Math.round(r.elapsed_ms / 1000) : null;
@@ -125,7 +180,7 @@ for (const f of files) {
   const brew = {
     slug, date: day, _order: order,
     brewer: r.brewer, scales: r.scales || 1, manual: r.id.startsWith('manual-'),
-    bean, batch: cur.batch ?? sca.batch ?? null, roastDate, rest: roastDate ? dayDiff(roastDate, day) : null,
+    bean, roast: rz ? roast : null, batch: rz ? rz.label : cur.batch ?? sca.batch ?? null, roastDate, rest: roastDate ? dayDiff(roastDate, day) : null,
     grinder: cur.grinder ?? grinderOf(notes), grind: cur.grind ?? grindOf(notes),
     dose: r.dose_g, water: r.water_ml, beverage: cur.beverage === null || sid === 'manual-20261109-darkrider' ? null : r.beverage_g,
     ratio: r.brew_ratio, tds: r.tds_percent, ey: r.extraction_percent,
@@ -147,7 +202,7 @@ const seq = {};
 for (const { brew } of brews) { seq[brew.date] = (seq[brew.date] || 0) + 1; brew.cup = seq[brew.date]; delete brew._order; }
 
 // write outputs (replace generated dirs so removed brews disappear)
-for (const d of ['traces', 'csv', 'brews']) { fs.rmSync(path.join(DATA, d), { recursive: true, force: true }); fs.mkdirSync(path.join(DATA, d), { recursive: true }); }
+for (const d of ['traces', 'csv', 'brews', 'roasts']) { fs.rmSync(path.join(DATA, d), { recursive: true, force: true }); fs.mkdirSync(path.join(DATA, d), { recursive: true }); }
 const publicBeans = Object.fromEntries(Object.entries(beans).map(([k, v]) => { const { match, ...rest } = v; return [k, rest]; }));
 for (const { brew, trace } of brews) {
   const { thumb, ...rec } = brew;
@@ -158,7 +213,10 @@ for (const { brew, trace } of brews) {
   }
 }
 const list = brews.map((x) => x.brew);
-fs.writeFileSync(path.join(DATA, 'index.json'), JSON.stringify({ beans: publicBeans, brewers, gear, brews: list }) + '\n');
+for (const [id, sr] of Object.entries(roastSeries)) fs.writeFileSync(path.join(DATA, 'roasts', `${id}.json`), JSON.stringify(sr) + '\n');
+const roastList = Object.values(roasts).sort((a, b) => a._sort.localeCompare(b._sort)).map(({ _sort, ...r }) => r);
+fs.writeFileSync(path.join(DATA, 'index.json'), JSON.stringify({ beans: publicBeans, brewers, gear, roasts: roastList, brews: list }) + '\n');
+fs.writeFileSync(path.join(DATA, 'roasts.json'), JSON.stringify(roastList.map(({ thumb, ...r }) => r), null, 2) + '\n');
 fs.writeFileSync(path.join(DATA, 'beans.json'), JSON.stringify(publicBeans, null, 2) + '\n');
 fs.writeFileSync(path.join(DATA, 'brewers.json'), JSON.stringify(brewers, null, 2) + '\n');
 fs.writeFileSync(path.join(DATA, 'gear.json'), JSON.stringify(gear, null, 2) + '\n');
@@ -167,5 +225,6 @@ const head = ['slug', 'date', 'cup', 'bean', 'brewer', 'grinder', 'grind', 'dose
 const rows = list.map((b) => [b.slug, b.date, b.cup, b.bean ? beans[b.bean].name : '', b.brewer, b.grinder, b.grind, b.dose, b.water, b.beverage, b.ratio, b.tds, b.ey, b.formula, b.time, b.valve, b.peak, b.rest, b.rating, b.flavor.join('; '), b.note].map(esc).join(','));
 fs.writeFileSync(path.join(DATA, 'brews.csv'), [head.join(','), ...rows].join('\n') + '\n');
 
+console.log(`${roastList.length} roasts, ${Object.keys(roastSeries).length} with logged curves`);
 console.log(`${list.length} brews over ${new Set(list.map((b) => b.date)).size} days, ${list.filter((b) => b.hasTrace).length} with curves -> data/`);
 for (const w of warnings) console.log('  note: ' + w);

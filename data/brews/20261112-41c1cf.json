@@ -14,36 +14,10 @@
     "process": "Washed",
     "processNote": "DFW \"Honey Moon\" washed 3.0",
     "source": "Home roast",
-    "roaster": "myERoast (home)",
-    "roasts": [
-      {
-        "batch": "Nov 4 roast",
-        "date": "2026-11-04",
-        "green": 100,
-        "roasted": 86.4,
-        "fc": "7:35",
-        "fcTemp": 197.2,
-        "drop": "9:12",
-        "dropTemp": 205.2,
-        "dev": "1:37",
-        "devPct": 17.6
-      },
-      {
-        "batch": "Nov 6 batch 4",
-        "date": "2026-11-06",
-        "green": 300,
-        "roasted": 265,
-        "fc": "7:57",
-        "fcTemp": 202.2,
-        "drop": "9:00",
-        "dropTemp": 206.1,
-        "dev": "1:03",
-        "devPct": 11.7,
-        "note": "Heater at full power from 7:00; the lightest batch of the day."
-      }
-    ]
+    "roaster": "myERoast (home)"
   },
-  "batch": "Nov 6 batch 4",
+  "roast": "2026-11-06-gotiti-4",
+  "batch": "Gotiti Nov 6 #4",
   "roastDate": "2026-11-06",
   "rest": 6,
   "grinder": "C40",

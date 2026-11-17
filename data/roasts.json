@@ -1,0 +1,647 @@
+[
+  {
+    "id": "2026-10-31-limu-1",
+    "bean": "limu",
+    "label": "Limu batch 1",
+    "short": null,
+    "date": "2026-10-31",
+    "machine": "myERoast DIY fluid-bed",
+    "curveName": null,
+    "green": 100,
+    "roasted": 88.2,
+    "lossPct": 11.8,
+    "dry": {
+      "t": 297,
+      "bt": 154.5
+    },
+    "fc": {
+      "t": 444,
+      "bt": 200.7
+    },
+    "fcEnd": null,
+    "drop": {
+      "t": 486,
+      "bt": 204.6
+    },
+    "devS": 42,
+    "devPct": 8.6,
+    "deltaT": 3.9,
+    "rorAtFc": null,
+    "maxHeat": null,
+    "colorWhole": null,
+    "colorGround": null,
+    "colorNote": null,
+    "note": null,
+    "image": null,
+    "curveSource": "marks"
+  },
+  {
+    "id": "2026-10-31-limu-2",
+    "bean": "limu",
+    "label": "Limu batch 2",
+    "short": null,
+    "date": "2026-10-31",
+    "machine": "myERoast DIY fluid-bed",
+    "curveName": null,
+    "green": 101.9,
+    "roasted": 90.2,
+    "lossPct": 11.5,
+    "dry": {
+      "t": 316,
+      "bt": 159.7
+    },
+    "fc": {
+      "t": 440,
+      "bt": 200.6
+    },
+    "fcEnd": null,
+    "drop": {
+      "t": 486,
+      "bt": 201.9
+    },
+    "devS": 46,
+    "devPct": 9.5,
+    "deltaT": 1.3,
+    "rorAtFc": null,
+    "maxHeat": null,
+    "colorWhole": null,
+    "colorGround": null,
+    "colorNote": null,
+    "note": "Stored mixed with the other Oct 31 roasts later on.",
+    "image": null,
+    "curveSource": "marks"
+  },
+  {
+    "id": "2026-10-31-alo-3",
+    "bean": "alo",
+    "label": "ALO batch 3",
+    "short": null,
+    "date": "2026-10-31",
+    "machine": "myERoast DIY fluid-bed",
+    "curveName": null,
+    "green": 100.8,
+    "roasted": 88.9,
+    "lossPct": 11.8,
+    "dry": {
+      "t": 276,
+      "bt": 144.9
+    },
+    "fc": {
+      "t": 444,
+      "bt": 198.3
+    },
+    "fcEnd": null,
+    "drop": {
+      "t": 516,
+      "bt": 208.2
+    },
+    "devS": 72,
+    "devPct": 14,
+    "deltaT": 9.9,
+    "rorAtFc": null,
+    "maxHeat": null,
+    "colorWhole": null,
+    "colorGround": null,
+    "colorNote": null,
+    "note": null,
+    "image": null,
+    "curveSource": "marks"
+  },
+  {
+    "id": "2026-11-04-gotiti",
+    "bean": "gotiti",
+    "label": "Gotiti Nov 4",
+    "short": null,
+    "date": "2026-11-04",
+    "machine": "myERoast DIY fluid-bed",
+    "curveName": null,
+    "green": 100,
+    "roasted": 86.4,
+    "lossPct": 13.6,
+    "dry": {
+      "t": 315,
+      "bt": 159.3
+    },
+    "fc": {
+      "t": 455,
+      "bt": 197.2
+    },
+    "fcEnd": null,
+    "drop": {
+      "t": 552,
+      "bt": 205.2
+    },
+    "devS": 97,
+    "devPct": 17.6,
+    "deltaT": 8,
+    "rorAtFc": null,
+    "maxHeat": null,
+    "colorWhole": null,
+    "colorGround": null,
+    "colorNote": null,
+    "note": "Development flattened toward the end. Same-day cupping: roasted nuts and hazelnut, a little barley tea, thin; sweetness grew as it cooled.",
+    "image": "img/roasts/2026-11-04-gotiti.jpg",
+    "curveSource": "image"
+  },
+  {
+    "id": "2026-11-06-gotiti-1",
+    "bean": "gotiti",
+    "label": "Gotiti Nov 6 #1",
+    "short": null,
+    "date": "2026-11-06",
+    "machine": "myERoast DIY fluid-bed",
+    "curveName": "Honey Moon 3.0 200g V2",
+    "green": 200,
+    "roasted": 173,
+    "lossPct": 13.5,
+    "dry": {
+      "t": 313,
+      "bt": 154.3
+    },
+    "fc": {
+      "t": 465,
+      "bt": 202.5
+    },
+    "fcEnd": {
+      "t": 591,
+      "bt": 203.7
+    },
+    "drop": {
+      "t": 620,
+      "bt": 212.1
+    },
+    "devS": 155,
+    "devPct": 25,
+    "deltaT": 9.6,
+    "rorAtFc": null,
+    "maxHeat": null,
+    "colorWhole": null,
+    "colorGround": null,
+    "colorNote": null,
+    "note": "Fan cut at 7:00 sped up the approach to first crack; flat stretch 8:05 to 9:05, then a late surge to 212 °C. Stored mixed with batch 2.",
+    "image": "img/roasts/2026-11-06-gotiti-1.jpg",
+    "curveSource": "image"
+  },
+  {
+    "id": "2026-11-06-gotiti-2",
+    "bean": "gotiti",
+    "label": "Gotiti Nov 6 #2",
+    "short": null,
+    "date": "2026-11-06",
+    "machine": "myERoast DIY fluid-bed",
+    "curveName": null,
+    "green": 200,
+    "roasted": 171,
+    "lossPct": 14.5,
+    "dry": {
+      "t": 299,
+      "bt": 149.9
+    },
+    "fc": {
+      "t": 465,
+      "bt": 198.6
+    },
+    "fcEnd": null,
+    "drop": {
+      "t": 621,
+      "bt": 212.5
+    },
+    "devS": 156,
+    "devPct": 25.1,
+    "deltaT": 13.9,
+    "rorAtFc": null,
+    "maxHeat": null,
+    "colorWhole": null,
+    "colorGround": null,
+    "colorNote": null,
+    "note": "Fan locked at about 51%; slow, steady development to 212.5 °C. Stored mixed with batch 1; a faint rubbery smell on day 1.",
+    "image": "img/roasts/2026-11-06-gotiti-2.jpg",
+    "curveSource": "image"
+  },
+  {
+    "id": "2026-11-06-gotiti-3",
+    "bean": "gotiti",
+    "label": "Gotiti Nov 6 #3",
+    "short": null,
+    "date": "2026-11-06",
+    "machine": "myERoast DIY fluid-bed",
+    "curveName": null,
+    "green": 200,
+    "roasted": 172,
+    "lossPct": 14,
+    "dry": null,
+    "fc": null,
+    "fcEnd": null,
+    "drop": {
+      "t": 580,
+      "bt": 216.6
+    },
+    "devS": null,
+    "devPct": null,
+    "deltaT": null,
+    "rorAtFc": null,
+    "maxHeat": null,
+    "colorWhole": null,
+    "colorGround": null,
+    "colorNote": null,
+    "note": "First crack was not marked (estimated 7:50 to 8:00). Heater and fan glitched around 8:35, then the bean temperature surged to about 218 °C. A faint rubbery smell on day 1.",
+    "image": "img/roasts/2026-11-06-gotiti-3.jpg",
+    "curveSource": "image"
+  },
+  {
+    "id": "2026-11-06-gotiti-4",
+    "bean": "gotiti",
+    "label": "Gotiti Nov 6 #4",
+    "short": null,
+    "date": "2026-11-06",
+    "machine": "myERoast DIY fluid-bed",
+    "curveName": null,
+    "green": 300,
+    "roasted": 265,
+    "lossPct": 11.7,
+    "dry": {
+      "t": 259,
+      "bt": 143.6
+    },
+    "fc": {
+      "t": 477,
+      "bt": 202.2
+    },
+    "fcEnd": null,
+    "drop": {
+      "t": 540,
+      "bt": 206.1
+    },
+    "devS": 63,
+    "devPct": 11.7,
+    "deltaT": 3.9,
+    "rorAtFc": null,
+    "maxHeat": null,
+    "colorWhole": null,
+    "colorGround": null,
+    "colorNote": null,
+    "note": "300 g was too much for the heater: it stayed at full power from 7:00 to drop. The lightest batch of the day and no rubbery smell.",
+    "image": "img/roasts/2026-11-06-gotiti-4.jpg",
+    "curveSource": "image"
+  },
+  {
+    "id": "2026-11-12-syrina-a",
+    "bean": "syrina",
+    "label": "Syrina A",
+    "short": null,
+    "date": "2026-11-12",
+    "machine": "Cardputer Roast on a DIY fluid-bed",
+    "curveName": "new",
+    "green": 100,
+    "roasted": 86,
+    "lossPct": 14,
+    "dry": {
+      "t": 268,
+      "bt": 146.1
+    },
+    "fc": {
+      "t": 481,
+      "bt": 204.7
+    },
+    "fcEnd": null,
+    "drop": {
+      "t": 536,
+      "bt": 206.2
+    },
+    "devS": 55,
+    "devPct": 10.3,
+    "deltaT": 1.5,
+    "rorAtFc": 12.4,
+    "maxHeat": 81.9,
+    "colorWhole": 66.4,
+    "colorGround": 75.4,
+    "colorNote": "single warm reading",
+    "note": "Dropped by the app's 206 °C auto-drop protection, which was then turned off. RoR collapsed about 20 s before first crack.",
+    "image": null,
+    "curveSource": "log"
+  },
+  {
+    "id": "2026-11-12-syrina-b",
+    "bean": "syrina",
+    "label": "Syrina B",
+    "short": null,
+    "date": "2026-11-12",
+    "machine": "Cardputer Roast on a DIY fluid-bed",
+    "curveName": "new",
+    "green": 100,
+    "roasted": 85,
+    "lossPct": 14.9,
+    "dry": {
+      "t": 297,
+      "bt": 149.9
+    },
+    "fc": {
+      "t": 496,
+      "bt": 203.6
+    },
+    "fcEnd": null,
+    "drop": {
+      "t": 603,
+      "bt": 209.4
+    },
+    "devS": 107,
+    "devPct": 17.7,
+    "deltaT": 5.8,
+    "rorAtFc": 15.2,
+    "maxHeat": 84.5,
+    "colorWhole": 57.3,
+    "colorGround": 61.7,
+    "colorNote": null,
+    "note": "Ran 107 s past first crack instead of the planned 55 s; RoR crashed at first crack like A.",
+    "image": null,
+    "curveSource": "log"
+  },
+  {
+    "id": "2026-11-12-syrina-c",
+    "bean": "syrina",
+    "label": "Syrina C",
+    "short": null,
+    "date": "2026-11-12",
+    "machine": "Cardputer Roast on a DIY fluid-bed",
+    "curveName": "new",
+    "green": 100,
+    "roasted": 87,
+    "lossPct": 13,
+    "dry": {
+      "t": 271,
+      "bt": 142.7
+    },
+    "fc": {
+      "t": 501,
+      "bt": 197.9
+    },
+    "fcEnd": null,
+    "drop": {
+      "t": 533,
+      "bt": 208.9
+    },
+    "devS": 32,
+    "devPct": 6,
+    "deltaT": 11,
+    "rorAtFc": 19.6,
+    "maxHeat": 87.1,
+    "colorWhole": 75.4,
+    "colorGround": 90.2,
+    "colorNote": null,
+    "note": "Manual heat from about 185 °C: the beans stalled for about 30 s, then RoR held near 20 through first crack.",
+    "image": null,
+    "curveSource": "log"
+  },
+  {
+    "id": "2026-11-14-syrina-d",
+    "bean": "syrina",
+    "label": "Syrina D",
+    "short": null,
+    "date": "2026-11-14",
+    "machine": "Cardputer Roast on a DIY fluid-bed",
+    "curveName": "Syrina D 100g",
+    "green": 100,
+    "roasted": 87.5,
+    "lossPct": 12.5,
+    "dry": {
+      "t": 261,
+      "bt": 159.8
+    },
+    "fc": {
+      "t": 429,
+      "bt": 202.9
+    },
+    "fcEnd": null,
+    "drop": {
+      "t": 453,
+      "bt": 209.1
+    },
+    "devS": 24,
+    "devPct": 5.3,
+    "deltaT": 6.2,
+    "rorAtFc": 13.4,
+    "maxHeat": 83.1,
+    "colorWhole": 71.2,
+    "colorGround": 87,
+    "colorNote": null,
+    "note": "Dropped by temperature at 209 °C after 24 s of development.",
+    "image": null,
+    "curveSource": "log"
+  },
+  {
+    "id": "2026-11-14-syrina-f",
+    "bean": "syrina",
+    "label": "Syrina F",
+    "short": null,
+    "date": "2026-11-14",
+    "machine": "Cardputer Roast on a DIY fluid-bed",
+    "curveName": "Syrina F 100g",
+    "green": 100,
+    "roasted": 87.7,
+    "lossPct": 12.3,
+    "dry": {
+      "t": 222,
+      "bt": 155
+    },
+    "fc": {
+      "t": 393,
+      "bt": 201.1
+    },
+    "fcEnd": null,
+    "drop": {
+      "t": 420,
+      "bt": 205
+    },
+    "devS": 27,
+    "devPct": 6.4,
+    "deltaT": 3.9,
+    "rorAtFc": null,
+    "maxHeat": null,
+    "colorWhole": 76,
+    "colorGround": 87.9,
+    "colorNote": null,
+    "note": "The roast log was not uploaded, so only the marks are known. First roast on the reworked controller; no RoR crash.",
+    "image": null,
+    "curveSource": "marks"
+  },
+  {
+    "id": "2026-11-14-syrina-x1",
+    "bean": "syrina",
+    "label": "Syrina X1",
+    "short": null,
+    "date": "2026-11-14",
+    "machine": "Cardputer Roast on a DIY fluid-bed",
+    "curveName": "Syrina F 100g",
+    "green": 150,
+    "roasted": 130.9,
+    "lossPct": 12.7,
+    "dry": {
+      "t": 246,
+      "bt": 163.4
+    },
+    "fc": {
+      "t": 396,
+      "bt": 202.7
+    },
+    "fcEnd": null,
+    "drop": {
+      "t": 422,
+      "bt": 205.8
+    },
+    "devS": 26,
+    "devPct": 6.2,
+    "deltaT": 3.1,
+    "rorAtFc": 9.6,
+    "maxHeat": 82.6,
+    "colorWhole": 80.3,
+    "colorGround": 91.2,
+    "colorNote": null,
+    "note": "150 g on curve F.",
+    "image": null,
+    "curveSource": "log"
+  },
+  {
+    "id": "2026-11-14-syrina-x2",
+    "bean": "syrina",
+    "label": "Syrina X2",
+    "short": null,
+    "date": "2026-11-14",
+    "machine": "Cardputer Roast on a DIY fluid-bed",
+    "curveName": "Syrina F 100g",
+    "green": 150,
+    "roasted": 131.8,
+    "lossPct": 12.1,
+    "dry": {
+      "t": 262,
+      "bt": 169
+    },
+    "fc": {
+      "t": 397,
+      "bt": 202.4
+    },
+    "fcEnd": null,
+    "drop": {
+      "t": 421,
+      "bt": 206.2
+    },
+    "devS": 24,
+    "devPct": 5.7,
+    "deltaT": 3.8,
+    "rorAtFc": 8.6,
+    "maxHeat": 82,
+    "colorWhole": null,
+    "colorGround": null,
+    "colorNote": null,
+    "note": "150 g on curve F (the log recorded 100 g green by mistake).",
+    "image": null,
+    "curveSource": "log"
+  },
+  {
+    "id": "2026-11-15-syrina-204g",
+    "bean": "syrina",
+    "label": "Syrina Nov 15 (204.5 g)",
+    "short": "Nov 15",
+    "date": "2026-11-15",
+    "machine": "Cardputer Roast on a DIY fluid-bed",
+    "curveName": "Syrina F 100g",
+    "green": 204.5,
+    "roasted": 180.9,
+    "lossPct": 11.5,
+    "dry": {
+      "t": 238,
+      "bt": 160.9
+    },
+    "fc": {
+      "t": 398,
+      "bt": 202.5
+    },
+    "fcEnd": null,
+    "drop": {
+      "t": 419,
+      "bt": 206.6
+    },
+    "devS": 21,
+    "devPct": 5,
+    "deltaT": 4.1,
+    "rorAtFc": 8.4,
+    "maxHeat": 80.7,
+    "colorWhole": 78.9,
+    "colorGround": 99.7,
+    "colorNote": "single reading",
+    "note": "The last Syrina batch, 204.5 g on curve F.",
+    "image": null,
+    "curveSource": "log"
+  },
+  {
+    "id": "2026-11-15-huakui-b",
+    "bean": "huakui",
+    "label": "Huakui B",
+    "short": null,
+    "date": "2026-11-15",
+    "machine": "Cardputer Roast on a DIY fluid-bed",
+    "curveName": "Huakui11 B 150g",
+    "green": 200,
+    "roasted": 172.1,
+    "lossPct": 13.9,
+    "dry": {
+      "t": 243,
+      "bt": 163.5
+    },
+    "fc": {
+      "t": 389,
+      "bt": 202.3
+    },
+    "fcEnd": null,
+    "drop": {
+      "t": 438,
+      "bt": 208.1
+    },
+    "devS": 49,
+    "devPct": 11.2,
+    "deltaT": 5.8,
+    "rorAtFc": 9.6,
+    "maxHeat": 86.9,
+    "colorWhole": 67.4,
+    "colorGround": 88.3,
+    "colorNote": null,
+    "note": "Curve B: longer, slower development. Cupped right after roasting: clearly sweeter and fuller, nutty and floral.",
+    "image": null,
+    "curveSource": "log"
+  },
+  {
+    "id": "2026-11-15-huakui-a",
+    "bean": "huakui",
+    "label": "Huakui A",
+    "short": null,
+    "date": "2026-11-15",
+    "machine": "Cardputer Roast on a DIY fluid-bed",
+    "curveName": "Huakui11 A 150g",
+    "green": 200,
+    "roasted": 173.1,
+    "lossPct": 13.4,
+    "dry": {
+      "t": 243,
+      "bt": 160.1
+    },
+    "fc": {
+      "t": 402,
+      "bt": 203
+    },
+    "fcEnd": null,
+    "drop": {
+      "t": 431,
+      "bt": 207.2
+    },
+    "devS": 29,
+    "devPct": 6.7,
+    "deltaT": 4.2,
+    "rorAtFc": 11.2,
+    "maxHeat": 85.9,
+    "colorWhole": 72.9,
+    "colorGround": 100.1,
+    "colorNote": null,
+    "note": "Curve A: shorter, faster development. Cupped right after roasting: thinner, a little bitter.",
+    "image": null,
+    "curveSource": "log"
+  }
+]

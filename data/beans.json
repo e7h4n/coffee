@@ -8,34 +8,7 @@
     "process": "Washed",
     "processNote": "DFW \"Honey Moon\" washed 3.0",
     "source": "Home roast",
-    "roaster": "myERoast (home)",
-    "roasts": [
-      {
-        "batch": "Nov 4 roast",
-        "date": "2026-11-04",
-        "green": 100,
-        "roasted": 86.4,
-        "fc": "7:35",
-        "fcTemp": 197.2,
-        "drop": "9:12",
-        "dropTemp": 205.2,
-        "dev": "1:37",
-        "devPct": 17.6
-      },
-      {
-        "batch": "Nov 6 batch 4",
-        "date": "2026-11-06",
-        "green": 300,
-        "roasted": 265,
-        "fc": "7:57",
-        "fcTemp": 202.2,
-        "drop": "9:00",
-        "dropTemp": 206.1,
-        "dev": "1:03",
-        "devPct": 11.7,
-        "note": "Heater at full power from 7:00; the lightest batch of the day."
-      }
-    ]
+    "roaster": "myERoast (home)"
   },
   "syrina": {
     "name": "Yunnan Syrina",
@@ -48,46 +21,7 @@
     "processNote": "Dark Forest Natural",
     "source": "Home roast",
     "roaster": "Cardputer Roast (home)",
-    "note": "Green coffee from the Yinianyisu Cup roasting competition in Beijing.",
-    "roasts": [
-      {
-        "batch": "Nov 12 batch C",
-        "date": "2026-11-12",
-        "green": 100,
-        "lossPct": 13,
-        "fc": "8:21",
-        "fcTemp": 197.9,
-        "drop": "8:53",
-        "dropTemp": 209,
-        "dev": "0:32",
-        "color": "Omni 75.4 whole, 90.2 ground"
-      },
-      {
-        "batch": "Nov 14 batch D",
-        "date": "2026-11-14",
-        "green": 100,
-        "roasted": 87.5,
-        "fc": "7:09",
-        "fcTemp": 202.9,
-        "drop": "7:33",
-        "dropTemp": 209.1,
-        "dev": "0:24",
-        "devPct": 5.3
-      },
-      {
-        "batch": "Nov 15 batch F",
-        "date": "2026-11-15",
-        "green": 204.5,
-        "roasted": 180.9,
-        "fc": "6:38",
-        "fcTemp": 202.5,
-        "drop": "6:59",
-        "dropTemp": 206.6,
-        "dev": "0:21",
-        "color": "Omni 78.9 whole, 99.7 ground",
-        "note": "The last Syrina batch."
-      }
-    ]
+    "note": "Green coffee from the Yinianyisu Cup roasting competition in Beijing."
   },
   "limu": {
     "name": "Ethiopia Limu",
@@ -97,21 +31,7 @@
     "grade": "G2",
     "process": "Washed",
     "source": "Home roast",
-    "roaster": "DIY fluid-bed (home)",
-    "roasts": [
-      {
-        "batch": "Oct 31 batch 1",
-        "date": "2026-10-31",
-        "green": 100,
-        "roasted": 88.2,
-        "fc": "7:24",
-        "fcTemp": 200.7,
-        "drop": "8:06",
-        "dropTemp": 204.6,
-        "dev": "0:42",
-        "devPct": 8.6
-      }
-    ]
+    "roaster": "DIY fluid-bed (home)"
   },
   "alo": {
     "name": "ALO Boore Guji",
@@ -120,21 +40,7 @@
     "region": "Guji",
     "process": "Honey",
     "source": "Home roast",
-    "roaster": "DIY fluid-bed (home)",
-    "roasts": [
-      {
-        "batch": "Oct 31 batch 3",
-        "date": "2026-10-31",
-        "green": 100.8,
-        "roasted": 88.9,
-        "fc": "7:24",
-        "fcTemp": 198.3,
-        "drop": "8:36",
-        "dropTemp": 208.2,
-        "dev": "1:12",
-        "devPct": 14
-      }
-    ]
+    "roaster": "DIY fluid-bed (home)"
   },
   "mix1031": {
     "name": "Oct 31 Roast Blend",
@@ -250,36 +156,6 @@
       "Peach",
       "Mandarin"
     ],
-    "note": "Two 200 g batches roasted back to back on Nov 15 with the same first-crack target: curve A develops for a shorter time at a faster rate, curve B longer and slower.",
-    "roasts": [
-      {
-        "batch": "Nov 15 curve A",
-        "date": "2026-11-15",
-        "green": 200,
-        "roasted": 173.1,
-        "lossPct": 13.4,
-        "fc": "6:42",
-        "fcTemp": 203,
-        "drop": "7:11",
-        "dropTemp": 207.2,
-        "dev": "0:29",
-        "color": "Omni 72.9 whole, 100.1 ground",
-        "note": "Cupped right after roasting: thinner, a little bitter."
-      },
-      {
-        "batch": "Nov 15 curve B",
-        "date": "2026-11-15",
-        "green": 200,
-        "roasted": 172.1,
-        "lossPct": 13.9,
-        "fc": "6:29",
-        "fcTemp": 202.3,
-        "drop": "7:18",
-        "dropTemp": 208.1,
-        "dev": "0:49",
-        "color": "Omni 67.4 whole, 88.3 ground",
-        "note": "Cupped right after roasting: clearly sweeter and fuller, nutty and floral."
-      }
-    ]
+    "note": "Two 200 g batches roasted back to back on Nov 15 with the same first-crack target: curve A develops for a shorter time at a faster rate, curve B longer and slower."
   }
 }

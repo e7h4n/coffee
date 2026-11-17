@@ -12,23 +12,10 @@
     "region": "Guji",
     "process": "Honey",
     "source": "Home roast",
-    "roaster": "DIY fluid-bed (home)",
-    "roasts": [
-      {
-        "batch": "Oct 31 batch 3",
-        "date": "2026-10-31",
-        "green": 100.8,
-        "roasted": 88.9,
-        "fc": "7:24",
-        "fcTemp": 198.3,
-        "drop": "8:36",
-        "dropTemp": 208.2,
-        "dev": "1:12",
-        "devPct": 14
-      }
-    ]
+    "roaster": "DIY fluid-bed (home)"
   },
-  "batch": "Oct 31 batch 3",
+  "roast": "2026-10-31-alo-3",
+  "batch": "ALO batch 3",
   "roastDate": "2026-10-31",
   "rest": 3,
   "grinder": "C40",

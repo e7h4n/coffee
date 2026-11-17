@@ -5,6 +5,7 @@
   "scales": 1,
   "manual": false,
   "bean": null,
+  "roast": null,
   "batch": null,
   "roastDate": null,
   "rest": null,

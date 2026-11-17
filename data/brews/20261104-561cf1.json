@@ -17,6 +17,7 @@
     "roaster": "SEY Coffee",
     "roastNote": "Roasted in the first week of October 2026"
   },
+  "roast": null,
   "batch": "Roasted early Oct",
   "roastDate": null,
   "rest": null,

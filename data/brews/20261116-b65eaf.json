@@ -23,39 +23,10 @@
       "Peach",
       "Mandarin"
     ],
-    "note": "Two 200 g batches roasted back to back on Nov 15 with the same first-crack target: curve A develops for a shorter time at a faster rate, curve B longer and slower.",
-    "roasts": [
-      {
-        "batch": "Nov 15 curve A",
-        "date": "2026-11-15",
-        "green": 200,
-        "roasted": 173.1,
-        "lossPct": 13.4,
-        "fc": "6:42",
-        "fcTemp": 203,
-        "drop": "7:11",
-        "dropTemp": 207.2,
-        "dev": "0:29",
-        "color": "Omni 72.9 whole, 100.1 ground",
-        "note": "Cupped right after roasting: thinner, a little bitter."
-      },
-      {
-        "batch": "Nov 15 curve B",
-        "date": "2026-11-15",
-        "green": 200,
-        "roasted": 172.1,
-        "lossPct": 13.9,
-        "fc": "6:29",
-        "fcTemp": 202.3,
-        "drop": "7:18",
-        "dropTemp": 208.1,
-        "dev": "0:49",
-        "color": "Omni 67.4 whole, 88.3 ground",
-        "note": "Cupped right after roasting: clearly sweeter and fuller, nutty and floral."
-      }
-    ]
+    "note": "Two 200 g batches roasted back to back on Nov 15 with the same first-crack target: curve A develops for a shorter time at a faster rate, curve B longer and slower."
   },
-  "batch": "Nov 15 curve A",
+  "roast": "2026-11-15-huakui-a",
+  "batch": "Huakui A",
   "roastDate": "2026-11-15",
   "rest": 1,
   "grinder": null,

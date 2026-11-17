@@ -28,7 +28,7 @@
   var SVGNS = 'http://www.w3.org/2000/svg';
   var V = window.DATA_VERSION && window.DATA_VERSION.indexOf('__') !== 0 ? window.DATA_VERSION : String(Date.now());
 
-  var BEANS, BREWERS, GEAR, BREWS, BY_SLUG = {}, LAST_DAY, DAYS;
+  var BEANS, BREWERS, GEAR, ROASTS = [], BY_ROAST = {}, BREWS, BY_SLUG = {}, LAST_DAY, DAYS;
 
   // ---------- utils ----------
   function h(tag, attrs, kids) {
@@ -74,7 +74,7 @@
   function median(a) { if (!a.length) return null; var x = a.slice().sort(function (p, q) { return p - q; }); var m = x.length >> 1; return x.length % 2 ? x[m] : (x[m - 1] + x[m]) / 2; }
   function slotVar(slot) { return 'var(--s' + slot + ')'; }
   function uid(p) { uid.n = (uid.n || 0) + 1; return p + uid.n; }
-  function plural(n, w) { return n + ' ' + w + (n === 1 ? '' : 's'); }
+  function plural(n, w, pl) { return n + ' ' + (n === 1 ? w : (pl || w + 's')); }
   function grindLabel(b) {
     if (!b.grinder) return null;
     return GRINDER_SHORT[b.grinder] + (b.grind ? ' · ' + b.grind + (b.grinder === 'C40' ? ' clicks' : '') : '');
@@ -166,7 +166,7 @@
     if (m) return { name: 'brew', slug: m[1], q: q };
     if (path.indexOf('/compare') === 0) return { name: 'compare', q: q };
     if (path.indexOf('/gear') === 0) return { name: 'gear', q: q };
-    var c = path.match(/^\/(beans|brewers)(?:\/([\w-]+))?/);
+    var c = path.match(/^\/(beans|brewers|roasts)(?:\/([\w-]+))?/);
     if (c) return { name: c[2] ? c[1].slice(0, -1) : c[1], id: c[2], q: q };
     return { name: 'home', q: q };
   }
@@ -174,13 +174,14 @@
   // ---------- filters ----------
   var F;
   var MULTI = ['bean', 'brewer', 'grinder', 'rating', 'flavor'];
-  function defaultFilters() { return { d: 'all', bean: [], brewer: [], grinder: [], rating: [], flavor: [], trace: false, q: '', ey: ['', ''], tds: ['', ''] }; }
+  function defaultFilters() { return { d: 'all', bean: [], brewer: [], grinder: [], rating: [], flavor: [], trace: false, q: '', roast: '', ey: ['', ''], tds: ['', ''] }; }
   function filtersFromQuery(q) {
     var f = defaultFilters();
     MULTI.forEach(function (k) { if (q.get(k)) f[k] = q.get(k).split(','); });
     if (q.get('d')) f.d = q.get('d');
     if (q.get('trace') === '1') f.trace = true;
     if (q.get('q')) f.q = q.get('q');
+    if (q.get('roast')) f.roast = q.get('roast');
     ['ey', 'tds'].forEach(function (k) { if (q.get(k)) f[k] = q.get(k).split('~').concat(['', '']).slice(0, 2); });
     return f;
   }
@@ -190,6 +191,7 @@
     MULTI.forEach(function (k) { if (f[k].length) q.set(k, f[k].join(',')); });
     if (f.trace) q.set('trace', '1');
     if (f.q) q.set('q', f.q);
+    if (f.roast) q.set('roast', f.roast);
     ['ey', 'tds'].forEach(function (k) { if (f[k][0] !== '' || f[k][1] !== '') q.set(k, f[k].join('~')); });
     var str = q.toString();
     return '#/' + (str ? '?' + str : '');
@@ -197,7 +199,7 @@
   function activeCount(f) {
     var n = f.d !== 'all' ? 1 : 0;
     MULTI.forEach(function (k) { if (f[k].length) n++; });
-    if (f.trace) n++; if (f.q) n++;
+    if (f.trace) n++; if (f.q) n++; if (f.roast) n++;
     ['ey', 'tds'].forEach(function (k) { if (f[k][0] !== '' || f[k][1] !== '') n++; });
     return n;
   }
@@ -226,6 +228,7 @@
       else if (!ks.some(function (v) { return f[k].indexOf(v) >= 0; })) return false;
     }
     if (f.trace && !b.hasTrace) return false;
+    if (f.roast && b.roast !== f.roast) return false;
     function inRange(v, r) {
       if (r[0] !== '' && (v == null || v < +r[0])) return false;
       if (r[1] !== '' && (v == null || v > +r[1])) return false;
@@ -569,6 +572,7 @@
     search.addEventListener('input', function (e) { F.q = e.target.value.trim(); history.replaceState(null, '', filtersToQuery(F)); shownDays = DAYS_PER_PAGE; updateHome(); });
     search.addEventListener('change', function () { buildFilterBar(); });
     bar.appendChild(search);
+    if (F.roast) bar.appendChild(h('button', { type: 'button', class: 'dd-chip', title: 'Remove roast filter', onclick: function () { setF(function (f) { f.roast = ''; }); } }, ['Roast: ' + (BY_ROAST[F.roast] ? BY_ROAST[F.roast].label : F.roast) + ' ×']));
     var n = activeCount(F);
     if (n) bar.appendChild(h('button', { class: 'clear-btn', type: 'button', text: 'Clear filters (' + n + ')', onclick: function () { openDD = null; setF(function (f) { Object.assign(f, defaultFilters()); }); } }));
     if (keepOpen) { var b = bar.querySelector('[data-dd="' + keepOpen + '"]'); if (b) b.click(); }
@@ -822,7 +826,8 @@
       ])]),
       h('section', { class: 'card' }, [h('div', { class: 'card-h' }, [h('h3', { text: 'Bean and roast' }), bean ? h('a', { class: 'inline-link', href: '#/beans/' + b.bean, text: 'Bean page →' }) : null]), h('div', { class: 'card-b' }, [
         bean ? kv([['Coffee', bean.full], ['Origin', bean.origin], ['Process', bean.process], ['Source', bean.source + (bean.roaster ? ', ' + bean.roaster : '')], ['Batch', b.batch], ['Roasted', b.roastDate ? dayLabel(b.roastDate) : null], ['Rest', b.rest != null ? plural(b.rest, 'day') : null]])
-          : h('p', { class: 'muted', text: 'The bean for this brew was not recorded.' })
+          : h('p', { class: 'muted', text: 'The bean for this brew was not recorded.' }),
+        b.roast && BY_ROAST[b.roast] ? h('a', { class: 'ghost-btn', style: 'display:inline-block;margin-top:10px', href: '#/roasts/' + b.roast, text: 'Roast batch: ' + BY_ROAST[b.roast].label + ' →' }) : null
       ])]),
       h('section', { class: 'card' }, [h('div', { class: 'card-h' }, [h('h3', { text: 'Data' })]), h('div', { class: 'card-b' }, [
         h('p', { class: 'secondary', style: 'margin-top:6px', text: 'The normalized record and the full 10 Hz curve are plain files in the repository.' }),
@@ -1172,25 +1177,29 @@
       ['Roast', bn.roastLevel], ['Roaster', bn.roaster], ['Roasted', bn.roastDate ? dayLabel(bn.roastDate) + ', ' + bn.roastDate.slice(0, 4) : bn.roastNote],
       ['Bag notes', bn.bagNotes ? bn.bagNotes.join(', ') : null]]), bn.note ? h('p', { class: 'card-note', text: bn.note }) : null]);
     var left = h('div', { class: 'stack' }, [about]);
-    if (bn.roasts && bn.roasts.length) {
+    var beanRoasts = ROASTS.filter(function (r) { return r.bean === id; });
+    if (beanRoasts.length) {
       var tb = h('tbody');
-      bn.roasts.forEach(function (r) {
-        var rs = brewStats(list.filter(function (b) { return b.batch === r.batch; }));
-        var loss = r.lossPct != null ? r.lossPct : (r.green && r.roasted ? (1 - r.roasted / r.green) * 100 : null);
-        tb.appendChild(h('tr', {}, [
-          h('td', {}, [h('strong', { text: r.batch }), r.note || r.color ? h('div', { class: 'muted', style: 'font-size:12px', text: [r.color, r.note].filter(Boolean).join('. ') }) : null]),
+      beanRoasts.forEach(function (r) {
+        var rs = brewStats(roastBrews(r.id));
+        var tr = h('tr', { class: 'link', tabindex: 0 }, [
+          h('td', {}, [h('strong', { text: r.label }), h('div', { class: 'muted', style: 'font-size:12px', text: shortDay(r.date) + (r.curveSource === 'log' ? ' · logged curve' : r.curveSource === 'image' ? ' · curve screenshot' : ' · marks only') })]),
           h('td', { class: 'n', text: (r.green != null ? r.green + ' g' : '-') + (r.roasted != null ? ' → ' + r.roasted + ' g' : '') }),
-          h('td', { class: 'n', text: loss != null ? loss.toFixed(1) + '%' : '-' }),
-          h('td', { class: 'n', text: r.fc ? r.fc + (r.fcTemp ? ' · ' + r.fcTemp + ' °C' : '') : '-' }),
-          h('td', { class: 'n', text: r.drop ? r.drop + (r.dropTemp ? ' · ' + r.dropTemp + ' °C' : '') : '-' }),
-          h('td', { class: 'n', text: r.dev ? r.dev + (r.devPct != null ? ' (' + r.devPct + '%)' : '') : '-' }),
-          h('td', { class: 'n', text: rs.n ? rs.n + ' · ' + fmt(rs.ey, 1) + '%' : '-' }),
-          h('td', { class: 'n', text: rs.rated ? rs.liked + '/' + rs.rated : '-' })
-        ]));
+          h('td', { class: 'n', text: r.lossPct != null ? fmt(r.lossPct, 1) + '%' : '-' }),
+          h('td', { class: 'n', text: r.fc ? mmss(r.fc.t) + ' · ' + fmt(r.fc.bt, 1) + ' °C' : '-' }),
+          h('td', { class: 'n', text: r.drop ? mmss(r.drop.t) + ' · ' + fmt(r.drop.bt, 1) + ' °C' : '-' }),
+          h('td', { class: 'n', text: r.devS != null ? r.devS + ' s' + (r.devPct != null ? ' (' + fmt(r.devPct, 1) + '%)' : '') : '-' }),
+          h('td', { class: 'n', text: r.colorGround != null ? fmt(r.colorGround, 1) : '-' }),
+          h('td', { class: 'n', text: rs.n ? rs.n + ' · ' + fmt(rs.ey, 1) + '%' : '-' })
+        ]);
+        tr.addEventListener('click', function () { location.hash = '#/roasts/' + r.id; });
+        tr.addEventListener('keydown', function (e) { if (e.key === 'Enter') location.hash = '#/roasts/' + r.id; });
+        tb.appendChild(tr);
       });
-      left.appendChild(card('Roast log', [h('div', { class: 'scroll-x' }, [h('table', { class: 'list-table' }, [h('thead', {}, [h('tr', {}, [
+      left.appendChild(card('Roast batches', [h('div', { class: 'scroll-x' }, [h('table', { class: 'list-table' }, [h('thead', {}, [h('tr', {}, [
         h('th', { text: 'Batch' }), h('th', { class: 'n', text: 'Green → roasted' }), h('th', { class: 'n', text: 'Loss' }), h('th', { class: 'n', text: 'First crack' }),
-        h('th', { class: 'n', text: 'Drop' }), h('th', { class: 'n', text: 'Development' }), h('th', { class: 'n', text: 'Brews · median yield' }), h('th', { class: 'n', text: 'Liked' })])]), tb])])]));
+        h('th', { class: 'n', text: 'Drop' }), h('th', { class: 'n', text: 'Development' }), h('th', { class: 'n', text: 'Ground color' }), h('th', { class: 'n', text: 'Brews · median yield' })])]), tb])])]));
+      roastOverlay(left, id);
     }
     var chips = descriptorCounts(list);
     left.appendChild(card('Tasting across brews', [chips.length ? h('div', { class: 'chips-d' }, chips) : h('p', { class: 'muted', text: 'No SCA descriptors recorded for this bean yet.' }),
@@ -1344,6 +1353,192 @@
     });
   }
 
+  // ---------- ROASTS ----------
+  var R_X_MAX = 660, R_T_DOM = [20, 230];
+  var roastCache = {};
+  function loadRoastCurve(r) {
+    if (r.curveSource !== 'log') return Promise.resolve(null);
+    if (!roastCache[r.id]) roastCache[r.id] = fetch('data/roasts/' + r.id + '.json?v=' + V).then(function (x) { if (!x.ok) throw new Error(x.status); return x.json(); });
+    return roastCache[r.id];
+  }
+  function roastBrews(id) { return BREWS.filter(function (b) { return b.roast === id; }); }
+  function roastName(r) { return r.label; }
+  function mmss(t) { return t == null ? '-' : fmtTime(t); }
+  function markText(m) { return m ? mmss(m.t) + ' · ' + fmt(m.bt, 1) + ' °C' : '-'; }
+  function roastMarkers(r) {
+    var mk = [];
+    if (r.dry) mk.push({ t: r.dry.t, label: 'Dry ' + mmss(r.dry.t) });
+    if (r.fc) mk.push({ t: r.fc.t, label: 'FC ' + mmss(r.fc.t) });
+    if (r.drop) mk.push({ t: r.drop.t, label: 'Drop ' + mmss(r.drop.t) });
+    return mk;
+  }
+  // Small fixed-axis roast card: bean temperature with the target in gray, or the marks alone.
+  function roastThumb(r) {
+    var W = 272, H = 104, L = 2, R = 270, top = 6, bot = 88;
+    var svg = s('svg', { class: 'thumb', viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': 'Roast curve' });
+    var x = lin(0, R_X_MAX, L, R), y = lin(R_T_DOM[0], R_T_DOM[1], bot, top);
+    for (var m = 0; m <= R_X_MAX; m += 120) s('line', { x1: x(m), x2: x(m), y1: top, y2: bot, stroke: 'var(--grid)', 'stroke-width': 1 }, svg);
+    [100, 200].forEach(function (tv) { s('line', { x1: L, x2: R, y1: y(tv), y2: y(tv), stroke: 'var(--grid)', 'stroke-width': 1 }, svg); });
+    s('line', { x1: L, x2: R, y1: bot + .5, y2: bot + .5, stroke: 'var(--axis)', 'stroke-width': 1 }, svg);
+    s('text', { x: L, y: 100, text: '0:00' }, svg);
+    s('text', { x: R, y: 100, 'text-anchor': 'end', text: fmtTime(R_X_MAX) }, svg);
+    if (r.thumb) {
+      pathLine(svg, r.thumb.t, r.thumb.target, x, y, 'var(--deemph)', 1.5);
+      pathLine(svg, r.thumb.t, r.thumb.bt, x, y, 'var(--s1)', 1.75);
+    } else {
+      s('text', { x: (L + R) / 2, y: 22, 'text-anchor': 'middle', class: 'no-trace', style: 'font-size:11px', text: r.curveSource === 'image' ? 'Curve as app screenshot' : 'Marks only' }, svg);
+    }
+    [r.dry, r.fc, r.drop].forEach(function (mk) {
+      if (!mk) return;
+      s('circle', { cx: x(mk.t), cy: y(mk.bt), r: 3.5, fill: r.thumb ? 'var(--s1)' : 'var(--text-secondary)', stroke: 'var(--surface-1)', 'stroke-width': 2 }, svg);
+    });
+    if (r.fc) s('text', { x: x(r.fc.t) - 4, y: y(r.fc.bt) - 7, 'text-anchor': 'end', text: 'FC' }, svg);
+    return svg;
+  }
+  function roastStatsRow(r) {
+    return h('div', { class: 'stats' }, [
+      stat('Batch', (r.green != null ? r.green : '-') + ' → ' + (r.roasted != null ? r.roasted : '-'), 'g'),
+      stat('Loss', fmt(r.lossPct, 1), '%'),
+      stat('First crack', r.fc ? mmss(r.fc.t) : '-'),
+      stat('Development', r.devS != null ? r.devS + ' s' : '-', r.devPct != null ? ' ' + fmt(r.devPct, 1) + '%' : ''),
+      stat('Ground', r.colorGround != null ? fmt(r.colorGround, 1) : '-')
+    ]);
+  }
+  function renderRoasts(route) {
+    var app = document.getElementById('app'); app.replaceChildren();
+    document.title = 'Roasts · Daily Brew Log';
+    var beanF = route.q.get('bean') || 'all';
+    var list = ROASTS.filter(function (r) { return beanF === 'all' || r.bean === beanF; }).slice().reverse();
+    var curves = ROASTS.filter(function (r) { return r.curveSource === 'log'; }).length;
+    app.appendChild(h('div', { class: 'page-head' }, [h('h1', { text: 'Roasts' }), h('p', { text: plural(ROASTS.length, 'batch', 'batches') + ' roasted at home · ' + curves + ' with logged curves' })]));
+    var beanIds = Array.from(new Set(ROASTS.map(function (r) { return r.bean; })));
+    var seg = h('div', { class: 'seg', role: 'group', 'aria-label': 'Bean' }, [['all', 'All beans']].concat(beanIds.map(function (id) { return [id, BEANS[id] ? BEANS[id].name : id]; })).map(function (o) {
+      return h('a', { href: o[0] === 'all' ? '#/roasts' : '#/roasts?bean=' + o[0], class: 'seg-link', 'aria-pressed': beanF === o[0] ? 'true' : 'false', text: o[1] });
+    }));
+    app.appendChild(h('div', { class: 'filters' }, [seg]));
+    var byDay = {};
+    list.forEach(function (r) { (byDay[r.date] = byDay[r.date] || []).push(r); });
+    Object.keys(byDay).sort().reverse().forEach(function (day) {
+      app.appendChild(h('div', { class: 'day-h', style: 'margin-top:14px' }, [h('h2', { text: dayLabel(day, true) }), h('span', { class: 'muted', text: plural(byDay[day].length, 'batch', 'batches') })]));
+      app.appendChild(h('div', { class: 'brews' }, byDay[day].map(function (r) {
+        var st = brewStats(roastBrews(r.id));
+        var row = h('a', { class: 'card brew roast-row', href: '#/roasts/' + r.id }, [
+          h('div', { class: 'brew-main', style: 'grid-column:1 / 3' }, [
+            h('div', { class: 'brew-title' }, [h('span', { class: 'bean', text: r.label }), h('span', { class: 'seq', text: BEANS[r.bean] ? BEANS[r.bean].name : '' })]),
+            h('div', { class: 'meta' }, [r.machine, r.curveName ? 'Curve: ' + r.curveName : null, r.colorWhole != null ? 'Omni ' + fmt(r.colorWhole, 1) + ' whole / ' + fmt(r.colorGround, 1) + ' ground' : null]
+              .filter(Boolean).map(function (t) { return h('span', { class: 'tag', text: t }); })),
+            roastStatsRow(r),
+            h('div', { class: 'taste' }, [h('span', { class: 'q' + (st.n ? '' : ' muted'), text: st.n ? plural(st.n, 'brew') + ' · median yield ' + fmt(st.ey, 1) + '%' + (st.rated ? ' · liked ' + st.liked + ' of ' + st.rated : '') : 'No brews logged from this batch' })])
+          ]),
+          h('div', { class: 'thumb-wrap' }, [roastThumb(r)])
+        ]);
+        return row;
+      })));
+    });
+  }
+  function roastChart(container, r, sr) {
+    timeChart(container, {
+      xDom: [0, Math.max(R_X_MAX, Math.ceil((r.drop ? r.drop.t : 0) / 60) * 60)],
+      markers: roastMarkers(r),
+      panels: [
+        { title: 'Bean temperature', subtitle: '°C', unit: '°C', dom: R_T_DOM, ticks: [50, 100, 150, 200], height: 220, fmt: function (v) { return (+v).toFixed(1); },
+          series: [{ ts: sr.t, vs: sr.target, color: 'var(--deemph)', name: 'Target', endName: 'target', width: 1.5 }, { ts: sr.t, vs: sr.bt, color: 'var(--s1)', name: 'Bean temperature', endName: 'bean' }] },
+        { title: 'Rate of rise', subtitle: '°C/min', unit: '°C/min', dom: [0, 30], ticks: [0, 10, 20, 30], height: 110, fmt: function (v) { return (+v).toFixed(1); },
+          series: [{ ts: sr.t, vs: sr.ror, color: 'var(--s2)', name: 'RoR', endName: 'RoR' }] },
+        { title: 'Heater and fan', subtitle: '%', unit: '%', dom: [0, 100], ticks: [0, 50, 100], height: 100, fmt: function (v) { return Math.round(v); },
+          series: [{ ts: sr.t, vs: sr.heat, color: 'var(--s3)', name: 'Heater', endName: 'heater' }, { ts: sr.t, vs: sr.fan, color: 'var(--s4)', name: 'Fan', endName: 'fan' }] }
+      ]
+    });
+  }
+  function renderRoast(id) {
+    var app = document.getElementById('app'); app.replaceChildren();
+    var r = BY_ROAST[id];
+    app.appendChild(h('div', { class: 'crumbs' }, [h('a', { href: '#/roasts', text: '← Roasts' }), h('span')]));
+    if (!r) { app.appendChild(h('div', { class: 'card empty', text: 'Roast batch not found.' })); return; }
+    document.title = r.label + ' · Daily Brew Log';
+    var bean = BEANS[r.bean], list = roastBrews(id), st = brewStats(list);
+    app.appendChild(h('div', { class: 'detail-head' }, [
+      h('div', {}, [h('div', { class: 'when', text: 'Roast batch · ' + dayLabel(r.date, true) + ', ' + r.date.slice(0, 4) }), h('h1', { text: r.label }),
+        h('div', { class: 'meta' }, [bean ? h('a', { class: 'tag tag-link', href: '#/beans/' + r.bean, text: bean.name + ' →' }) : null, h('span', { class: 'tag', text: r.machine }), r.curveName ? h('span', { class: 'tag', text: 'Curve: ' + r.curveName }) : null])]),
+      list.length ? h('a', { class: 'ghost-btn', href: '#/?roast=' + id, text: 'Show its brews in the list' }) : null
+    ]));
+    app.appendChild(h('div', { class: 'tiles' }, [
+      tile('Batch', (r.green != null ? r.green : '-') + ' → ' + (r.roasted != null ? r.roasted : '-'), 'g', r.lossPct != null ? fmt(r.lossPct, 1) + '% loss' : null),
+      tile('Dry end', r.dry ? mmss(r.dry.t) : '-', '', r.dry ? fmt(r.dry.bt, 1) + ' °C' : null),
+      tile('First crack', r.fc ? mmss(r.fc.t) : '-', '', r.fc ? fmt(r.fc.bt, 1) + ' °C' : 'Not marked'),
+      tile('Drop', r.drop ? mmss(r.drop.t) : '-', '', r.drop ? fmt(r.drop.bt, 1) + ' °C' : null),
+      tile('Development', r.devS != null ? String(r.devS) : '-', r.devS != null ? 's' : '', r.devPct != null ? fmt(r.devPct, 1) + '% · +' + fmt(r.deltaT, 1) + ' °C after FC' : null),
+      tile('Roast color', r.colorGround != null ? fmt(r.colorGround, 1) : '-', '', r.colorWhole != null ? 'Ground · whole ' + fmt(r.colorWhole, 1) + (r.colorNote ? ' (' + r.colorNote + ')' : '') : 'Not measured')
+    ]));
+    var curveBox = h('div', { style: 'min-height:120px' });
+    var curveCard;
+    if (r.curveSource === 'log') {
+      curveCard = card('Roast curve', [legendKeys([{ color: 'var(--s1)', name: 'Bean temperature' }, { color: 'var(--deemph)', name: 'Target curve' }, { color: 'var(--s2)', name: 'Rate of rise' }, { color: 'var(--s3)', name: 'Heater' }, { color: 'var(--s4)', name: 'Fan' }]), curveBox,
+        h('p', { class: 'card-note', text: 'Logged by Cardputer Roast every second, shown in 2 s steps from charge to drop.' + (r.rorAtFc != null ? ' RoR at first crack ' + fmt(r.rorAtFc, 1) + ' °C/min.' : '') + (r.maxHeat != null ? ' Max heater ' + fmt(r.maxHeat, 1) + '%.' : '') })]);
+    } else if (r.curveSource === 'image') {
+      curveCard = card('Roast curve', [h('figure', { class: 'roast-shot' }, [h('img', { src: r.image, alt: 'Roast curve screenshot for ' + r.label, loading: 'lazy' }),
+        h('figcaption', { text: 'Screenshot from the myERoast app (labels in Chinese). Red: bean temperature; gray: target curve; magenta: heater; blue: fan; teal: rate of rise.' })])]);
+    } else {
+      curveCard = card('Roast curve', [h('p', { class: 'muted', text: 'Only the key marks were recorded for this batch, so there is no curve.' })]);
+    }
+    var marks = h('tbody');
+    [['Dry end', r.dry], ['First crack', r.fc], ['First crack end', r.fcEnd], ['Drop', r.drop]].forEach(function (m) {
+      if (!m[1] && m[0] === 'First crack end') return;
+      marks.appendChild(h('tr', {}, [h('td', { text: m[0] }), h('td', { class: 'n', text: m[1] ? mmss(m[1].t) : '-' }), h('td', { class: 'n', text: m[1] ? fmt(m[1].bt, 1) + ' °C' : '-' })]));
+    });
+    var left = h('div', { class: 'stack' }, [curveCard,
+      card('Notes', [h('table', { class: 'list-table' }, [h('thead', {}, [h('tr', {}, [h('th', { text: 'Mark' }), h('th', { class: 'n', text: 'Time' }), h('th', { class: 'n', text: 'Bean temp' })])]), marks]),
+        r.note ? h('p', { class: 'taste-big', style: 'font-size:14px', text: r.note }) : null])]);
+    var gcc = goldCupCard('Brewing control chart', 'Blue marks brews made from this batch.');
+    var siblings = ROASTS.filter(function (x) { return x.bean === r.bean; });
+    var right = h('div', { class: 'stack' }, [gcc.card,
+      card('Other batches of ' + (bean ? bean.name : 'this bean'), [h('div', { class: 'chips-d' }, siblings.map(function (x) {
+        return x.id === r.id ? h('span', { class: 'chip-d', style: 'font-weight:700;color:var(--text-primary)', text: x.label }) : h('a', { class: 'chip-d', style: 'text-decoration:none', href: '#/roasts/' + x.id, text: x.label });
+      }))])]);
+    var withRest = list.filter(function (b) { return b.rest != null && b.ey != null; });
+    var restBox = h('div', {});
+    if (withRest.length >= 2) right.appendChild(card('Yield by days off roast', [restBox, shapeLegend(true)]));
+    app.appendChild(h('div', { class: 'two-col' }, [left, right]));
+    app.appendChild(h('div', { style: 'margin-top:16px' }, [card('Brews from this batch', [list.length ? brewTable(list, 'brewer') : h('p', { class: 'muted', text: 'No brews logged from this batch.' })],
+      st.n ? h('span', { class: 'muted', style: 'font-size:12px', text: 'Median yield ' + fmt(st.ey, 1) + '% · TDS ' + fmt(st.tds, 2) + '%' }) : null)]));
+    goldCup(gcc.box, { height: 250, style: function (b) { return b.roast === id ? { color: 'var(--s1)', on: true } : { color: 'var(--deemph)', on: false }; }, onClick: function (b) { location.hash = '#/b/' + b.slug; } });
+    if (withRest.length >= 2) restScatter(restBox, withRest);
+    if (r.curveSource === 'log') loadRoastCurve(r).then(function (sr) { if (parseRoute().id === id) roastChart(curveBox, r, sr); }).catch(function () { curveBox.replaceChildren(h('p', { class: 'muted', text: 'Could not load the curve.' })); });
+  }
+  // Bean page: overlay of logged roast curves, up to 4 batches picked with chips (color stays with the batch).
+  function roastOverlay(container, beanId) {
+    var logged = ROASTS.filter(function (r) { return r.bean === beanId && r.curveSource === 'log'; });
+    if (!logged.length) return null;
+    var picked = logged.slice(-Math.min(3, logged.length)).map(function (r, i) { return { r: r, slot: i + 1 }; });
+    var chips = h('div', { class: 'chips-d', style: 'margin-bottom:8px' });
+    var box = h('div', {});
+    function draw() {
+      chips.replaceChildren.apply(chips, logged.map(function (r) {
+        var p = picked.find(function (x) { return x.r === r; });
+        return h('button', { type: 'button', class: 'chip-d chip-toggle' + (p ? ' on' : ''), 'aria-pressed': p ? 'true' : 'false', onclick: function () {
+          if (p) picked = picked.filter(function (x) { return x !== p; });
+          else {
+            if (picked.length >= 4) { flash('Overlay up to 4 batches'); return; }
+            var used = picked.map(function (x) { return x.slot; });
+            picked.push({ r: r, slot: [1, 2, 3, 4].find(function (n) { return used.indexOf(n) < 0; }) });
+          }
+          draw();
+        } }, [p ? h('span', { class: 'sw-line', style: 'background:' + slotVar(p.slot) + ';margin-right:6px;vertical-align:middle' }) : null, r.label]);
+      }));
+      if (!picked.length) { box.replaceChildren(h('p', { class: 'muted', text: 'Pick a batch above.' })); return; }
+      Promise.all(picked.map(function (p) { return loadRoastCurve(p.r).then(function (sr) { p.sr = sr; }); })).then(function () {
+        var ser = function (f) { return picked.map(function (p) { return { ts: p.sr.t, vs: p.sr[f], color: slotVar(p.slot), name: p.r.label, endName: p.r.short || p.r.label.replace(/^\S+ /, '') }; }); };
+        timeChart(box, { xDom: [0, R_X_MAX], panels: [
+          { title: 'Bean temperature', subtitle: '°C', unit: '°C', dom: R_T_DOM, ticks: [50, 100, 150, 200], height: 200, fmt: function (v) { return (+v).toFixed(1); }, series: ser('bt') },
+          { title: 'Rate of rise', subtitle: '°C/min', unit: '°C/min', dom: [0, 30], ticks: [0, 10, 20, 30], height: 110, fmt: function (v) { return (+v).toFixed(1); }, series: ser('ror') }
+        ] });
+      });
+    }
+    container.appendChild(card('Roast curves', [chips, box, h('p', { class: 'card-note', text: 'Logged curves of this bean on the same axes. Pick up to 4 batches.' })]));
+    draw();
+    return true;
+  }
+
   // ---------- boot ----------
   function rerender() {
     var r = parseRoute();
@@ -1356,8 +1551,10 @@
     else if (r.name === 'brewers') renderBrewers();
     else if (r.name === 'brewer') renderBrewer(r.id);
     else if (r.name === 'gear') renderGear();
+    else if (r.name === 'roasts') renderRoasts(r);
+    else if (r.name === 'roast') renderRoast(r.id);
     else renderHome(r);
-    var navKey = { home: 'home', brew: 'home', compare: 'home', beans: 'beans', bean: 'beans', brewers: 'brewers', brewer: 'brewers', gear: 'gear' }[r.name];
+    var navKey = { home: 'home', brew: 'home', compare: 'home', beans: 'beans', bean: 'beans', brewers: 'brewers', brewer: 'brewers', gear: 'gear', roasts: 'roasts', roast: 'roasts' }[r.name];
     document.querySelectorAll('.tabs a').forEach(function (a) { if (a.getAttribute('data-nav') === navKey) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
     renderTray();
   }
@@ -1384,7 +1581,8 @@
   themeLabel();
 
   fetch('data/index.json?v=' + V).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (d) {
-    BEANS = d.beans; BREWERS = d.brewers || {}; GEAR = d.gear || { categories: [], items: {} };
+    BEANS = d.beans; BREWERS = d.brewers || {}; ROASTS = d.roasts || [];
+    ROASTS.forEach(function (r) { BY_ROAST[r.id] = r; }); GEAR = d.gear || { categories: [], items: {} };
     Object.keys(BREWERS).forEach(function (k) { BREWER[k] = BREWERS[k].name; });
     BREWS = d.brews.slice().sort(function (a, b) { return a.date === b.date ? a.cup - b.cup : (a.date < b.date ? -1 : 1); });
     BREWS.forEach(function (b, i) { b.idx = i; BY_SLUG[b.slug] = b; });
