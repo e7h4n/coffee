@@ -41,6 +41,8 @@ The site has a page for every coffee (`#/beans`) and every brewer (`#/brewers`),
 
 `catalog/brewers.json` is keyed by the brewer code that Coffee Watch writes (`Switch`, `Hoop`, `V60`). Fields: `name`, `maker`, `type`, `material`, `formula` (`immersion` or `beverage`), `method`, `notes`. A new brewer code in the raw records is reported by `npm run sync` until it is added here.
 
+`catalog/gear.json` lists everything else on the Gear page (`#/gear`): logging hardware, refractometer, scales, grinders and accessories, grouped by `categories`. Each item has `name`, `maker`, `role`, optional `specs` (`[label, value]` pairs), `link` / `linkLabel` and `since`. Usage counts come from the brews: `grinder` matches the grinder code, `twoScale` counts two-scale brews, `tds` counts TDS readings and `curves` counts brews with a curve. Brewers on that page come from `catalog/brewers.json`. Published as `data/gear.json`.
+
 ## Curation fields
 
 `catalog/brews.json` is keyed by the record id without its device prefix (`<random>-<seq>`, or the full `manual-…` id). Every field is optional:

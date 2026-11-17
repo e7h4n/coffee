@@ -1,0 +1,114 @@
+{
+  "_doc": "Gear shown on the Gear page. Brewers come from catalog/brewers.json. 'grinder' links an item to brews by grinder code; 'twoScale' counts two-scale brews; 'tds' counts brews with a TDS reading.",
+  "categories": [
+    "Logging",
+    "Refractometer",
+    "Scales",
+    "Grinders",
+    "Brewers",
+    "Accessories"
+  ],
+  "items": {
+    "coffee-watch": {
+      "category": "Logging",
+      "name": "Coffee Watch",
+      "maker": "M5Stack StopWatch with custom firmware",
+      "role": "Runs every brew: reads both scales and the refractometer over Bluetooth and the bed probe through a wired input, computes extraction yield, and uploads one record per brew to Dropbox.",
+      "specs": [
+        [
+          "Hardware",
+          "M5Stack StopWatch (52 × 52 × 15.5 mm, 39 g)"
+        ],
+        [
+          "Firmware",
+          "e7h4n/coffee-watch, open source"
+        ],
+        [
+          "Data",
+          "JSON record per brew, plus a 10 Hz curve CSV from Nov 10"
+        ]
+      ],
+      "link": "https://github.com/e7h4n/coffee-watch",
+      "linkLabel": "e7h4n/coffee-watch on GitHub",
+      "since": "2026-11-02"
+    },
+    "bed-probe": {
+      "category": "Logging",
+      "name": "Bed probe",
+      "maker": "Home-built",
+      "role": "Sits in the slurry and gives the temperature curve on every brew card.",
+      "specs": [
+        [
+          "Sensor",
+          "100K NTC thermistor in a 3 mm 316L stainless tube"
+        ],
+        [
+          "Sampling",
+          "10 Hz, read by Coffee Watch"
+        ]
+      ],
+      "since": "2026-11-10",
+      "curves": true
+    },
+    "difluid": {
+      "category": "Refractometer",
+      "name": "DiFluid RS",
+      "maker": "DiFluid",
+      "role": "Measures the TDS of every cup; Coffee Watch receives the reading and computes extraction yield.",
+      "tds": true
+    },
+    "bookoo": {
+      "category": "Scales",
+      "name": "Bookoo Ultra",
+      "maker": "Bookoo",
+      "role": "Main scale under the brewer; tracks the water poured."
+    },
+    "ck811": {
+      "category": "Scales",
+      "name": "Lefu CK811BLE",
+      "maker": "Lefu",
+      "role": "Lower scale under the server; tracks the beverage flowing out.",
+      "specs": [
+        [
+          "Capacity",
+          "5 kg, 0.1 g"
+        ],
+        [
+          "Update rate",
+          "About 3.4 readings per second"
+        ]
+      ],
+      "twoScale": true
+    },
+    "c40": {
+      "category": "Grinders",
+      "name": "Comandante C40",
+      "maker": "Comandante",
+      "grinder": "C40",
+      "role": "Main hand grinder; usually 24 clicks for the Switch."
+    },
+    "phantox": {
+      "category": "Grinders",
+      "name": "MAVO Phantox Pro",
+      "maker": "MAVO",
+      "grinder": "MAVO",
+      "role": "Second hand grinder, external adjustment.",
+      "specs": [
+        [
+          "Burrs",
+          "45 mm"
+        ],
+        [
+          "Adjustment",
+          "120 clicks per turn, about 16.7 µm per click"
+        ]
+      ]
+    },
+    "stand": {
+      "category": "Accessories",
+      "name": "Brew stand",
+      "maker": "3D printed at home",
+      "role": "Custom stand that holds the brewing setup and Coffee Watch together."
+    }
+  }
+}

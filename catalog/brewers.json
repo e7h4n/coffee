@@ -1,12 +1,12 @@
 {
   "Switch": {
-    "name": "Hario Switch",
+    "name": "Hario V60 Neo Switch",
     "maker": "Hario",
     "type": "Immersion dripper with a valve",
     "material": "Resin",
     "formula": "immersion",
     "method": "Close the valve, pour and steep, then open the valve and let it drain fully.",
-    "notes": "Once used as a base under a V60 Neo cone (Nov 4). From Nov 17 it sits on two scales, so the beverage flowing out is logged too."
+    "notes": "From Nov 17 it sits on two scales, so the beverage flowing out is logged too."
   },
   "Hoop": {
     "name": "Ceado Hoop",
@@ -17,7 +17,7 @@
     "notes": "Without stirring, extraction stayed around 13 to 15%. Stirring pushed it to about 20% but clogged the filter (one brew dripped for 8 minutes)."
   },
   "V60": {
-    "name": "Hario V60 (ceramic)",
+    "name": "Hario V60 Neo",
     "maker": "Hario",
     "type": "Cone percolation",
     "material": "Ceramic",
