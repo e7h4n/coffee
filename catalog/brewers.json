@@ -3,10 +3,13 @@
     "name": "Hario V60 Neo Switch",
     "maker": "Hario",
     "type": "Immersion dripper with a valve",
-    "material": "Resin",
+    "material": "Tritan (PCT resin) cone, resin switch, silicone base",
     "formula": "immersion",
     "method": "Close the valve, pour and steep, then open the valve and let it drain fully.",
-    "notes": "From Nov 17 it sits on two scales, so the beverage flowing out is logged too."
+    "notes": "Hario sells it as the Switch & Match NEO set: a V60 Dripper NEO cone on a Switch base, and the cone also works on its own. From Nov 17 it sits on two scales, so the beverage flowing out is logged too.",
+    "image": "img/gear/brewer-switch.jpg",
+    "imageCredit": "Hario",
+    "imageSource": "https://www.hario.co.uk/products/hario-switch-match-neo-dripper-set-transparent"
   },
   "Hoop": {
     "name": "Ceado Hoop",
@@ -14,15 +17,21 @@
     "type": "Flat-bottom percolation; a top ring spreads the water over the bed",
     "formula": "beverage",
     "method": "Pour into the ring and let it shower onto the bed.",
-    "notes": "Without stirring, extraction stayed around 13 to 15%. Stirring pushed it to about 20% but clogged the filter (one brew dripped for 8 minutes)."
+    "notes": "Without stirring, extraction stayed around 13 to 15%. Stirring pushed it to about 20% but clogged the filter (one brew dripped for 8 minutes).",
+    "image": "img/gear/brewer-hoop.jpg",
+    "imageCredit": "Ceado",
+    "imageSource": "https://www.ceado.com/en/products/pour-over-coffee-brewer/"
   },
   "V60": {
-    "name": "Hario V60 Neo",
+    "name": "Hario V60 (ceramic)",
     "maker": "Hario",
     "type": "Cone percolation",
     "material": "Ceramic",
     "formula": "beverage",
     "method": "Pour-over through a cone filter.",
-    "notes": "The ceramic body pulls the slurry temperature down quickly at first, then holds heat better than the resin Switch once it is warm."
+    "notes": "The ceramic body pulls the slurry temperature down quickly at first, then holds heat better than the resin Switch once it is warm.",
+    "image": "img/gear/brewer-v60.jpg",
+    "imageCredit": "Hario",
+    "imageSource": "https://www.hario-europe.com/products/hario-v60-ceramic-drippers-01"
   }
 }

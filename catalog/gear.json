@@ -1,5 +1,5 @@
 {
-  "_doc": "Gear shown on the Gear page. Brewers come from catalog/brewers.json. 'grinder' links an item to brews by grinder code; 'twoScale' counts two-scale brews; 'tds' counts brews with a TDS reading.",
+  "_doc": "Gear shown on the Gear page. Brewers come from catalog/brewers.json. 'grinder' links an item to brews by grinder code; 'twoScale' counts two-scale brews; 'tds' counts brews with a TDS reading. 'image' is a path under web/; product photos belong to their makers and are credited with 'imageCredit' and 'imageSource'.",
   "categories": [
     "Logging",
     "Refractometer",
@@ -30,7 +30,10 @@
       ],
       "link": "https://github.com/e7h4n/coffee-watch",
       "linkLabel": "e7h4n/coffee-watch on GitHub",
-      "since": "2026-11-02"
+      "since": "2026-11-02",
+      "image": "img/gear/coffee-watch.jpg",
+      "imageCredit": "M5Stack",
+      "imageSource": "https://shop.m5stack.com/products/m5stack-stopwatch-dev-kit-esp32-s3"
     },
     "bed-probe": {
       "category": "Logging",
@@ -52,16 +55,22 @@
     },
     "difluid": {
       "category": "Refractometer",
-      "name": "DiFluid RS",
+      "name": "DiFluid RS Extract",
       "maker": "DiFluid",
       "role": "Measures the TDS of every cup; Coffee Watch receives the reading and computes extraction yield.",
-      "tds": true
+      "tds": true,
+      "image": "img/gear/difluid.jpg",
+      "imageCredit": "DiFluid",
+      "imageSource": "https://digitizefluid.com/products/rs-extract"
     },
     "bookoo": {
       "category": "Scales",
-      "name": "Bookoo Ultra",
+      "name": "Bookoo Themis Ultra",
       "maker": "Bookoo",
-      "role": "Main scale under the brewer; tracks the water poured."
+      "role": "Main scale under the brewer; tracks the water poured.",
+      "image": "img/gear/bookoo.jpg",
+      "imageCredit": "Bookoo",
+      "imageSource": "https://bookoocoffee.com/products/bookoo-themis-ultra-coffee-scale"
     },
     "ck811": {
       "category": "Scales",
@@ -85,7 +94,10 @@
       "name": "Comandante C40",
       "maker": "Comandante",
       "grinder": "C40",
-      "role": "Main hand grinder; usually 24 clicks for the Switch."
+      "role": "Main hand grinder; usually 24 clicks for the Switch.",
+      "image": "img/gear/c40.jpg",
+      "imageCredit": "Comandante",
+      "imageSource": "https://comandantegrinder.com/products/c40-mk4-nitro-blade-black"
     },
     "phantox": {
       "category": "Grinders",
@@ -102,7 +114,10 @@
           "Adjustment",
           "120 clicks per turn, about 16.7 µm per click"
         ]
-      ]
+      ],
+      "image": "img/gear/phantox.jpg",
+      "imageCredit": "MAVO",
+      "imageSource": "https://mavocoffee.com/products/phantox-pro-coffee-grinder"
     },
     "stand": {
       "category": "Accessories",

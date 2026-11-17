@@ -1215,6 +1215,7 @@
     app.appendChild(h('div', { class: 'cat-grid' }, codes.map(function (it) {
       var br = BREWERS[it.c], st = it.st;
       return h('a', { class: 'card cat-card', href: '#/brewers/' + it.c }, [
+        br.image ? h('div', { class: 'gear-img small' }, [h('img', { src: br.image, alt: br.name, loading: 'lazy' })]) : null,
         h('div', { class: 'cat-top' }, [h('h3', { text: br.name }), h('span', { class: 'muted', style: 'font-size:12px', text: plural(st.n, 'brew') })]),
         h('div', { class: 'cat-sub', text: [br.type, br.material].filter(Boolean).join(' · ') }),
         h('div', { class: 'stats' }, [stat('Median yield', fmt(st.ey, 1), '%'), stat('Median TDS', fmt(st.tds, 2), '%'), stat('Median time', fmtTime(st.time)), stat('Peak slurry', fmt(st.peak, 1), st.peak != null ? '°C' : '')]),
@@ -1242,7 +1243,8 @@
     document.title = br.name + ' · Daily Brew Log';
     var list = brewerBrews(code), st = brewStats(list);
     app.appendChild(h('div', { class: 'detail-head' }, [
-      h('div', {}, [h('div', { class: 'when', text: 'Brewer' }), h('h1', { text: br.name }), h('div', { class: 'meta' }, [br.maker, br.material, br.formula === 'immersion' ? 'Immersion formula' : 'Beverage formula'].filter(Boolean).map(function (t) { return h('span', { class: 'tag', text: t }); }))]),
+      br.image ? h('figure', { class: 'head-img' }, [h('img', { src: br.image, alt: br.name }), br.imageCredit ? h('figcaption', {}, [h('a', { href: br.imageSource, target: '_blank', rel: 'noopener', text: 'Photo: ' + br.imageCredit })]) : null]) : null,
+      h('div', { style: 'flex:1;min-width:0' }, [h('div', { class: 'when', text: 'Brewer' }), h('h1', { text: br.name }), h('div', { class: 'meta' }, [br.maker, br.material, br.formula === 'immersion' ? 'Immersion formula' : 'Beverage formula'].filter(Boolean).map(function (t) { return h('span', { class: 'tag', text: t }); }))]),
       list.length ? h('a', { class: 'ghost-btn', href: '#/?brewer=' + code, text: 'Show in brew list' }) : null
     ]));
     app.appendChild(h('div', { class: 'tiles' }, [
@@ -1283,8 +1285,16 @@
     if (!list) return null;
     return { n: list.length, label: label, first: list.length ? list[0].date : null, last: list.length ? list[list.length - 1].date : null };
   }
-  function gearCard(name, maker, role, specs, usage, actions) {
+  function gearImage(it) {
+    if (!it || !it.image) return h('div', { class: 'gear-img empty', 'aria-hidden': 'true' }, [h('span', { text: 'No photo yet' })]);
+    return h('figure', { class: 'gear-img' }, [
+      h('img', { src: it.image, alt: it.name, loading: 'lazy' }),
+      it.imageCredit ? h('figcaption', {}, [it.imageSource ? h('a', { href: it.imageSource, target: '_blank', rel: 'noopener', text: 'Photo: ' + it.imageCredit }) : 'Photo: ' + it.imageCredit]) : null
+    ]);
+  }
+  function gearCard(name, maker, role, specs, usage, actions, imgItem) {
     return h('section', { class: 'card cat-card gear-card' }, [
+      gearImage(Object.assign({ name: name }, imgItem || {})),
       h('div', { class: 'cat-top' }, [h('h3', { text: name }), usage ? h('span', { class: 'muted', style: 'font-size:12px', text: usage.n + ' ' + usage.label }) : null]),
       maker ? h('div', { class: 'cat-sub', text: maker }) : null,
       role ? h('p', { class: 'gear-role', text: role }) : null,
@@ -1297,7 +1307,7 @@
     function node(title, sub) { return h('div', { class: 'flow-node' }, [h('strong', { text: title }), sub ? h('span', { class: 'muted', text: sub }) : null]); }
     function arrow() { return h('div', { class: 'flow-arrow', 'aria-hidden': 'true', text: '→' }); }
     var inputs = h('div', { class: 'flow-col' }, [
-      node('Bookoo Ultra', 'water poured'), node('Lefu CK811BLE', 'beverage out'), node('Bed probe', 'slurry temperature'), node('DiFluid RS', 'TDS')
+      node('Bookoo Themis Ultra', 'water poured'), node('Lefu CK811BLE', 'beverage out'), node('Bed probe', 'slurry temperature'), node('DiFluid RS Extract', 'TDS')
     ]);
     return h('div', { class: 'flow', role: 'img', 'aria-label': 'Scales, bed probe and refractometer feed Coffee Watch, which uploads to Dropbox; records are synced by hand to this site.' }, [
       inputs, arrow(), node('Coffee Watch', 'M5Stack StopWatch'), arrow(), node('Dropbox', 'one record per brew'), arrow(), node('This site', 'synced by hand')
@@ -1316,7 +1326,7 @@
         Object.keys(BREWERS).forEach(function (code) {
           var br = BREWERS[code], list = brewerBrews(code);
           var usage = { n: list.length, label: list.length === 1 ? 'brew' : 'brews', first: list.length ? list[0].date : null, last: list.length ? list[list.length - 1].date : null };
-          cards.push(gearCard(br.name, [br.maker, br.material].filter(Boolean).join(' · '), br.type, [], usage, [h('a', { class: 'ghost-btn', href: '#/brewers/' + code, text: 'Brewer page' })]));
+          cards.push(gearCard(br.name, [br.maker, br.material].filter(Boolean).join(' · '), br.type, [], usage, [h('a', { class: 'ghost-btn', href: '#/brewers/' + code, text: 'Brewer page' })], br));
         });
       } else {
         Object.keys(items).filter(function (id) { return items[id].category === cat; }).forEach(function (id) {
@@ -1325,7 +1335,7 @@
           if (it.link) actions.push(h('a', { class: 'ghost-btn', href: it.link, target: '_blank', rel: 'noopener', text: it.linkLabel || 'Link' }));
           var specs = (it.specs || []).slice();
           if (it.since && !usage) specs.push(['Since', dayLabel(it.since) + ', ' + it.since.slice(0, 4)]);
-          cards.push(gearCard(it.name, it.maker, it.role, specs, usage, actions));
+          cards.push(gearCard(it.name, it.maker, it.role, specs, usage, actions, it));
         });
       }
       if (!cards.length) return;
