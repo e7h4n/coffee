@@ -553,8 +553,16 @@
    "method": "Ceramic V60."
   },
   "7915250b4b4c9618-1": {},
-  "d1c33bbe56d6005d-1": {},
-  "d1c33bbe56d6005d-2": {},
+  "d1c33bbe56d6005d-1": {
+   "bean": "huakui",
+   "batch": "Nov 15 curve A",
+   "roastDate": "2026-11-15"
+  },
+  "d1c33bbe56d6005d-2": {
+   "bean": "huakui",
+   "batch": "Nov 15 curve B",
+   "roastDate": "2026-11-15"
+  },
   "56d15792fb96e845-1": {
    "bean": "gotiti",
    "batch": "Nov 6 batch 4",
