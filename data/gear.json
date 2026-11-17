@@ -4,8 +4,7 @@
     "Refractometer",
     "Scales",
     "Grinders",
-    "Brewers",
-    "Accessories"
+    "Brewers"
   ],
   "items": {
     "coffee-watch": {
@@ -117,12 +116,6 @@
       "image": "img/gear/phantox.jpg",
       "imageCredit": "MAVO",
       "imageSource": "https://mavocoffee.com/products/phantox-pro-coffee-grinder"
-    },
-    "stand": {
-      "category": "Accessories",
-      "name": "Brew stand",
-      "maker": "3D printed at home",
-      "role": "Custom stand that holds the brewing setup and Coffee Watch together."
     }
   }
 }
