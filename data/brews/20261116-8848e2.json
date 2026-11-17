@@ -6,8 +6,8 @@
   "manual": false,
   "bean": {
     "id": "huakui",
-    "name": "HANSUN Huakui 11",
-    "full": "HANSUN Huakui 11 (China Beauty 11), Ethiopia Guji Hambella, Heirloom, Customized Natural",
+    "name": "HANSUN China Beauty 11",
+    "full": "HANSUN China Beauty 11, Ethiopia Guji Hambella, Heirloom, Customized Natural",
     "origin": "Ethiopia",
     "region": "Guji, Hambella",
     "altitude": "2200 to 2350 m",
@@ -26,7 +26,7 @@
     "note": "Two 200 g batches roasted back to back on Nov 15 with the same first-crack target: curve A develops for a shorter time at a faster rate, curve B longer and slower."
   },
   "roast": "2026-11-15-huakui-b",
-  "batch": "Huakui B",
+  "batch": "China Beauty B",
   "roastDate": "2026-11-15",
   "rest": 1,
   "grinder": null,
