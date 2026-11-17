@@ -1,0 +1,5 @@
+# Raw Coffee Watch exports stay local; only normalized public data is committed.
+raw/
+dist/
+node_modules/
+.DS_Store

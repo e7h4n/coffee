@@ -1,0 +1,51 @@
+{
+  "slug": "20261112-4a58dc",
+  "date": "2026-11-12",
+  "brewer": "Switch",
+  "scales": 1,
+  "manual": false,
+  "bean": {
+    "id": "eltambo",
+    "name": "SEY El Tambo",
+    "full": "SEY Coffee, Daniel Caro Lopez, El Tambo, Chiroso, Washed",
+    "origin": "Colombia",
+    "process": "Washed",
+    "source": "Commercial",
+    "roaster": "SEY Coffee"
+  },
+  "batch": "Roasted early Oct",
+  "roastDate": null,
+  "rest": null,
+  "grinder": "C40",
+  "grind": "24",
+  "dose": 15,
+  "water": 189.5,
+  "beverage": 146.3,
+  "ratio": 12.6,
+  "tds": 1.56,
+  "ey": 20.02,
+  "formula": "immersion",
+  "time": 181,
+  "valve": null,
+  "peak": 84.6,
+  "rating": "disliked",
+  "flavor": [],
+  "tastes": [
+    [
+      "Sour",
+      "high"
+    ],
+    [
+      "Sweet",
+      "low"
+    ]
+  ],
+  "mouthfeel": [
+    "Mouth-Drying"
+  ],
+  "note": "Too sour, no sweetness, a hint of mouth-drying.",
+  "method": "Strong ratio, 1:12.6.",
+  "correction": null,
+  "hasTrace": true,
+  "cup": 3
+}

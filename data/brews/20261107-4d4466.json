@@ -1,0 +1,54 @@
+{
+  "slug": "20261107-4d4466",
+  "date": "2026-11-07",
+  "brewer": "Switch",
+  "scales": 1,
+  "manual": false,
+  "bean": {
+    "id": "gotiti",
+    "name": "Gotiti Honey Moon",
+    "full": "Ethiopia Yirgacheffe Gotiti, Heirloom, DFW \"Honey Moon\" Washed 3.0",
+    "origin": "Ethiopia",
+    "process": "Washed",
+    "source": "Home roast"
+  },
+  "batch": "Nov 6 batch 4",
+  "roastDate": "2026-11-06",
+  "rest": 1,
+  "grinder": "C40",
+  "grind": "24",
+  "dose": 15,
+  "water": 238.5,
+  "beverage": 179.5,
+  "ratio": 15.9,
+  "tds": 1.22,
+  "ey": 19.56,
+  "formula": "immersion",
+  "time": 242,
+  "valve": null,
+  "peak": null,
+  "rating": "ok",
+  "flavor": [
+    "Strawberry",
+    "Raspberry",
+    "Lemon"
+  ],
+  "tastes": [
+    [
+      "Sour",
+      "medium"
+    ],
+    [
+      "Sweet",
+      "medium"
+    ]
+  ],
+  "mouthfeel": [
+    "Mouth-Drying"
+  ],
+  "note": "Hot: sour and mouth-drying with a sweet aftertaste. Below about 52 °C the drying eases into lemon-like acidity with sweetness; strawberry, raspberry, stone fruit.",
+  "method": "Stirred; slow drain, 4:02 total.",
+  "correction": null,
+  "hasTrace": false,
+  "cup": 4
+}

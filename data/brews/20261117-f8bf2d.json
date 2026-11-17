@@ -1,0 +1,41 @@
+{
+  "slug": "20261117-f8bf2d",
+  "date": "2026-11-17",
+  "brewer": "Switch",
+  "scales": 2,
+  "manual": false,
+  "bean": {
+    "id": "syrina",
+    "name": "Yunnan Syrina",
+    "full": "China Yunnan Lincang, The Nest Estate, Syrina, 1700-1800 m, Dark Forest Natural (competition green)",
+    "origin": "China",
+    "process": "Natural",
+    "source": "Home roast"
+  },
+  "batch": "Nov 15 batch F",
+  "roastDate": "2026-11-15",
+  "rest": 2,
+  "grinder": "MAVO",
+  "grind": "9.5",
+  "dose": 15,
+  "water": 255.8,
+  "beverage": 216.1,
+  "ratio": 17.1,
+  "tds": 1.31,
+  "ey": 22.72,
+  "formula": "immersion",
+  "time": 181,
+  "valve": 120.8,
+  "peak": 83.6,
+  "rating": "ok",
+  "flavor": [],
+  "tastes": [],
+  "mouthfeel": [
+    "Mouth-Drying"
+  ],
+  "note": "Still a little mouth-drying.",
+  "method": null,
+  "correction": null,
+  "hasTrace": true,
+  "cup": 2
+}

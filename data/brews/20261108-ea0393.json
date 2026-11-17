@@ -1,0 +1,46 @@
+{
+  "slug": "20261108-ea0393",
+  "date": "2026-11-08",
+  "brewer": "Switch",
+  "scales": 1,
+  "manual": false,
+  "bean": {
+    "id": "mix1031",
+    "name": "Oct 31 Roast Blend",
+    "full": "Blend of the Oct 31 home roasts: Limu batches 1 and 2 with ALO Boore Guji batch 3",
+    "origin": "Ethiopia",
+    "process": "Blend",
+    "source": "Home roast"
+  },
+  "batch": null,
+  "roastDate": "2026-10-31",
+  "rest": 8,
+  "grinder": "C40",
+  "grind": null,
+  "dose": 15,
+  "water": 227.1,
+  "beverage": 182.9,
+  "ratio": 15.1,
+  "tds": 1.35,
+  "ey": 20.66,
+  "formula": "immersion",
+  "time": 211,
+  "valve": null,
+  "peak": null,
+  "rating": "disliked",
+  "flavor": [],
+  "tastes": [
+    [
+      "Sour",
+      "high"
+    ]
+  ],
+  "mouthfeel": [
+    "Mouth-Drying"
+  ],
+  "note": "Strongly sour and mouth-drying; no burnt bitterness and no nutty notes.",
+  "method": null,
+  "correction": null,
+  "hasTrace": false,
+  "cup": 4
+}

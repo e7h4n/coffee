@@ -1,0 +1,48 @@
+{
+  "slug": "20261105-3ea1f2",
+  "date": "2026-11-05",
+  "brewer": "Hoop",
+  "scales": 1,
+  "manual": false,
+  "bean": {
+    "id": "aokka",
+    "name": "AOKKA Brazil Chocolate",
+    "full": "AOKKA Brazil \"Chocolate\", Sao Antonio, Mundo Novo / Catuai / Catucai, Natural, medium roast",
+    "origin": "Brazil",
+    "process": "Natural",
+    "source": "Commercial",
+    "roaster": "AOKKA"
+  },
+  "batch": null,
+  "roastDate": null,
+  "rest": null,
+  "grinder": null,
+  "grind": null,
+  "dose": 15,
+  "water": 269.8,
+  "beverage": 228.3,
+  "ratio": 18,
+  "tds": 0.84,
+  "ey": 12.74,
+  "formula": "beverage",
+  "time": 231,
+  "valve": null,
+  "peak": null,
+  "rating": "ok",
+  "flavor": [
+    "Smoky",
+    "Chocolate",
+    "Caramelized",
+    "Overall Sweet"
+  ],
+  "tastes": [],
+  "mouthfeel": [
+    "Smooth",
+    "Light body"
+  ],
+  "note": "A little thin at this extraction. Creamy sweetness, smoky, with a touch of chocolate and toffee.",
+  "method": null,
+  "correction": null,
+  "hasTrace": false,
+  "cup": 3
+}

@@ -1,0 +1,41 @@
+{
+  "slug": "20261115-af22d7",
+  "date": "2026-11-15",
+  "brewer": "Switch",
+  "scales": 1,
+  "manual": false,
+  "bean": {
+    "id": "leftover",
+    "name": "Leftover Blend",
+    "full": "Whatever beans were left over, mixed together",
+    "origin": "Mixed",
+    "process": "Blend",
+    "source": "Blend"
+  },
+  "batch": null,
+  "roastDate": null,
+  "rest": null,
+  "grinder": "MAVO",
+  "grind": "8.5",
+  "dose": 15,
+  "water": 254.7,
+  "beverage": 213.6,
+  "ratio": 17,
+  "tds": 1.24,
+  "ey": 21.38,
+  "formula": "immersion",
+  "time": 180,
+  "valve": null,
+  "peak": 85.5,
+  "rating": "ok",
+  "flavor": [],
+  "tastes": [],
+  "mouthfeel": [
+    "Mouth-Drying"
+  ],
+  "note": "A little more mouth-drying than usual, but still fairly good.",
+  "method": null,
+  "correction": null,
+  "hasTrace": true,
+  "cup": 1
+}

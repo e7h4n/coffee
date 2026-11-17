@@ -1,0 +1,48 @@
+{
+  "slug": "20261104-a9eda5",
+  "date": "2026-11-04",
+  "brewer": "Switch",
+  "scales": 1,
+  "manual": false,
+  "bean": {
+    "id": "limu",
+    "name": "Ethiopia Limu",
+    "full": "Ethiopia Limu G2, Washed",
+    "origin": "Ethiopia",
+    "process": "Washed",
+    "source": "Home roast"
+  },
+  "batch": "Oct 31 batch 1",
+  "roastDate": "2026-10-31",
+  "rest": 4,
+  "grinder": "C40",
+  "grind": "24",
+  "dose": 15,
+  "water": 238.9,
+  "beverage": 194.9,
+  "ratio": 15.9,
+  "tds": 1.31,
+  "ey": 21.09,
+  "formula": "immersion",
+  "time": 181,
+  "valve": null,
+  "peak": null,
+  "rating": "ok",
+  "flavor": [],
+  "tastes": [
+    [
+      "Sour",
+      "medium"
+    ],
+    [
+      "Bitter",
+      "low"
+    ]
+  ],
+  "mouthfeel": [],
+  "note": "Less sharp sourness than the two-stage cup; bitterness stays in the finish.",
+  "method": "All water at once to 1:16, valve opened at 2:00, done at 3:00. Last drops 1.58% TDS.",
+  "correction": null,
+  "hasTrace": false,
+  "cup": 5
+}

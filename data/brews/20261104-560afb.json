@@ -1,0 +1,50 @@
+{
+  "slug": "20261104-560afb",
+  "date": "2026-11-04",
+  "brewer": "Switch",
+  "scales": 1,
+  "manual": false,
+  "bean": {
+    "id": "limu",
+    "name": "Ethiopia Limu",
+    "full": "Ethiopia Limu G2, Washed",
+    "origin": "Ethiopia",
+    "process": "Washed",
+    "source": "Home roast"
+  },
+  "batch": "Oct 31 batch 1",
+  "roastDate": "2026-10-31",
+  "rest": 4,
+  "grinder": "C40",
+  "grind": "24",
+  "dose": 15,
+  "water": 253.1,
+  "beverage": 209.4,
+  "ratio": 16.9,
+  "tds": 1.25,
+  "ey": 21.41,
+  "formula": "immersion",
+  "time": 181,
+  "valve": null,
+  "peak": null,
+  "rating": "ok",
+  "flavor": [
+    "Lemon"
+  ],
+  "tastes": [
+    [
+      "Sour",
+      "medium"
+    ],
+    [
+      "Bitter",
+      "low"
+    ]
+  ],
+  "mouthfeel": [],
+  "note": "The sharp sourness turned into rounder acidity, little green character, less mouth-drying; but one-dimensional, like lemon water.",
+  "method": "Same as the previous cup at 1:17, with stirring. Leftover liquid 1.41% TDS.",
+  "correction": null,
+  "hasTrace": false,
+  "cup": 6
+}

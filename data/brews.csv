@@ -1,0 +1,57 @@
+slug,date,cup,bean,brewer,grinder,grind,dose_g,water_g,beverage_g,ratio,tds_percent,extraction_percent,formula,time_s,valve_s,probe_peak_c,rest_days,rating,flavor,note
+20261102-57b4cd,2026-11-02,1,SEY El Tambo,Hoop,,,15,249.6,205,16.6,1.14,15.53,beverage,206,,,,,,
+20261102-4bcc2e,2026-11-02,2,SEY El Tambo,Switch,,,15,248.9,205.3,16.6,1.23,20.58,immersion,341,,,,,,
+20261102-5a6999,2026-11-02,3,ALO Boore Guji,Hoop,,,15,251.7,210.7,16.8,0.99,13.93,beverage,204,,,2,disliked,Peanuts; Grain; Under-ripe,"Flat and muted. Faint sourness as it cools, with peanut, roasted-barley grain and a slightly green edge."
+20261103-c25269,2026-11-03,1,SEY El Tambo,Hoop,C40,24,30,500,415.6,16.7,1.11,15.31,beverage,435,,,,,,
+20261103-b89586,2026-11-03,2,ALO Boore Guji,Hoop,C40,24,15.1,257.1,217.7,17,0.88,12.71,beverage,167,,,3,,,
+20261104-bc43f0,2026-11-04,1,SEY El Tambo,Hoop,C40,24,15,255.2,210.5,17,0.96,13.47,beverage,181,,,,,,
+20261104-e0fb44,2026-11-04,2,SEY El Tambo,Switch,C40,24,20,341.9,276.9,17.1,1.16,20.05,immersion,274,,,,,,Too dilute overall.
+20261104-561cf1,2026-11-04,3,SEY El Tambo,Switch,C40,24,15,255.1,217.7,17,1.1,18.99,immersion,183,,,,,,
+20261104-5ad999,2026-11-04,4,Ethiopia Limu,Switch,C40,24,15,239.3,196.7,16,1.37,22.11,immersion,181,,,4,disliked,Nutty,Sharp sourness and slight bitterness with a nutty aftertaste; the finish stays sour and mouth-drying.
+20261104-a9eda5,2026-11-04,5,Ethiopia Limu,Switch,C40,24,15,238.9,194.9,15.9,1.31,21.09,immersion,181,,,4,ok,,Less sharp sourness than the two-stage cup; bitterness stays in the finish.
+20261104-560afb,2026-11-04,6,Ethiopia Limu,Switch,C40,24,15,253.1,209.4,16.9,1.25,21.41,immersion,181,,,4,ok,Lemon,"The sharp sourness turned into rounder acidity, little green character, less mouth-drying; but one-dimensional, like lemon water."
+20261105-2630de,2026-11-05,1,SEY El Tambo,Switch,C40,24,14.9,239.5,195.3,16.1,1.25,20.4,immersion,241,,,,,,
+20261105-14dbed,2026-11-05,2,SEY El Tambo,Hoop,C40,24,15,240.4,189,16,1.59,20.08,beverage,496,,,,liked,,Bright acidity and clear sweetness; a clean cup with no off-flavors.
+20261105-3ea1f2,2026-11-05,3,AOKKA Brazil Chocolate,Hoop,,,15,269.8,228.3,18,0.84,12.74,beverage,231,,,,ok,Smoky; Chocolate; Caramelized; Overall Sweet,"A little thin at this extraction. Creamy sweetness, smoky, with a touch of chocolate and toffee."
+20261105-90e9fc,2026-11-05,4,Gotiti Honey Moon,Switch,C40,,15,225,181.9,15,1.29,19.59,immersion,216,,,1,ok,,"The roasted-barley note from cupping is gone; short aftertaste, and the orange from the bag notes is missing."
+20261106-0f8362,2026-11-06,1,Gotiti Honey Moon,Switch,C40,24,15,237.9,194.4,15.9,1.28,20.52,immersion,300,,,2,ok,,Slightly bitter with a mouth-drying finish.
+20261106-6bfacb,2026-11-06,2,Gotiti Honey Moon,Switch,C40,24,15,240,205.3,16,1.21,19.54,immersion,180,,,2,liked,,Much better than the stirred cup: no noticeable bitterness or mouth-drying.
+20261106-87be71,2026-11-06,3,,Hoop,,,15,240.1,198.3,16,1.11,14.72,beverage,248,,,,,,
+20261106-003c2a,2026-11-06,4,Captain George Dark Rider,Switch,C40,24,15,213.2,174.4,14.2,1.24,17.89,immersion,182,,,3,,,
+20261106-361957,2026-11-06,5,Captain George Dark Rider,Switch,,,15,258.3,213.1,17.2,1.01,17.65,immersion,181,,,3,liked,,"A standout cup: pronounced sweetness, soft and gentle, light acidity, no mouth-drying, clean."
+20261107-9aa31c,2026-11-07,1,Captain George Dark Rider,Switch,C40,,15,253.4,210,16.9,1.04,17.73,immersion,180,,,4,liked,,Preferred over the 1:16 cup brewed right after it.
+20261107-6a6a56,2026-11-07,2,Captain George Dark Rider,Switch,C40,,15,238.1,198.7,15.9,1.11,17.76,immersion,188,,,4,ok,,Less preferred than the 1:17 cup brewed just before it.
+20261107-5b427d,2026-11-07,3,SEY Esmeralda Gesha,Switch,,,15,223.9,181.1,14.9,1.3,19.63,immersion,174,,,23,ok,Orange; Jasmine,"No sharp sourness; orange and jasmine, but the aroma is a little faint."
+20261107-4d4466,2026-11-07,4,Gotiti Honey Moon,Switch,C40,24,15,238.5,179.5,15.9,1.22,19.56,immersion,242,,,1,ok,Strawberry; Raspberry; Lemon,"Hot: sour and mouth-drying with a sweet aftertaste. Below about 52 °C the drying eases into lemon-like acidity with sweetness; strawberry, raspberry, stone fruit."
+20261108-4573cd,2026-11-08,1,SEY El Tambo,Switch,C40,,15,210,166,14,1.3,18.44,immersion,150,,,,,,
+20261108-59483f,2026-11-08,2,SEY Esmeralda Gesha,Switch,C40,,15,209.5,169.5,14,1.31,18.53,immersion,180,,,24,,,
+20261108-a3ab55,2026-11-08,3,Captain George Dark Rider,Switch,C40,24,15,254.3,213.1,17,1.07,18.4,immersion,181,,,5,ok,,Slightly bitter and mouth-drying.
+20261108-ea0393,2026-11-08,4,Oct 31 Roast Blend,Switch,C40,,15,227.1,182.9,15.1,1.35,20.66,immersion,211,,,8,disliked,,Strongly sour and mouth-drying; no burnt bitterness and no nutty notes.
+20261108-bb977a,2026-11-08,5,Gotiti Honey Moon,Switch,C40,,15,255.2,212.1,17,1.18,20.34,immersion,242,,,2,liked,,Enjoyable.
+20261109-3b9861,2026-11-09,1,Gotiti Honey Moon,Switch,C40,,15,254.2,211.1,16.9,1.14,19.62,immersion,240,,,3,liked,,Enjoyable.
+20261109-a73b97,2026-11-09,2,Captain George Dark Rider,Switch,C40,,15,249.9,,16.7,1.04,17.51,immersion,170,,,6,liked,,Quite sweet and soft.
+20261109-b38871,2026-11-09,3,Gotiti Honey Moon,Switch,C40,24,15,253.6,207.5,16.9,1.14,19.54,immersion,205,,,3,,,
+20261110-d604fe,2026-11-10,1,Captain George Dark Rider,Switch,C40,24,15,255.1,213.2,17,1.12,19.21,immersion,192,125,91.6,7,,,
+20261110-cd801e,2026-11-10,2,Gesha Village Gold Label,Switch,C40,24,15,223.5,179.4,14.9,1.25,18.79,immersion,215,,84.3,6,ok,Honey; Overall Sweet,"Thin and watery on entry, lacking bright acidity; sweetness mid-palate with a sweet aftertaste, honey and a little fruit."
+20261111-2934fd,2026-11-11,1,Leftover Blend,Switch,C40,24,15,239.8,197.5,16,1.28,20.68,immersion,181,,90.3,,,,
+20261111-68fe42,2026-11-11,2,Gesha Village Gold Label,Switch,C40,24,15,223.1,178.2,14.9,1.32,19.96,immersion,188,,95.2,7,ok,,"Fuller body, no longer watery; a bit more acidity, less sweetness, slightly mouth-drying finish."
+20261111-37d980,2026-11-11,3,Gesha Village Gold Label,Switch,C40,24,15,210.2,175.2,14,1.21,17.16,immersion,171,,84.2,7,,,
+20261112-41c1cf,2026-11-12,1,Gotiti Honey Moon,Switch,C40,24,15,257.7,215.2,17.2,1.15,20.07,immersion,180,,85.2,6,liked,,Good.
+20261112-a43715,2026-11-12,2,Gesha Village Gold Label,Switch,C40,24,15,193.2,150.9,12.9,1.43,18.69,immersion,176,,84.2,8,ok,,More acidic than earlier cups; now a fairly typical Gesha profile.
+20261112-4a58dc,2026-11-12,3,SEY El Tambo,Switch,C40,24,15,189.5,146.3,12.6,1.56,20.02,immersion,181,,84.6,,disliked,,"Too sour, no sweetness, a hint of mouth-drying."
+20261113-0fa241,2026-11-13,1,Yunnan Syrina,Switch,MAVO,7,15,258.3,213.4,17.2,1.34,23.33,immersion,171,,86.6,1,disliked,,Very bitter; the grind felt too fine.
+20261113-108100,2026-11-13,2,Gotiti Honey Moon,Switch,C40,,15,254.5,210.6,17,1.13,19.32,immersion,197,120,86.4,7,liked,,Very good.
+20261113-805c0d,2026-11-13,3,Yunnan Syrina,Switch,C40,24,15,255.8,212.6,17.1,1.17,20.27,immersion,160,120,85.5,1,ok,,"Slightly sour on entry, a little mouth-drying, not much sweetness; an unremarkable light roast."
+20261114-163192,2026-11-14,1,Yunnan Syrina,Switch,C40,24,15,255.1,210.2,17,1.25,21.53,immersion,160,,86.4,2,disliked,,"Sour, mouth-drying and bitter."
+20261114-d99849,2026-11-14,2,Gotiti Honey Moon,Switch,C40,24,15,256.5,212.8,17.1,1.19,20.66,immersion,205,,86.2,8,liked,,Good; the best of the four cups that morning.
+20261114-8133c5,2026-11-14,3,Gesha Village Gold Label,Switch,C40,24,15,180.1,138,12,1.62,19.74,immersion,180,,82.2,10,disliked,,Complex but still a little mouth-drying; not enjoyable.
+20261114-56945c,2026-11-14,4,Yunnan Syrina,Switch,C40,24,15,239.7,198.3,16,1.25,20.23,immersion,156,,84.8,0,,,
+20261115-af22d7,2026-11-15,1,Leftover Blend,Switch,MAVO,8.5,15,254.7,213.6,17,1.24,21.38,immersion,180,,85.5,,ok,,"A little more mouth-drying than usual, but still fairly good."
+20261115-de526e,2026-11-15,2,Gotiti Honey Moon,Switch,MAVO,9.5,15,256.2,215.1,17.1,1.24,21.51,immersion,199,,86.4,9,ok,,"A little more mouth-drying than usual, but still fairly good."
+20261115-ad7b3b,2026-11-15,3,,V60,,,15,211.5,181.9,14.1,1.28,15.49,beverage,122,,90.7,,,,
+20261115-239e4b,2026-11-15,4,,Switch,,,15,256.5,215.1,17.1,1.19,20.65,immersion,137,,85.8,,,,
+20261116-b65eaf,2026-11-16,1,,Switch,,,15,253.8,212.4,16.9,1.23,21.01,immersion,169,,85.7,,,,
+20261116-8848e2,2026-11-16,2,,Switch,,,15,257.2,216.4,17.1,1.2,20.75,immersion,166,,84.9,,,,
+20261117-17153f,2026-11-17,1,Gotiti Honey Moon,Switch,MAVO,9.5,15,253.2,222.5,16.9,1.25,21.37,immersion,207,121,85.7,11,ok,,Still a little mouth-drying.
+20261117-f8bf2d,2026-11-17,2,Yunnan Syrina,Switch,MAVO,9.5,15,255.8,216.1,17.1,1.31,22.72,immersion,181,120.8,83.6,2,ok,,Still a little mouth-drying.
+20261117-bf6b7e,2026-11-17,3,Yunnan Syrina,Switch,C40,24,15,256.9,222.5,17.1,1.17,20.32,immersion,170,120.8,86.8,2,liked,,Very good.

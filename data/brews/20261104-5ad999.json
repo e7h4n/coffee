@@ -1,0 +1,52 @@
+{
+  "slug": "20261104-5ad999",
+  "date": "2026-11-04",
+  "brewer": "Switch",
+  "scales": 1,
+  "manual": true,
+  "bean": {
+    "id": "limu",
+    "name": "Ethiopia Limu",
+    "full": "Ethiopia Limu G2, Washed",
+    "origin": "Ethiopia",
+    "process": "Washed",
+    "source": "Home roast"
+  },
+  "batch": "Oct 31 batch 1",
+  "roastDate": "2026-10-31",
+  "rest": 4,
+  "grinder": "C40",
+  "grind": "24",
+  "dose": 15,
+  "water": 239.3,
+  "beverage": 196.7,
+  "ratio": 16,
+  "tds": 1.37,
+  "ey": 22.11,
+  "formula": "immersion",
+  "time": 181,
+  "valve": null,
+  "peak": null,
+  "rating": "disliked",
+  "flavor": [
+    "Nutty"
+  ],
+  "tastes": [
+    [
+      "Sour",
+      "high"
+    ],
+    [
+      "Bitter",
+      "low"
+    ]
+  ],
+  "mouthfeel": [
+    "Mouth-Drying"
+  ],
+  "note": "Sharp sourness and slight bitterness with a nutty aftertaste; the finish stays sour and mouth-drying.",
+  "method": "Switch base with a V60 Neo cone. Two-stage with stirring: 100 g steeped for 1 min and drained, then the valve closed and the rest of the water added.",
+  "correction": null,
+  "hasTrace": false,
+  "cup": 4
+}

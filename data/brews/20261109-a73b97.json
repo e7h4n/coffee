@@ -1,0 +1,48 @@
+{
+  "slug": "20261109-a73b97",
+  "date": "2026-11-09",
+  "brewer": "Switch",
+  "scales": 1,
+  "manual": true,
+  "bean": {
+    "id": "darkrider",
+    "name": "Captain George Dark Rider",
+    "full": "Captain George No.02 Dark Rider, Colombia Huila, Caturra, Washed, medium-dark roast",
+    "origin": "Colombia",
+    "process": "Washed",
+    "source": "Commercial",
+    "roaster": "Captain George",
+    "roastDate": "2026-11-03"
+  },
+  "batch": null,
+  "roastDate": "2026-11-03",
+  "rest": 6,
+  "grinder": "C40",
+  "grind": null,
+  "dose": 15,
+  "water": 249.9,
+  "beverage": null,
+  "ratio": 16.7,
+  "tds": 1.04,
+  "ey": 17.51,
+  "formula": "immersion",
+  "time": 170,
+  "valve": null,
+  "peak": null,
+  "rating": "liked",
+  "flavor": [],
+  "tastes": [
+    [
+      "Sweet",
+      "high"
+    ]
+  ],
+  "mouthfeel": [
+    "Smooth"
+  ],
+  "note": "Quite sweet and soft.",
+  "method": "Stirred before the valve opened at 2:00; no stirring after.",
+  "correction": "The watch beverage weight was invalid (304.5 g) and is left blank.",
+  "hasTrace": false,
+  "cup": 2
+}

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Daily Brew Log</title>
+<meta name="description" content="Every coffee I brew, logged by Coffee Watch: TDS, extraction yield, pour and slurry temperature curves, and SCA tasting notes.">
+<meta property="og:title" content="Daily Brew Log">
+<meta property="og:description" content="Every coffee I brew, logged by Coffee Watch: TDS, extraction yield, pour and slurry temperature curves, and SCA tasting notes.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css?v=__ASSET_VERSION__">
+<script>
+  (function () {
+    var t = localStorage.getItem('coffee-theme');
+    if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+  })();
+  window.DATA_VERSION = '__DATA_VERSION__';
+</script>
+</head>
+<body>
+<div class="viz-root" id="root">
+  <header class="topbar">
+    <a class="brand" href="#/">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">
+        <strong>Daily Brew Log</strong>
+        <span class="muted" id="brand-sub">Loading…</span>
+      </span>
+    </a>
+    <div class="topbar-actions">
+      <a class="ghost-btn" href="https://github.com/e7h4n/coffee" target="_blank" rel="noopener">GitHub</a>
+      <button class="ghost-btn" id="theme-btn" type="button" aria-label="Switch color theme">Theme: Auto</button>
+    </div>
+  </header>
+  <main id="app"><div class="card empty">Loading brews…</div></main>
+  <div class="tray" id="tray" hidden></div>
+  <div class="tooltip" id="tooltip" role="status" hidden></div>
+  <footer class="site-footer">
+    <span>Logged with <a href="https://github.com/e7h4n/coffee-watch" target="_blank" rel="noopener">Coffee Watch</a>, a DIY brew logger, and synced by hand. Shown by date only.</span>
+    <span>Open data: <a href="data/brews.csv">brews.csv</a> · <a href="data/index.json">index.json</a> · per-brew JSON and 10 Hz CSV on each page</span>
+  </footer>
+</div>
+<script src="app.js?v=__ASSET_VERSION__"></script>
+</body>
+</html>

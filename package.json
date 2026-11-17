@@ -1,0 +1,12 @@
+{
+  "name": "coffee",
+  "private": true,
+  "description": "Daily Brew Log: Coffee Watch extraction records published to GitHub Pages",
+  "type": "module",
+  "scripts": {
+    "sync": "node scripts/sync.mjs",
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/build.mjs && node scripts/serve.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

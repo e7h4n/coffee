@@ -1,0 +1,52 @@
+{
+  "slug": "20261111-68fe42",
+  "date": "2026-11-11",
+  "brewer": "Switch",
+  "scales": 1,
+  "manual": false,
+  "bean": {
+    "id": "geshavillage",
+    "name": "Gesha Village Gold Label",
+    "full": "Ethiopia Gesha Village Gold Label, Gesha 1931, Natural, light roast",
+    "origin": "Ethiopia",
+    "process": "Natural",
+    "source": "Commercial",
+    "roastDate": "2026-11-04"
+  },
+  "batch": null,
+  "roastDate": "2026-11-04",
+  "rest": 7,
+  "grinder": "C40",
+  "grind": "24",
+  "dose": 15,
+  "water": 223.1,
+  "beverage": 178.2,
+  "ratio": 14.9,
+  "tds": 1.32,
+  "ey": 19.96,
+  "formula": "immersion",
+  "time": 188,
+  "valve": null,
+  "peak": 95.2,
+  "rating": "ok",
+  "flavor": [],
+  "tastes": [
+    [
+      "Sour",
+      "medium"
+    ],
+    [
+      "Sweet",
+      "low"
+    ]
+  ],
+  "mouthfeel": [
+    "Full body",
+    "Mouth-Drying"
+  ],
+  "note": "Fuller body, no longer watery; a bit more acidity, less sweetness, slightly mouth-drying finish.",
+  "method": "1:15; the only change from the day before was hotter water.",
+  "correction": null,
+  "hasTrace": true,
+  "cup": 2
+}

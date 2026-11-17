@@ -1,0 +1,41 @@
+{
+  "slug": "20261117-17153f",
+  "date": "2026-11-17",
+  "brewer": "Switch",
+  "scales": 2,
+  "manual": false,
+  "bean": {
+    "id": "gotiti",
+    "name": "Gotiti Honey Moon",
+    "full": "Ethiopia Yirgacheffe Gotiti, Heirloom, DFW \"Honey Moon\" Washed 3.0",
+    "origin": "Ethiopia",
+    "process": "Washed",
+    "source": "Home roast"
+  },
+  "batch": "Nov 6 batch 4",
+  "roastDate": "2026-11-06",
+  "rest": 11,
+  "grinder": "MAVO",
+  "grind": "9.5",
+  "dose": 15,
+  "water": 253.2,
+  "beverage": 222.5,
+  "ratio": 16.9,
+  "tds": 1.25,
+  "ey": 21.37,
+  "formula": "immersion",
+  "time": 207,
+  "valve": 121,
+  "peak": 85.7,
+  "rating": "ok",
+  "flavor": [],
+  "tastes": [],
+  "mouthfeel": [
+    "Mouth-Drying"
+  ],
+  "note": "Still a little mouth-drying.",
+  "method": "Forgot to close the valve at the start, so about 10 g ran through before it was closed; valve opened at 2:01.",
+  "correction": "The first watch reading was 1.55% TDS (an impossible 26.5% extraction); the re-measured 1.25% is used.",
+  "hasTrace": true,
+  "cup": 1
+}

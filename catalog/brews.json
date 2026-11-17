@@ -1,0 +1,589 @@
+{
+ "_doc": "Curated public fields per brew, keyed by the record id without the device prefix. See README for the field contract.",
+ "brews": {
+  "61b47a54ad2e75b1-1": {
+   "bean": "eltambo",
+   "batch": "Roasted early Oct"
+  },
+  "61b47a54ad2e75b1-2": {
+   "bean": "eltambo",
+   "batch": "Roasted early Oct",
+   "method": "Stirred throughout; the final drawdown was slow."
+  },
+  "9074c78880db56d5-1": {
+   "bean": "alo",
+   "batch": "Oct 31 batch 3",
+   "rating": "disliked",
+   "flavor": [
+    "Peanuts",
+    "Grain",
+    "Under-ripe"
+   ],
+   "tastes": [
+    [
+     "Sour",
+     "low"
+    ]
+   ],
+   "mouthfeel": [
+    "Light body"
+   ],
+   "note": "Flat and muted. Faint sourness as it cools, with peanut, roasted-barley grain and a slightly green edge.",
+   "roastDate": "2026-10-31"
+  },
+  "2c712288877fc179-1": {
+   "bean": "eltambo",
+   "batch": "Roasted early Oct",
+   "method": "30 g dose with 500 g water. Last drops measured 0.69% TDS."
+  },
+  "cbcaf2b671627aee-1": {
+   "bean": "alo",
+   "batch": "Oct 31 batch 3",
+   "roastDate": "2026-10-31"
+  },
+  "2a9807219961ca5e-1": {
+   "bean": "eltambo",
+   "batch": "Roasted early Oct"
+  },
+  "78bd9331ae9cff7b-1": {
+   "bean": "eltambo",
+   "batch": "Roasted early Oct",
+   "note": "Too dilute overall.",
+   "method": "Fines sieved into a tea bag and steeped with the grounds; the bag came out before the last 100 ml was poured with the valve open. The bed clogged."
+  },
+  "e726ba44eff0047b-1": {
+   "bean": "eltambo",
+   "batch": "Roasted early Oct",
+   "method": "Two-stage: closed-valve steep, then the last 100 ml poured with the valve open. Leftover liquid 1.15% TDS."
+  },
+  "manual-20261104-limu1": {
+   "bean": "limu",
+   "batch": "Oct 31 batch 1",
+   "order": "18:40",
+   "rating": "disliked",
+   "flavor": [
+    "Nutty"
+   ],
+   "tastes": [
+    [
+     "Sour",
+     "high"
+    ],
+    [
+     "Bitter",
+     "low"
+    ]
+   ],
+   "mouthfeel": [
+    "Mouth-Drying"
+   ],
+   "note": "Sharp sourness and slight bitterness with a nutty aftertaste; the finish stays sour and mouth-drying.",
+   "method": "Switch base with a V60 Neo cone. Two-stage with stirring: 100 g steeped for 1 min and drained, then the valve closed and the rest of the water added.",
+   "roastDate": "2026-10-31"
+  },
+  "b1318dbb16c8e5d2-1": {
+   "bean": "limu",
+   "batch": "Oct 31 batch 1",
+   "rating": "ok",
+   "tastes": [
+    [
+     "Sour",
+     "medium"
+    ],
+    [
+     "Bitter",
+     "low"
+    ]
+   ],
+   "note": "Less sharp sourness than the two-stage cup; bitterness stays in the finish.",
+   "method": "All water at once to 1:16, valve opened at 2:00, done at 3:00. Last drops 1.58% TDS.",
+   "roastDate": "2026-10-31"
+  },
+  "56ec1011be05c6cb-1": {
+   "bean": "limu",
+   "batch": "Oct 31 batch 1",
+   "rating": "ok",
+   "flavor": [
+    "Lemon"
+   ],
+   "tastes": [
+    [
+     "Sour",
+     "medium"
+    ],
+    [
+     "Bitter",
+     "low"
+    ]
+   ],
+   "note": "The sharp sourness turned into rounder acidity, little green character, less mouth-drying; but one-dimensional, like lemon water.",
+   "method": "Same as the previous cup at 1:17, with stirring. Leftover liquid 1.41% TDS.",
+   "roastDate": "2026-10-31"
+  },
+  "e1dda67afbe4bff8-1": {
+   "bean": "eltambo",
+   "batch": "Roasted early Oct",
+   "method": "Evaluation recipe: 1:16 with stirring, 4:00 total. Last drops 1.59% TDS."
+  },
+  "3ff21d79955ff5eb-1": {
+   "bean": "eltambo",
+   "batch": "Roasted early Oct",
+   "rating": "liked",
+   "tastes": [
+    [
+     "Sour",
+     "medium"
+    ],
+    [
+     "Sweet",
+     "high"
+    ]
+   ],
+   "note": "Bright acidity and clear sweetness; a clean cup with no off-flavors.",
+   "method": "Stirred; fines clogged the filter and it dripped for about 8 minutes."
+  },
+  "31da79748aa9f79b-1": {
+   "bean": "aokka",
+   "rating": "ok",
+   "flavor": [
+    "Smoky",
+    "Chocolate",
+    "Caramelized",
+    "Overall Sweet"
+   ],
+   "mouthfeel": [
+    "Smooth",
+    "Light body"
+   ],
+   "note": "A little thin at this extraction. Creamy sweetness, smoky, with a touch of chocolate and toffee."
+  },
+  "10931dfe1b0029ed-1": {
+   "bean": "gotiti",
+   "batch": "Nov 4 roast",
+   "rating": "ok",
+   "note": "The roasted-barley note from cupping is gone; short aftertaste, and the orange from the bag notes is missing.",
+   "method": "Immersion at 1:15.",
+   "roastDate": "2026-11-04"
+  },
+  "d9630173b6825abd-1": {
+   "bean": "gotiti",
+   "batch": "Nov 4 roast",
+   "rating": "ok",
+   "tastes": [
+    [
+     "Bitter",
+     "low"
+    ]
+   ],
+   "mouthfeel": [
+    "Mouth-Drying"
+   ],
+   "note": "Slightly bitter with a mouth-drying finish.",
+   "method": "Stirred throughout; the drain slowed and the brew ran to 5:00. A/B pair with the next cup.",
+   "roastDate": "2026-11-04"
+  },
+  "8f000ddc24f1e1ac-1": {
+   "bean": "gotiti",
+   "batch": "Nov 4 roast",
+   "rating": "liked",
+   "note": "Much better than the stirred cup: no noticeable bitterness or mouth-drying.",
+   "method": "No stirring; done at 3:00. A/B pair with the previous cup.",
+   "roastDate": "2026-11-04"
+  },
+  "824442e234317523-1": {},
+  "manual-20261106-darkrider1": {
+   "bean": "darkrider",
+   "order": "18:30",
+   "method": "Deliberately strong ratio at low extraction, for fun. 1 g dried osmanthus added with the grounds (it raises the TDS reading); Shuke filter paper."
+  },
+  "7f437419c016a54d-1": {
+   "bean": "darkrider",
+   "rating": "liked",
+   "tastes": [
+    [
+     "Sweet",
+     "high"
+    ],
+    [
+     "Sour",
+     "low"
+    ]
+   ],
+   "mouthfeel": [
+    "Smooth"
+   ],
+   "note": "A standout cup: pronounced sweetness, soft and gentle, light acidity, no mouth-drying, clean.",
+   "method": "Stirred."
+  },
+  "97de9423a8d23068-1": {
+   "bean": "darkrider",
+   "rating": "liked",
+   "note": "Preferred over the 1:16 cup brewed right after it.",
+   "method": "Stirred; valve opened at 1:40 and fully drained. Ratio-only pair with the next cup."
+  },
+  "81d23cb416984384-1": {
+   "bean": "darkrider",
+   "rating": "ok",
+   "note": "Less preferred than the 1:17 cup brewed just before it.",
+   "method": "Stirred; valve opened at 1:40 and fully drained. Only the ratio changed."
+  },
+  "98c6f8a2ea7a7f99-1": {
+   "bean": "esmeralda",
+   "rating": "ok",
+   "flavor": [
+    "Orange",
+    "Jasmine"
+   ],
+   "note": "No sharp sourness; orange and jasmine, but the aroma is a little faint.",
+   "method": "1:15 with stirring; valve opened at 1:30 and fully drained."
+  },
+  "809efec0d2740e8c-1": {
+   "bean": "gotiti",
+   "batch": "Nov 6 batch 4",
+   "rating": "ok",
+   "flavor": [
+    "Strawberry",
+    "Raspberry",
+    "Lemon"
+   ],
+   "tastes": [
+    [
+     "Sour",
+     "medium"
+    ],
+    [
+     "Sweet",
+     "medium"
+    ]
+   ],
+   "mouthfeel": [
+    "Mouth-Drying"
+   ],
+   "note": "Hot: sour and mouth-drying with a sweet aftertaste. Below about 52 °C the drying eases into lemon-like acidity with sweetness; strawberry, raspberry, stone fruit.",
+   "method": "Stirred; slow drain, 4:02 total.",
+   "roastDate": "2026-11-06"
+  },
+  "manual-20261108-seycolombia1": {
+   "bean": "eltambo",
+   "batch": "Roasted early Oct",
+   "order": "08:28",
+   "method": "1:14, one 5 s stir at about 1:00, valve opened at 1:30, drained by 2:30."
+  },
+  "manual-20261108-esmeralda2": {
+   "bean": "esmeralda",
+   "order": "08:37",
+   "method": "Same recipe as the El Tambo cup before it: 1:14, one short stir, valve opened at 1:30."
+  },
+  "2a439f3ec31f2554-1": {
+   "bean": "darkrider",
+   "rating": "ok",
+   "tastes": [
+    [
+     "Bitter",
+     "low"
+    ]
+   ],
+   "mouthfeel": [
+    "Mouth-Drying"
+   ],
+   "note": "Slightly bitter and mouth-drying.",
+   "method": "Stirred continuously from the end of the pour until the valve opened; fully drained by 3:00."
+  },
+  "686ee436e395fb6c-1": {
+   "bean": "mix1031",
+   "rating": "disliked",
+   "tastes": [
+    [
+     "Sour",
+     "high"
+    ]
+   ],
+   "mouthfeel": [
+    "Mouth-Drying"
+   ],
+   "note": "Strongly sour and mouth-drying; no burnt bitterness and no nutty notes."
+  },
+  "e4e268b23ce0d561-1": {
+   "bean": "gotiti",
+   "batch": "Nov 6 batch 4",
+   "rating": "liked",
+   "note": "Enjoyable.",
+   "roastDate": "2026-11-06"
+  },
+  "manual-20261109-gotiti-b4": {
+   "bean": "gotiti",
+   "batch": "Nov 6 batch 4",
+   "order": "08:00",
+   "rating": "liked",
+   "note": "Enjoyable.",
+   "roastDate": "2026-11-06"
+  },
+  "manual-20261109-darkrider": {
+   "bean": "darkrider",
+   "order": "12:51",
+   "rating": "liked",
+   "tastes": [
+    [
+     "Sweet",
+     "high"
+    ]
+   ],
+   "mouthfeel": [
+    "Smooth"
+   ],
+   "note": "Quite sweet and soft.",
+   "method": "Stirred before the valve opened at 2:00; no stirring after.",
+   "correction": "The watch beverage weight was invalid (304.5 g) and is left blank."
+  },
+  "manual-20261109-gotiti-b4-2": {
+   "bean": "gotiti",
+   "batch": "Nov 6 batch 4",
+   "order": "13:25",
+   "method": "Drained until no liquid showed above the bed, then closed the valve.",
+   "correction": "The watch timer started 2:20 early; time corrected from 5:45 to 3:25.",
+   "roastDate": "2026-11-06"
+  },
+  "07e9470cbb178297-1": {
+   "bean": "darkrider",
+   "valve": 125,
+   "method": "Kettle temperature measured for the first time; the water was hotter than in earlier cups."
+  },
+  "5ead8ae5f740c74b-1": {
+   "bean": "geshavillage",
+   "rating": "ok",
+   "flavor": [
+    "Honey",
+    "Overall Sweet"
+   ],
+   "tastes": [
+    [
+     "Sour",
+     "low"
+    ],
+    [
+     "Sweet",
+     "medium"
+    ]
+   ],
+   "mouthfeel": [
+    "Light body"
+   ],
+   "note": "Thin and watery on entry, lacking bright acidity; sweetness mid-palate with a sweet aftertaste, honey and a little fruit.",
+   "method": "1:15.",
+   "correction": "The timer started about 135 s before the first pour; time and curve were shifted (5:50 to 3:35)."
+  },
+  "3587f497a2ce893c-1": {
+   "bean": "leftover"
+  },
+  "3587f497a2ce893c-2": {
+   "bean": "geshavillage",
+   "rating": "ok",
+   "tastes": [
+    [
+     "Sour",
+     "medium"
+    ],
+    [
+     "Sweet",
+     "low"
+    ]
+   ],
+   "mouthfeel": [
+    "Full body",
+    "Mouth-Drying"
+   ],
+   "note": "Fuller body, no longer watery; a bit more acidity, less sweetness, slightly mouth-drying finish.",
+   "method": "1:15; the only change from the day before was hotter water."
+  },
+  "b13ecbb25e2810e6-1": {
+   "bean": "geshavillage",
+   "method": "Aiming for high TDS at low extraction: cooler water and 1:14."
+  },
+  "fbf60f434d31b68f-1": {
+   "bean": "gotiti",
+   "batch": "Nov 6 batch 4",
+   "rating": "liked",
+   "note": "Good.",
+   "method": "1:17; floating grounds pushed under at 0:30, no further stirring.",
+   "roastDate": "2026-11-06"
+  },
+  "fbf60f434d31b68f-2": {
+   "bean": "geshavillage",
+   "rating": "ok",
+   "tastes": [
+    [
+     "Sour",
+     "high"
+    ]
+   ],
+   "note": "More acidic than earlier cups; now a fairly typical Gesha profile.",
+   "method": "Strong ratio, 1:13.",
+   "correction": "Start was pressed about 10 s and 130 g into the pour; 182.3 g of water was restored from the first curve sample."
+  },
+  "e3938197d0d378bb-1": {
+   "bean": "eltambo",
+   "batch": "Roasted early Oct",
+   "rating": "disliked",
+   "tastes": [
+    [
+     "Sour",
+     "high"
+    ],
+    [
+     "Sweet",
+     "low"
+    ]
+   ],
+   "mouthfeel": [
+    "Mouth-Drying"
+   ],
+   "note": "Too sour, no sweetness, a hint of mouth-drying.",
+   "method": "Strong ratio, 1:12.6."
+  },
+  "57469a1fdb0bc4e9-1": {
+   "bean": "syrina",
+   "batch": "Nov 12 roast",
+   "grinder": "MAVO",
+   "grind": "7",
+   "rating": "disliked",
+   "tastes": [
+    [
+     "Bitter",
+     "high"
+    ]
+   ],
+   "note": "Very bitter; the grind felt too fine.",
+   "roastDate": "2026-11-12"
+  },
+  "57469a1fdb0bc4e9-2": {
+   "bean": "gotiti",
+   "batch": "Nov 6 batch 4",
+   "grinder": "C40",
+   "valve": 120,
+   "rating": "liked",
+   "note": "Very good.",
+   "method": "One stir at about 1:10; valve opened at 2:00.",
+   "roastDate": "2026-11-06"
+  },
+  "57469a1fdb0bc4e9-3": {
+   "bean": "syrina",
+   "batch": "Nov 12 roast",
+   "grinder": "C40",
+   "grind": "24",
+   "valve": 120,
+   "rating": "ok",
+   "tastes": [
+    [
+     "Sour",
+     "medium"
+    ],
+    [
+     "Sweet",
+     "low"
+    ]
+   ],
+   "mouthfeel": [
+    "Mouth-Drying"
+   ],
+   "note": "Slightly sour on entry, a little mouth-drying, not much sweetness; an unremarkable light roast.",
+   "method": "Valve opened at 2:00.",
+   "roastDate": "2026-11-12"
+  },
+  "2e2f583573bde15d-1": {
+   "bean": "syrina",
+   "batch": "Nov 12 batch C",
+   "rating": "disliked",
+   "tastes": [
+    [
+     "Sour",
+     "high"
+    ],
+    [
+     "Bitter",
+     "medium"
+    ]
+   ],
+   "mouthfeel": [
+    "Mouth-Drying"
+   ],
+   "note": "Sour, mouth-drying and bitter.",
+   "roastDate": "2026-11-12"
+  },
+  "2e2f583573bde15d-2": {
+   "bean": "gotiti",
+   "batch": "Nov 6 batch 4",
+   "rating": "liked",
+   "note": "Good; the best of the four cups that morning.",
+   "roastDate": "2026-11-06"
+  },
+  "5e3f5122a6b97134-1": {
+   "bean": "geshavillage",
+   "rating": "disliked",
+   "mouthfeel": [
+    "Mouth-Drying"
+   ],
+   "note": "Complex but still a little mouth-drying; not enjoyable.",
+   "method": "Strong ratio, 1:12."
+  },
+  "857adcdd5da0c749-1": {
+   "bean": "syrina",
+   "batch": "Nov 14 batch D",
+   "correction": "The timer started before the brewer settled; 69 g of non-water load was removed.",
+   "roastDate": "2026-11-14"
+  },
+  "9fb096ff36577b98-1": {
+   "bean": "leftover",
+   "rating": "ok",
+   "mouthfeel": [
+    "Mouth-Drying"
+   ],
+   "note": "A little more mouth-drying than usual, but still fairly good."
+  },
+  "9fb096ff36577b98-2": {
+   "bean": "gotiti",
+   "batch": "Nov 6 batch 4",
+   "rating": "ok",
+   "mouthfeel": [
+    "Mouth-Drying"
+   ],
+   "note": "A little more mouth-drying than usual, but still fairly good.",
+   "roastDate": "2026-11-06"
+  },
+  "fea3bc3325745e99-1": {
+   "method": "Ceramic V60."
+  },
+  "7915250b4b4c9618-1": {},
+  "d1c33bbe56d6005d-1": {},
+  "d1c33bbe56d6005d-2": {},
+  "56d15792fb96e845-1": {
+   "bean": "gotiti",
+   "batch": "Nov 6 batch 4",
+   "valve": 121,
+   "rating": "ok",
+   "mouthfeel": [
+    "Mouth-Drying"
+   ],
+   "note": "Still a little mouth-drying.",
+   "method": "Forgot to close the valve at the start, so about 10 g ran through before it was closed; valve opened at 2:01.",
+   "correction": "The first watch reading was 1.55% TDS (an impossible 26.5% extraction); the re-measured 1.25% is used.",
+   "roastDate": "2026-11-06"
+  },
+  "d1e83faf6c719688-1": {
+   "bean": "syrina",
+   "batch": "Nov 15 batch F",
+   "rating": "ok",
+   "mouthfeel": [
+    "Mouth-Drying"
+   ],
+   "note": "Still a little mouth-drying.",
+   "roastDate": "2026-11-15"
+  },
+  "6e44103b47ce7c96-1": {
+   "bean": "syrina",
+   "batch": "Nov 15 batch F",
+   "rating": "liked",
+   "note": "Very good.",
+   "roastDate": "2026-11-15"
+  }
+ }
+}

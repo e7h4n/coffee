@@ -1,0 +1,50 @@
+{
+  "slug": "20261102-5a6999",
+  "date": "2026-11-02",
+  "brewer": "Hoop",
+  "scales": 1,
+  "manual": false,
+  "bean": {
+    "id": "alo",
+    "name": "ALO Boore Guji",
+    "full": "Ethiopia Guji, ALO Boore, Honey",
+    "origin": "Ethiopia",
+    "process": "Honey",
+    "source": "Home roast"
+  },
+  "batch": "Oct 31 batch 3",
+  "roastDate": "2026-10-31",
+  "rest": 2,
+  "grinder": null,
+  "grind": null,
+  "dose": 15,
+  "water": 251.7,
+  "beverage": 210.7,
+  "ratio": 16.8,
+  "tds": 0.99,
+  "ey": 13.93,
+  "formula": "beverage",
+  "time": 204,
+  "valve": null,
+  "peak": null,
+  "rating": "disliked",
+  "flavor": [
+    "Peanuts",
+    "Grain",
+    "Under-ripe"
+  ],
+  "tastes": [
+    [
+      "Sour",
+      "low"
+    ]
+  ],
+  "mouthfeel": [
+    "Light body"
+  ],
+  "note": "Flat and muted. Faint sourness as it cools, with peanut, roasted-barley grain and a slightly green edge.",
+  "method": null,
+  "correction": null,
+  "hasTrace": false,
+  "cup": 3
+}

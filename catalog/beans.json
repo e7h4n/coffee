@@ -1,0 +1,123 @@
+{
+  "gotiti": {
+    "name": "Gotiti Honey Moon",
+    "full": "Ethiopia Yirgacheffe Gotiti, Heirloom, DFW \"Honey Moon\" Washed 3.0",
+    "origin": "Ethiopia",
+    "process": "Washed",
+    "source": "Home roast",
+    "match": [
+      "Gotiti",
+      "Honey Moon"
+    ]
+  },
+  "syrina": {
+    "name": "Yunnan Syrina",
+    "full": "China Yunnan Lincang, The Nest Estate, Syrina, 1700-1800 m, Dark Forest Natural (competition green)",
+    "origin": "China",
+    "process": "Natural",
+    "source": "Home roast",
+    "match": [
+      "Syrina",
+      "赛琳娜"
+    ]
+  },
+  "limu": {
+    "name": "Ethiopia Limu",
+    "full": "Ethiopia Limu G2, Washed",
+    "origin": "Ethiopia",
+    "process": "Washed",
+    "source": "Home roast",
+    "match": [
+      "Limu, Washed"
+    ]
+  },
+  "alo": {
+    "name": "ALO Boore Guji",
+    "full": "Ethiopia Guji, ALO Boore, Honey",
+    "origin": "Ethiopia",
+    "process": "Honey",
+    "source": "Home roast",
+    "match": [
+      "ALO BOORE"
+    ]
+  },
+  "mix1031": {
+    "name": "Oct 31 Roast Blend",
+    "full": "Blend of the Oct 31 home roasts: Limu batches 1 and 2 with ALO Boore Guji batch 3",
+    "origin": "Ethiopia",
+    "process": "Blend",
+    "source": "Home roast",
+    "match": [
+      "Home roast 2026-10-31 mixed"
+    ]
+  },
+  "darkrider": {
+    "name": "Captain George Dark Rider",
+    "full": "Captain George No.02 Dark Rider, Colombia Huila, Caturra, Washed, medium-dark roast",
+    "origin": "Colombia",
+    "process": "Washed",
+    "source": "Commercial",
+    "roaster": "Captain George",
+    "match": [
+      "Dark Rider",
+      "黑骑士"
+    ],
+    "roastDate": "2026-11-03"
+  },
+  "eltambo": {
+    "name": "SEY El Tambo",
+    "full": "SEY Coffee, Daniel Caro Lopez, El Tambo, Chiroso, Washed",
+    "origin": "Colombia",
+    "process": "Washed",
+    "source": "Commercial",
+    "roaster": "SEY Coffee",
+    "match": [
+      "El Tambo"
+    ]
+  },
+  "esmeralda": {
+    "name": "SEY Esmeralda Gesha",
+    "full": "SEY Coffee, Hacienda La Esmeralda, Lino 6HC, Gesha, Honey",
+    "origin": "Panama",
+    "process": "Honey",
+    "source": "Commercial",
+    "roaster": "SEY Coffee",
+    "match": [
+      "Esmeralda"
+    ],
+    "roastDate": "2026-10-15"
+  },
+  "geshavillage": {
+    "name": "Gesha Village Gold Label",
+    "full": "Ethiopia Gesha Village Gold Label, Gesha 1931, Natural, light roast",
+    "origin": "Ethiopia",
+    "process": "Natural",
+    "source": "Commercial",
+    "match": [
+      "Gesha Village"
+    ],
+    "roastDate": "2026-11-04"
+  },
+  "aokka": {
+    "name": "AOKKA Brazil Chocolate",
+    "full": "AOKKA Brazil \"Chocolate\", Sao Antonio, Mundo Novo / Catuai / Catucai, Natural, medium roast",
+    "origin": "Brazil",
+    "process": "Natural",
+    "source": "Commercial",
+    "roaster": "AOKKA",
+    "match": [
+      "AOKKA"
+    ]
+  },
+  "leftover": {
+    "name": "Leftover Blend",
+    "full": "Whatever beans were left over, mixed together",
+    "origin": "Mixed",
+    "process": "Blend",
+    "source": "Blend",
+    "match": [
+      "leftover beans",
+      "Ad-hoc"
+    ]
+  }
+}
