@@ -22,6 +22,13 @@
     "imageCredit": "Ceado",
     "imageSource": "https://www.ceado.com/en/products/pour-over-coffee-brewer/"
   },
+  "StaggX": {
+    "name": "Fellow Stagg [X]",
+    "maker": "Fellow",
+    "type": "Flat-bottom percolation",
+    "formula": "beverage",
+    "method": "Pour-over through a flat-bottom filter."
+  },
   "V60": {
     "name": "Hario V60 (ceramic)",
     "maker": "Hario",

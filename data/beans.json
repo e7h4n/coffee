@@ -138,6 +138,24 @@
     "process": "Blend",
     "source": "Blend"
   },
+  "yaye-arbegona": {
+    "name": "Ethiopia Sidama Yaye Arbegona Washed",
+    "full": "Ethiopia, Sidama, Arbegona, Yaye, Ethiopian Landrace, Washed",
+    "origin": "Ethiopia",
+    "region": "Sidama, Arbegona",
+    "variety": "Ethiopian Landrace",
+    "altitude": "2300 m",
+    "process": "Washed",
+    "processNote": "36-hour underwater fermentation; dried on raised beds for 10 to 14 days",
+    "harvest": "January 2026",
+    "source": "Commercial",
+    "roaster": "SEY Coffee",
+    "bagNotes": [
+      "Watermelon",
+      "Floral",
+      "Berry"
+    ]
+  },
   "huakui": {
     "name": "Ethiopia Guji Hambella Natural",
     "full": "Ethiopia, Guji, Hambella, Heirloom, Natural",

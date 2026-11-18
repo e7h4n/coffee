@@ -161,6 +161,7 @@ for (const f of files) {
   const sid = shortId(r.id);
   const cur = curated[sid] || {};
   const notes = r.notes && typeof r.notes === 'object' ? r.notes : {};
+  const brewer = cur.brewer ?? r.brewer;
   const sca = notes.sca && typeof notes.sca === 'object' ? notes.sca : {};
   let day, order;
   if (r.created_at) { const ms = Date.parse(r.created_at); day = isoDay(ms); order = hhmm(ms); }
@@ -179,12 +180,12 @@ for (const f of files) {
   if (cur.valve != null) valve = cur.valve;
   const brew = {
     slug, date: day, _order: order,
-    brewer: r.brewer, scales: r.scales || 1, manual: r.id.startsWith('manual-'),
+    brewer, scales: r.scales || 1, manual: r.id.startsWith('manual-'),
     bean, roast: rz ? roast : null, batch: rz ? rz.label : cur.batch ?? sca.batch ?? null, roastDate, rest: roastDate ? dayDiff(roastDate, day) : null,
     grinder: cur.grinder ?? grinderOf(notes), grind: cur.grind ?? grindOf(notes),
     dose: r.dose_g, water: r.water_ml, beverage: cur.beverage === null || sid === 'manual-20261109-darkrider' ? null : r.beverage_g,
     ratio: r.brew_ratio, tds: r.tds_percent, ey: r.extraction_percent,
-    formula: r.extraction_formula || (['Hoop', 'V60'].includes(r.brewer) ? 'beverage' : 'immersion'),
+    formula: r.extraction_formula || (brewers[brewer]?.formula ?? (['Hoop', 'V60'].includes(brewer) ? 'beverage' : 'immersion')),
     time: elapsed, valve, peak: trace ? trace.peak : null,
     rating: cur.rating ?? sca.rating ?? null,
     flavor: cur.flavor ?? sca.flavor ?? [], tastes: cur.tastes ?? sca.tastes ?? [], mouthfeel: cur.mouthfeel ?? sca.mouthfeel ?? [],
@@ -193,7 +194,7 @@ for (const f of files) {
     hasTrace: !!trace, thumb: trace ? trace.thumb : null,
   };
   brews.push({ brew, trace });
-  if (!brewers[r.brewer]) warnings.push(`${day} ${slug}: brewer "${r.brewer}" is missing from catalog/brewers.json`);
+  if (!brewers[brewer]) warnings.push(`${day} ${slug}: brewer "${brewer}" is missing from catalog/brewers.json`);
   if (bean && !beans[bean]) warnings.push(`${day} ${slug}: bean "${bean}" is missing from catalog/beans.json`);
   if (!curated[sid] && !notes.sca) warnings.push(`${day} ${slug}: not curated yet (bean ${bean || 'unknown'}); add it to catalog/brews.json`);
 }

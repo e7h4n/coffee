@@ -562,6 +562,28 @@
    "note": "Still a little mouth-drying.",
    "roast": "2026-11-15-syrina-204g"
   },
+  "96265b3376ec6b86-1": {
+   "bean": "gotiti",
+   "roast": "2026-11-06-gotiti-4",
+   "rating": "disliked",
+   "note": "Disliked.",
+   "method": "Brewed with Crystal Geyser Alpine Spring Water. Comandante C40, 24 clicks."
+  },
+  "2fe7ae0bd889e293-1": {
+   "rating": "ok",
+   "note": "OK.",
+   "method": "Kettle set to 93 C. No slurry temperature measurement.",
+   "correction": "Bean identity has not been confirmed; no bean is assigned."
+  },
+  "2fe7ae0bd889e293-2": {
+   "bean": "yaye-arbegona",
+   "brewer": "StaggX",
+   "tastes": [["Sweet", "low"]],
+   "mouthfeel": ["Light body"],
+   "note": "Light body with low sweetness.",
+   "method": "Ten-pour pulse method. Comandante C40, 40 clicks. Kettle set to 96 C.",
+   "correction": "The watch logged V60; the actual brewer was Fellow Stagg [X]. Invalid probe readings were removed from the source trace; weights are unchanged."
+  },
   "6e44103b47ce7c96-1": {
    "bean": "syrina",
    "rating": "liked",

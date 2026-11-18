@@ -60,6 +60,7 @@ The site has a page for every coffee (`#/beans`) and every brewer (`#/brewers`),
 | --- | --- |
 | `roast` | Roast batch id in `catalog/roasts.json`; sets the bean, batch label and roast date |
 | `bean`, `batch`, `roastDate` | For coffees without a roast batch: key in `catalog/beans.json`, a free-text batch label and the roast date (`YYYY-MM-DD`) |
+| `brewer` | Confirmed actual brewer code from `catalog/brewers.json`, overriding a mislabeled watch record without changing the raw source |
 | `grinder`, `grind` | `C40` or `MAVO` (Phantox Pro), and the setting |
 | `valve` | Valve-open time in seconds, when the record does not have it |
 | `rating` | `liked`, `ok` or `disliked` |

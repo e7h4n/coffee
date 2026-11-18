@@ -1,0 +1,58 @@
+{
+  "slug": "20261119-2734b0",
+  "date": "2026-11-19",
+  "brewer": "StaggX",
+  "scales": 1,
+  "manual": false,
+  "bean": {
+    "id": "yaye-arbegona",
+    "name": "Ethiopia Sidama Yaye Arbegona Washed",
+    "full": "Ethiopia, Sidama, Arbegona, Yaye, Ethiopian Landrace, Washed",
+    "origin": "Ethiopia",
+    "region": "Sidama, Arbegona",
+    "variety": "Ethiopian Landrace",
+    "altitude": "2300 m",
+    "process": "Washed",
+    "processNote": "36-hour underwater fermentation; dried on raised beds for 10 to 14 days",
+    "harvest": "January 2026",
+    "source": "Commercial",
+    "roaster": "SEY Coffee",
+    "bagNotes": [
+      "Watermelon",
+      "Floral",
+      "Berry"
+    ]
+  },
+  "roast": null,
+  "batch": null,
+  "roastDate": null,
+  "rest": null,
+  "grinder": "C40",
+  "grind": "40",
+  "dose": 15,
+  "water": 299.1,
+  "beverage": 254.7,
+  "ratio": 19.9,
+  "tds": 0.93,
+  "ey": 15.84,
+  "formula": "beverage",
+  "time": 240,
+  "valve": null,
+  "peak": null,
+  "rating": null,
+  "flavor": [],
+  "tastes": [
+    [
+      "Sweet",
+      "low"
+    ]
+  ],
+  "mouthfeel": [
+    "Light body"
+  ],
+  "note": "Light body with low sweetness.",
+  "method": "Ten-pour pulse method. Comandante C40, 40 clicks. Kettle set to 96 C.",
+  "correction": "The watch logged V60; the actual brewer was Fellow Stagg [X]. Invalid probe readings were removed from the source trace; weights are unchanged.",
+  "hasTrace": true,
+  "cup": 3
+}
