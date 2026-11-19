@@ -578,10 +578,11 @@
    "method": "Brewed with Crystal Geyser Alpine Spring Water. Comandante C40, 24 clicks."
   },
   "2fe7ae0bd889e293-1": {
+   "bean": "yaye-arbegona",
    "rating": "ok",
    "note": "OK.",
    "method": "Kettle set to 93 C. No slurry temperature measurement.",
-   "correction": "Bean identity has not been confirmed; no bean is assigned."
+   "correction": "Bean identified as Yaye Arbegona by the user."
   },
   "2fe7ae0bd889e293-2": {
    "bean": "yaye-arbegona",

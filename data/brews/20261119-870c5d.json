@@ -4,7 +4,25 @@
   "brewer": "Switch",
   "scales": 1,
   "manual": false,
-  "bean": null,
+  "bean": {
+    "id": "yaye-arbegona",
+    "name": "Ethiopia Sidama Yaye Arbegona Washed",
+    "full": "Ethiopia, Sidama, Arbegona, Yaye, Ethiopian Landrace, Washed",
+    "origin": "Ethiopia",
+    "region": "Sidama, Arbegona",
+    "variety": "Ethiopian Landrace",
+    "altitude": "2300 m",
+    "process": "Washed",
+    "processNote": "36-hour underwater fermentation; dried on raised beds for 10 to 14 days",
+    "harvest": "January 2026",
+    "source": "Commercial",
+    "roaster": "SEY Coffee",
+    "bagNotes": [
+      "Watermelon",
+      "Floral",
+      "Berry"
+    ]
+  },
   "roast": null,
   "batch": null,
   "roastDate": null,
@@ -27,7 +45,7 @@
   "mouthfeel": [],
   "note": "OK.",
   "method": "Kettle set to 93 C. No slurry temperature measurement.",
-  "correction": "Bean identity has not been confirmed; no bean is assigned.",
+  "correction": "Bean identified as Yaye Arbegona by the user.",
   "hasTrace": true,
   "cup": 4
 }
