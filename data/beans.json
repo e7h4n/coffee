@@ -156,6 +156,24 @@
       "Berry"
     ]
   },
+  "huila-decaf": {
+    "name": "Colombia Huila San Agustin Washed Decaf",
+    "full": "Colombia, Huila, San Agustin, Castillo / Colombia / Caturra, Washed, Sugarcane EA Decaf",
+    "origin": "Colombia",
+    "region": "Huila, San Agustin",
+    "variety": "Castillo, Colombia, Caturra",
+    "altitude": "1600 to 1800 m",
+    "process": "Washed",
+    "processNote": "24-hour dry fermentation; shade-dried on raised beds for 30 days; sugarcane ethyl-acetate decaffeination at Descafecol, Manizales",
+    "harvest": "September 2025",
+    "source": "Commercial",
+    "roaster": "SEY Coffee",
+    "bagNotes": [
+      "Orange marmalade",
+      "Dark chocolate",
+      "Strawberry"
+    ]
+  },
   "huakui": {
     "name": "Ethiopia Guji Hambella Natural",
     "full": "Ethiopia, Guji, Hambella, Heirloom, Natural",

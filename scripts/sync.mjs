@@ -157,7 +157,9 @@ const files = fs.readdirSync(RAW).filter((f) => /^brew-.*\.json$/.test(f));
 const brews = [], warnings = [...warnings0];
 for (const f of files) {
   const r = JSON.parse(fs.readFileSync(path.join(RAW, f), 'utf8'));
-  if (r.status !== 'complete') continue;
+  // awaiting_tds means brewing has finished; measuring TDS is optional.
+  // Never publish active/aborted sessions just because measurements are absent.
+  if (!['complete', 'awaiting_tds'].includes(r.status)) continue;
   const sid = shortId(r.id);
   const cur = curated[sid] || {};
   const notes = r.notes && typeof r.notes === 'object' ? r.notes : {};
@@ -184,7 +186,8 @@ for (const f of files) {
     bean, roast: rz ? roast : null, batch: rz ? rz.label : cur.batch ?? sca.batch ?? null, roastDate, rest: roastDate ? dayDiff(roastDate, day) : null,
     grinder: cur.grinder ?? grinderOf(notes), grind: cur.grind ?? grindOf(notes),
     dose: r.dose_g, water: r.water_ml, beverage: cur.beverage === null || sid === 'manual-20261109-darkrider' ? null : r.beverage_g,
-    ratio: r.brew_ratio, tds: r.tds_percent, ey: r.extraction_percent,
+    ratio: r.brew_ratio, tds: r.tds_percent ?? null,
+    ey: r.tds_percent == null ? null : r.extraction_percent ?? null,
     formula: r.extraction_formula || (brewers[brewer]?.formula ?? (['Hoop', 'V60'].includes(brewer) ? 'beverage' : 'immersion')),
     time: elapsed, valve, peak: trace ? trace.peak : null,
     rating: cur.rating ?? sca.rating ?? null,

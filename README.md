@@ -32,6 +32,8 @@ Only normalized, curated fields: the brew date and its cup number that day (no c
 | `data/csv/<slug>.csv` | Raw 10 Hz curve for the brew window: `t_s, weight_g, probe_c[, out_g]` |
 | `data/brews.csv` | One row per brew, for spreadsheets |
 
+TDS measurement is optional. Finished records with status `complete` or `awaiting_tds` are published; active or aborted sessions are not. Unmeasured TDS and extraction yield remain `null` (shown as missing, never as zero), and do not contribute to measured-TDS/yield statistics. The source status is not changed.
+
 Extraction yield uses the immersion formula for the Hario Switch (`TDS / (1 - TDS) × water / dose`) and the beverage formula for the Hoop and V60 (`TDS × beverage / dose`).
 
 ## Roast batches

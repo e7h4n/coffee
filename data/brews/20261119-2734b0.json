@@ -54,5 +54,5 @@
   "method": "Ten-pour pulse method. Comandante C40, 40 clicks. Kettle set to 96 C.",
   "correction": "The watch logged V60; the actual brewer was Fellow Stagg [X]. Invalid probe readings were removed from the source trace; weights are unchanged.",
   "hasTrace": true,
-  "cup": 3
+  "cup": 5
 }

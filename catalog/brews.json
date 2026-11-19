@@ -1,6 +1,14 @@
 {
  "_doc": "Curated public fields per brew, keyed by the record id without the device prefix. See README for the field contract.",
  "brews": {
+  "96265b3376ec6b86-2": {
+   "bean": "yaye-arbegona",
+   "note": "Very sour on entry."
+  },
+  "37d993bf6721a1e7-1": {
+   "bean": "huila-decaf",
+   "note": "A little better than the earlier cups that day."
+  },
   "61b47a54ad2e75b1-1": {
    "bean": "eltambo",
    "batch": "Roasted early Oct"
